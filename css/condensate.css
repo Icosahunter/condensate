@@ -1,0 +1,659 @@
+/*
+-------------------------------------------------------------------------------
+Condensate CSS
+Version: 0.1
+Licensed under MIT
+-------------------------------------------------------------------------------
+The above notice must be included in its entirety when this file is used.
+
+Table of contents:
+    0.  Normalize CSS -------------------------------------------- [sec-00]
+    1.  CSS Variables -------------------------------------------- [sec-01]
+    2.  Base styles ---------------------------------------------- [sec-02]
+    3.  Scrollbar ------------------------------------------------ [sec-03]
+    4.  Typography ----------------------------------------------- [sec-04]
+    5.  Buttons, Inputs, Forms ----------------------------------- [sec-05]
+    6.  HBox / VBox ---------------------------------------------- [sec-06]
+    7.  Combine -------------------------------------------------- [sec-07]
+    8.  Utility -------------------------------------------------- [sec-08]
+*/
+
+/*
+-------------------------------------------------------------------------------
+0.  Normalize CSS [sec-00]
+
+    Notes:
+    - modern-normalize v2.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize
+    - Modified for use with Condensate CSS
+    - Comments have been removed
+-------------------------------------------------------------------------------
+*/
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-family:
+		system-ui,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-moz-tab-size: 4;
+	tab-size: 4;
+}
+
+body {
+	margin: 0;
+}
+
+hr {
+	height: 0;
+	color: inherit;
+}
+
+abbr[title] {
+	text-decoration: underline dotted;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+	font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	text-indent: 0;
+	border-color: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 100%;
+	margin: 0;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	-webkit-appearance: button;
+}
+
+::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+:-moz-ui-invalid {
+	box-shadow: none;
+}
+
+legend {
+	padding: 0;
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+	height: auto;
+}
+
+[type='search'] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px;
+}
+
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+/*
+-------------------------------------------------------------------------------
+1.  CSS Variables [sec-01]
+-------------------------------------------------------------------------------
+*/
+
+:root {
+    --font-size: 1rem;
+    --font-family: sans-serif;
+    --mono-font-family: monospace;
+    --border-radius: 0.4rem;
+    --button-border-radius: var(--border-radius);
+    --search-border-radius: var(--border-radius);
+    --spacing: 0.6rem;
+
+    --dm-bg-color: #282a36;
+    --dm-bg2-color: #2f3240;
+    --dm-fg-color: #44475a;
+    --dm-primary-color: #3b60f5;
+    --dm-border-color: #1a1c24;
+    --dm-font-color: #ddd;
+
+    --lm-bg-color: #fff;
+    --lm-bg2-color: #f0f0f0;
+    --lm-fg-color: #dddddd;
+    --lm-primary-color: #3b60f5;
+    --lm-border-color: #353747;
+    --lm-font-color: #000;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: var(--lm-bg-color);
+        --bg2-color: var(--lm-bg2-color);
+        --fg-color: var(--lm-fg-color);
+        --primary-color: var(--lm-primary-color);
+        --border-color: var(--lm-border-color);
+        --font-color: var(--lm-font-color);
+    }
+    * {
+        color-scheme: light;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: var(--dm-bg-color);
+        --bg2-color: var(--dm-bg2-color);
+        --fg-color: var(--dm-fg-color);
+        --primary-color: var(--dm-primary-color);
+        --border-color: var(--dm-border-color);
+        --font-color: var(--dm-font-color);
+    }
+    * {
+        color-scheme: dark;
+    }
+}
+
+/*
+-------------------------------------------------------------------------------
+2.  Base styles [sec-02]
+-------------------------------------------------------------------------------
+*/
+
+@font-face {
+    font-family: "Material Symbols Outlined";
+    src: url("../fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf");
+}
+
+body {
+    background: var(--bg-color);
+}
+
+html * {
+    margin: 0;
+    padding: 0;
+    color: var(--font-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    border: None;
+}
+
+html :not(input, button) {
+    line-height: 1.5;
+}
+
+/*
+-------------------------------------------------------------------------------
+3.  Scrollbar [sec-03]
+-------------------------------------------------------------------------------
+*/
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg2-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--fg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--fg-color);
+}
+
+* {
+    scrollbar-color: var(--fg-color) var(--bg2-color);
+}
+
+/*
+-------------------------------------------------------------------------------
+4.  Typography [sec-04]
+-------------------------------------------------------------------------------
+*/
+
+p {
+    text-align: justify;
+    text-justify: distribute;
+}
+
+h1 {
+    font-size: calc(2.5*var(--font-size));
+}
+
+h2 {
+    font-size: calc(2.25*var(--font-size));
+}
+
+h3 {
+    font-size: calc(2*var(--font-size));
+}
+
+h4 {
+    font-size: calc(1.75*var(--font-size));
+}
+
+h5 {
+    font-size: calc(1.5*var(--font-size));
+}
+
+h6 {
+    font-size: calc(1.25*var(--font-size));
+}
+
+ul, ol {
+    padding-left: calc(4*var(--spacing));
+}
+
+code, kbd {
+    background: var(--bg2-color);
+    padding-top: calc(0.3*var(--spacing));
+    padding-bottom: calc(0.3*var(--spacing));
+    padding-left: calc(0.8*var(--spacing));
+    padding-right: calc(0.8*var(--spacing));
+    border-radius: var(--border-radius);
+    font-family: var(--mono-font-family);
+}
+
+/*
+-------------------------------------------------------------------------------
+5.  Buttons, Inputs, Forms [sec-05]
+-------------------------------------------------------------------------------
+*/
+
+button, input, textarea, select {
+    background: var(--fg-color);
+    padding-top: calc(0.4*var(--spacing));
+    padding-bottom: calc(0.4*var(--spacing));
+    padding-left: var(--spacing);
+    padding-right: var(--spacing);
+}
+
+input, textarea, select {
+    border-radius: var(--border-radius);
+}
+
+::placeholder {
+    color: var(--font-color);
+    opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+    color: var(--font-color);
+    opacity: 0.5;
+}
+
+input[type="search"] {
+    border-radius: var(--search-border-radius);
+}
+
+input[type="color"] {
+    padding: 5px;
+}
+
+::-webkit-color-swatch {
+    border: none;
+}
+
+::-moz-color-swatch {
+    border: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    color: var(--bg2-color);
+}
+
+button {
+    border-radius: var(--button-border-radius);
+}
+
+button:hover {
+    filter: brightness(150%);
+}
+
+fieldset {
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius);
+    background: var(--bg2-color);
+}
+
+fieldset > legend {
+    margin-left: var(--spacing);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+details > :not(summary){
+    margin-left: 0.8rem;
+}
+
+/*
+-------------------------------------------------------------------------------
+6.  HBox / VBox [sec-06]
+-------------------------------------------------------------------------------
+*/
+
+.hbox, .vbox {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: start;
+}
+
+:is(article, fieldset, main):is(.hbox, .vbox) {
+    padding: var(--spacing);
+}
+
+.hbox > *:not(:first-child, legend + *, summary + *) {
+    margin-left: var(--spacing);
+}
+
+.vbox > *:not(:first-child, legend + *, summary + *) {
+    margin-top: var(--spacing);
+}
+
+.hbox {
+    flex-direction: row;
+}
+
+.vbox {
+    flex-direction: column;
+}
+
+:is(.hbox, .vbox) > :is(a, button, input) {
+    flex-shrink: 0;
+}
+
+.hbox > :is(a, button, input) {
+    align-self: center;
+}
+
+.vbox > :is(a, button, input) {
+    align-self: start;
+}
+
+:is(.hbox, .vbox).content-center {
+    justify-content: center;
+}
+
+.vbox.content-top {
+    justify-content: start;
+}
+
+.vbox.content-bottom {
+    justify-content: end;
+}
+
+.hbox.content-left {
+    justify-content: start;
+}
+
+.hbox.content-right {
+    justify-content: end;
+}
+
+.hbox > .top {
+    align-self: start;
+}
+
+.hbox > .bottom {
+    align-self: end;
+}
+
+:is(.hbox, .vbox) > .center {
+    align-self: center;
+}
+
+:is(.hbox, .vbox) > .stretch {
+    align-self: stretch;
+}
+
+.vbox > .left {
+    align-self: start;
+}
+
+.vbox > .right {
+    align-self: end;
+}
+
+:is(.hbox, .vbox) > .spacer {
+    flex-grow: 1;
+}
+
+.scroll.vbox {
+    overflow-y: scroll;
+}
+
+.scroll.hbox {
+    overflow-x: scroll;
+}
+
+/*
+-------------------------------------------------------------------------------
+7.  Combine [sec-07]
+-------------------------------------------------------------------------------
+*/
+
+:is(:is(:not(.combine) + .combine), :first-child):is(.hbox > .combine) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0.75px solid var(--bg2-color);
+}
+
+:is(.combine + .combine):is(.hbox > .combine) {
+    margin-left: 0;
+    border-radius: 0;
+    border-left: 0.75px solid var(--bg2-color);
+    border-right: 0.75px solid var(--bg2-color);
+}
+
+:is(.combine + :not(.combine)):is(.hbox > :not(.combine)) {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0.75px solid var(--bg2-color);
+}
+
+:is(:is(:not(.combine) + .combine), :first-child):is(.vbox > .combine) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0.75px solid var(--bg2-color);
+}
+
+:is(.combine + .combine):is(.vbox > .combine) {
+    margin-left: 0;
+    border-radius: 0;
+    border-top: 0.75px solid var(--bg2-color);
+    border-bottom: 0.75px solid var(--bg2-color);
+}
+
+:is(.combine + :not(.combine)):is(.vbox > :not(.combine)) {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0.75px solid var(--bg2-color);
+}
+
+/*
+-------------------------------------------------------------------------------
+8.  Utility [sec-08]
+-------------------------------------------------------------------------------
+*/
+
+.width-25 {
+    width: 25%;
+}
+
+.width-33 {
+    width: 33.333%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-66 {
+    width: 66.667%;
+}
+
+.width-75 {
+    width: 75%;
+}
+
+.width-100 {
+    width: 100%
+}
+
+.height-25 {
+    height: 25%;
+}
+
+.height-33 {
+    height: 33.333%;
+}
+
+.height-50 {
+    height: 50%;
+}
+
+.height-66 {
+    height: 66.667%;
+}
+
+.height-75 {
+    height: 75%;
+}
+
+.height-100 {
+    height: 100%
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.padding {
+    padding: var(--spacing);
+}
+
+.square {
+    aspect-ratio: 1;
+}
+
+.circle {
+    border-radius: 50%;
+    aspect-ratio: 1;
+}
+
+.pill {
+    border-radius: 50%;
+}
+
+.icon {
+    font-family: 'Material Symbols Outlined';
+    font-size: calc(1.15*var(--font-size));
+}
+
+.border {
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius);
+}
+
+.no-border {
+    border: none;
+}
+
+.card {
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius);
+    background: var(--bg2-color);
+}
+
+.fullscreen {
+    height: 100vh;
+    width: 100vw;
+}
