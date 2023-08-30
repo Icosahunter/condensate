@@ -411,6 +411,10 @@ details > :not(summary){
     margin-left: 0.8rem;
 }
 
+:is(button, input, select).pill {
+    border-radius: 1.5em;
+}
+
 /*
 -------------------------------------------------------------------------------
 6.  HBox / VBox [sec-06]
@@ -627,10 +631,6 @@ details > :not(summary){
 .circle {
     border-radius: 50%;
     aspect-ratio: 1;
-}
-
-.pill {
-    border-radius: 50%;
 }
 
 .icon {
