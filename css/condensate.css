@@ -15,7 +15,8 @@ Table of contents:
     5.  Buttons, Inputs, Forms ----------------------------------- [sec-05]
     6.  HBox / VBox ---------------------------------------------- [sec-06]
     7.  Combine -------------------------------------------------- [sec-07]
-    8.  Utility -------------------------------------------------- [sec-08]
+    8.  Tabbed --------------------------------------------------- [sec-08]
+    9.  Utility -------------------------------------------------- [sec-09]
 */
 
 /*
@@ -564,7 +565,80 @@ details > :not(summary){
 
 /*
 -------------------------------------------------------------------------------
-8.  Utility [sec-08]
+8.  Tabbed [sec-08]
+    Notes:
+    - Based on this neat css only tabs concept by Michał Pawełczyk:
+      https://codepen.io/MPDoctor/pen/mpJdYe
+-------------------------------------------------------------------------------
+*/
+
+.tabbed > input[type="radio"] {
+    display: none;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid var(--fg-color);
+}
+
+.tabs > label {
+    background: var(--fg-color);
+    margin-bottom: -2px;
+    padding: 0 var(--spacing);
+}
+
+.tabs > label:first-of-type {
+    border-top-left-radius: 2px;
+}
+
+.tabs > label:last-of-type {
+    border-top-right-radius: 2px;
+}
+
+.tab-content {
+    display: none;
+    background: var(--bg2-color);
+}
+
+.tabbed.overlay {
+    position: relative;
+}
+
+.tabbed.overlay > .tab-content {
+    position: absolute;
+    width: 100%;
+}
+
+.tabbed > input[type="radio"]:nth-of-type(1):checked ~ .tabs > label:nth-of-type(1),
+.tabbed > input[type="radio"]:nth-of-type(2):checked ~ .tabs > label:nth-of-type(2),
+.tabbed > input[type="radio"]:nth-of-type(3):checked ~ .tabs > label:nth-of-type(3),
+.tabbed > input[type="radio"]:nth-of-type(4):checked ~ .tabs > label:nth-of-type(4),
+.tabbed > input[type="radio"]:nth-of-type(5):checked ~ .tabs > label:nth-of-type(5),
+.tabbed > input[type="radio"]:nth-of-type(6):checked ~ .tabs > label:nth-of-type(6),
+.tabbed > input[type="radio"]:nth-of-type(7):checked ~ .tabs > label:nth-of-type(7),
+.tabbed > input[type="radio"]:nth-of-type(8):checked ~ .tabs > label:nth-of-type(8),
+.tabbed > input[type="radio"]:nth-of-type(9):checked ~ .tabs > label:nth-of-type(9),
+.tabbed > input[type="radio"]:nth-of-type(10):checked ~ .tabs > label:nth-of-type(10) {
+    background: var(--bg2-color);
+    border-bottom: 2px solid var(--bg2-color);
+}
+
+input[type="radio"]:nth-of-type(1):checked ~ .tab-content:nth-child(5),
+input[type="radio"]:nth-of-type(2):checked ~ .tab-content:nth-child(6),
+input[type="radio"]:nth-of-type(3):checked ~ .tab-content:nth-child(7),
+input[type="radio"]:nth-of-type(4):checked ~ .tab-content:nth-child(8),
+input[type="radio"]:nth-of-type(5):checked ~ .tab-content:nth-child(9),
+input[type="radio"]:nth-of-type(6):checked ~ .tab-content:nth-child(10),
+input[type="radio"]:nth-of-type(7):checked ~ .tab-content:nth-child(11),
+input[type="radio"]:nth-of-type(8):checked ~ .tab-content:nth-child(12),
+input[type="radio"]:nth-of-type(9):checked ~ .tab-content:nth-child(13),
+input[type="radio"]:nth-of-type(10):checked ~ .tab-content:nth-child(14) {
+    display: block;
+}
+
+/*
+-------------------------------------------------------------------------------
+9.  Utility [sec-09]
 -------------------------------------------------------------------------------
 */
 
@@ -616,6 +690,18 @@ details > :not(summary){
     height: 100%
 }
 
+.bg-color {
+    background: var(--bg-color);
+}
+
+.bg2-color {
+    background: var(--bg2-color);
+}
+
+.fg-color {
+    background: var(--fg-color);
+}
+
 .no-padding {
     padding: 0;
 }
@@ -625,12 +711,18 @@ details > :not(summary){
 }
 
 .square {
-    aspect-ratio: 1;
+    height: 1.5em;
+    width: 1.5em;
+    text-align: center;
+    padding: 0;
 }
 
 .circle {
     border-radius: 50%;
-    aspect-ratio: 1;
+    height: 1.5em;
+    width: 1.5em;
+    text-align: center;
+    padding: 0;
 }
 
 .icon {

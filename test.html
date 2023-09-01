@@ -25,6 +25,29 @@
           <summary>Summary</summary>
           <p>Details</p>
         </details>
+        <div class="tabbed">
+          <input type="radio" id="tab1" name="tabs1">
+          <input type="radio" id="tab2" name="tabs1">
+          <input type="radio" id="tab3" name="tabs1">
+
+          <div class="tabs">
+            <label for="tab1">Tab1</label>
+            <label for="tab2">Tab2</label>
+            <label for="tab3">Tab3</label>
+          </div>
+
+          <pre class="tab-content">
+            Content 1
+            Apple
+            Sorble
+          </pre>
+          <div class="tab-content">
+            Content 2
+          </div>
+          <div class="tab-content">
+            Content 3
+          </div>
+        </div>
         <form class="vbox" class="vbox">
           <fieldset id="forms__input" class="vbox">
             <legend>Input fields</legend>
@@ -54,6 +77,9 @@
                 search
               </button>
             </div>
+            <button class="icon square">
+              home
+            </button>
             <input type="text" name="input__text7" id="input__text7" placeholder="Username">
             <input type="text" name="input__text8" id="input__text8" placeholder="Password">
             <button>Submit</button>
