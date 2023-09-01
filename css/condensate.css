@@ -218,6 +218,7 @@ summary {
         --border-color: var(--lm-border-color);
         --font-color: var(--lm-font-color);
     }
+
     * {
         color-scheme: light;
     }
@@ -232,9 +233,28 @@ summary {
         --border-color: var(--dm-border-color);
         --font-color: var(--dm-font-color);
     }
+
     * {
         color-scheme: dark;
     }
+}
+
+.lm {
+    --bg-color: var(--lm-bg-color);
+    --bg2-color: var(--lm-bg2-color);
+    --fg-color: var(--lm-fg-color);
+    --primary-color: var(--lm-primary-color);
+    --border-color: var(--lm-border-color);
+    --font-color: var(--lm-font-color);
+}
+
+.dm {
+    --bg-color: var(--dm-bg-color);
+    --bg2-color: var(--dm-bg2-color);
+    --fg-color: var(--dm-fg-color);
+    --primary-color: var(--dm-primary-color);
+    --border-color: var(--dm-border-color);
+    --font-color: var(--dm-font-color);
 }
 
 /*
@@ -638,55 +658,156 @@ input[type="radio"]:nth-of-type(10):checked ~ .tab-content:nth-child(14) {
 
 /*
 -------------------------------------------------------------------------------
+9.  Carousel [sec-09]
+    Notes:
+    - Based on the first CSS only carousel example from this CSS-Tricks
+      article: https://css-tricks.com/css-only-carousel/
+-------------------------------------------------------------------------------
+*/
+
+.carousel {
+    text-align: center;
+    width: 33.33%;
+}
+
+.carousel-slides > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    margin-right: var(--spacing);
+    border-radius: var(--border-radius);
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-slides {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-btn {
+    display: inline-flex;
+    background-color: var(--fg-color);
+    height: 0.7em;
+    width: 0.7em;
+    margin: 0 0.2em;
+    border-radius: 50%;
+}
+
+/*
+-------------------------------------------------------------------------------
 9.  Utility [sec-09]
 -------------------------------------------------------------------------------
 */
 
-.width-25 {
+.w-1em {
+    width: 1em;
+}
+
+.w-25px {
+    width: 25px;
+}
+
+.w-50px {
+    width: 50px;
+}
+
+.w-100px {
+    width: 100px;
+}
+
+.w-200px {
+    width: 200px;
+}
+
+.w-300px {
+    width: 300px;
+}
+
+.w-400px {
+    width: 400px;
+}
+
+.w-quarter {
     width: 25%;
 }
 
-.width-33 {
+.w-third {
     width: 33.333%;
 }
 
-.width-50 {
+.w-half {
     width: 50%;
 }
 
-.width-66 {
+.w-two-thirds {
     width: 66.667%;
 }
 
-.width-75 {
+.w-three-quarters {
     width: 75%;
 }
 
-.width-100 {
+.w-full {
     width: 100%
 }
 
-.height-25 {
+.h-1em {
+    height: 1em;
+}
+
+.h-25px {
+    height: 25px;
+}
+
+.h-50px {
+    height: 50px;
+}
+
+.h-100px {
+    height: 100px;
+}
+
+.h-200px {
+    height: 200px;
+}
+
+.h-300px {
+    height: 300px;
+}
+
+.h-400px {
+    height: 400px;
+}
+
+.h-quarter {
     height: 25%;
 }
 
-.height-33 {
+.h-third {
     height: 33.333%;
 }
 
-.height-50 {
+.h-half {
     height: 50%;
 }
 
-.height-66 {
+.h-two-thirds {
     height: 66.667%;
 }
 
-.height-75 {
+.h-three-quarters {
     height: 75%;
 }
 
-.height-100 {
+.h-full {
     height: 100%
 }
 
@@ -748,4 +869,16 @@ input[type="radio"]:nth-of-type(10):checked ~ .tab-content:nth-child(14) {
 .fullscreen {
     height: 100vh;
     width: 100vw;
+}
+
+@media (prefers-color-scheme: dark) {
+    .dm-hidden {
+        visibility: hidden;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .lm-hidden {
+        visibility: hidden;
+    }
 }
