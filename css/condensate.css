@@ -366,7 +366,11 @@ code, kbd {
 -------------------------------------------------------------------------------
 */
 
-button, input, textarea, select {
+.button {
+    text-decoration: none;
+}
+
+.button, button, input, textarea, select {
     background: var(--fg-color);
     padding-top: calc(0.4*var(--spacing));
     padding-bottom: calc(0.4*var(--spacing));
@@ -408,12 +412,16 @@ input[type="number"]::-webkit-inner-spin-button {
     color: var(--bg2-color);
 }
 
-button {
+.button, button {
     border-radius: var(--button-border-radius);
 }
 
-button:hover {
+:is(.button, button):hover {
     filter: brightness(150%);
+}
+
+:is(.button, button, input[type="checkbox"], input[type="radio"], input[type="color"]) {
+    cursor: pointer;
 }
 
 fieldset {
@@ -607,6 +615,11 @@ details > :not(summary){
     padding: 0 var(--spacing);
 }
 
+.tabbed > *[role="tablist"] > label[role="tab"]:hover {
+    filter: brightness(150%);
+    cursor: pointer;
+}
+
 .tabbed > *[role="tablist"] > label[role="tab"]:first-of-type {
     border-top-left-radius: 2px;
 }
@@ -742,15 +755,106 @@ input[type="checkbox"][role="switch"]:checked {
 
 /*
 -------------------------------------------------------------------------------
-9.  Modal [sec-09]
+11. Modal [sec-11]
 -------------------------------------------------------------------------------
 */
 
+[role="dialog"][aria-modal="true"] {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    backdrop-filter: blur(10px) brightness(80%);
+}
 
+[role="dialog"][aria-modal="true"]:target {
+    visibility: visible;
+}
+
+[role="dialog"][aria-modal="true"] [aria-label="close"] {
+    width: 1em;
+    margin: 0.25em 0;
+    height: 1em;
+    margin-left: auto;
+    position: relative;
+    appearance: none;
+    background: none;
+}
+
+[role="dialog"][aria-modal="true"] [aria-label="close"]:hover {
+    filter: brightness(150%);
+}
+
+[role="dialog"][aria-modal="true"] [aria-label="close"]::before {
+    content: "";
+    width: 1em;
+    border-top: 2px solid var(--font-color);
+    position: absolute;
+    top: 0.1em;
+    left: 0.14em;
+    transform-origin: left center;
+    transform: rotate(45deg);
+}
+
+[role="dialog"][aria-modal="true"] [aria-label="close"]::after {
+    content: "";
+    width: 1em;
+    border-top: 2px solid var(--font-color);
+    position: absolute;
+    top: calc(100% - 0.2em);
+    left: 0.14em;
+    transform-origin: left center;
+    transform: rotate(-45deg);
+}
 
 /*
 -------------------------------------------------------------------------------
-9.  Utility [sec-09]
+12.  Card [sec-12]
+-------------------------------------------------------------------------------
+*/
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius);
+    background: var(--bg2-color);
+}
+
+.card > * {
+    margin-left: var(--spacing);
+    margin-right: var(--spacing);
+}
+
+.card > *:last-child:not(footer){
+    margin-bottom: var(--spacing);
+}
+
+.card > *:first-child:not(header){
+    margin-top: var(--spacing);
+}
+
+.card > header {
+    display: flex;
+    background: var(--fg-color);
+    margin: 0 0 var(--spacing) 0;
+    padding: calc(0.5*var(--spacing)) var(--spacing);
+}
+
+.card > footer {
+    display: flex;
+    background: var(--fg-color);
+    margin: var(--spacing) 0 0 0;
+    padding: calc(0.5*var(--spacing)) var(--spacing);
+}
+
+/*
+-------------------------------------------------------------------------------
+13.  Utility [sec-13]
 -------------------------------------------------------------------------------
 */
 
@@ -905,12 +1009,6 @@ input[type="checkbox"][role="switch"]:checked {
 
 .no-border {
     border: none;
-}
-
-.card {
-    border: 2px solid var(--fg-color);
-    border-radius: var(--border-radius);
-    background: var(--bg2-color);
 }
 
 .fullscreen {
