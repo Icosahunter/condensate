@@ -691,7 +691,7 @@ input[type="radio"]:nth-of-type(10):checked ~ *[role="tabpanel"]:nth-child(14) {
     flex-shrink: 0;
 }
 
-.carousel-btn {
+a.carousel-btn {
     display: inline-flex;
     background-color: var(--fg-color);
     height: 0.7em;
@@ -706,7 +706,7 @@ input[type="radio"]:nth-of-type(10):checked ~ *[role="tabpanel"]:nth-child(14) {
 -------------------------------------------------------------------------------
 */
 
-input[type="checkbox"].toggle-switch {
+input[type="checkbox"][role="switch"] {
     background: var(--bg2-color);
     filter: brightness(0.6);
     appearance: none;
@@ -717,7 +717,7 @@ input[type="checkbox"].toggle-switch {
     position: relative;
 }
 
-input[type="checkbox"].toggle-switch::before {
+input[type="checkbox"][role="switch"]::before {
     position: absolute;
     content: '';
     background: var(--fg-color);
@@ -730,12 +730,12 @@ input[type="checkbox"].toggle-switch::before {
     transition: 0.3s;
 }
 
-input[type="checkbox"].toggle-switch:checked::before {
+input[type="checkbox"][role="switch"]:checked::before {
     transform: translateX(calc(100% + 4px));
     filter: brightness(1);
 }
 
-input[type="checkbox"].toggle-switch:checked {
+input[type="checkbox"][role="switch"]:checked {
     background: var(--primary-color);
     filter: brightness(1);
 }
