@@ -30,21 +30,21 @@
           <input type="radio" id="tab2" name="tabs1">
           <input type="radio" id="tab3" name="tabs1">
 
-          <div class="tabs">
-            <label for="tab1">Tab1</label>
-            <label for="tab2">Tab2</label>
-            <label for="tab3">Tab3</label>
+          <div role="tablist">
+            <label role="tab" for="tab1">Tab1</label>
+            <label role="tab" for="tab2">Tab2</label>
+            <label role="tab" for="tab3">Tab3</label>
           </div>
 
-          <pre class="tab-content">
+          <pre role="tabpanel">
             Content 1
             Apple
             Sorble
           </pre>
-          <div class="tab-content">
+          <div role="tabpanel">
             Content 2
           </div>
-          <div class="tab-content">
+          <div role="tabpanel">
             Content 3
           </div>
         </div>
@@ -63,8 +63,13 @@
         </div>
         <table>
           <tr><th>Header1</th><th>Header2</th><th>Header3</th></tr>
-          <tr></tr>
+          <tr><td>Data1</td><td>Data2</td><td>Data3</td></tr>
+          <tr><td>Data1</td><td>Data2</td><td>Data3</td></tr>
         </table>
+        <div class="card vbox">
+          <input type="checkbox" class="close">
+          Here is some fun text to consider on your journey!
+        </div>
         <form class="vbox" class="vbox">
           <fieldset id="forms__input" class="vbox">
             <legend>Input fields</legend>

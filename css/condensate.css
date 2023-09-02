@@ -596,26 +596,26 @@ details > :not(summary){
     display: none;
 }
 
-.tabs {
+.tabbed > *[role="tablist"] {
     display: flex;
     border-bottom: 2px solid var(--fg-color);
 }
 
-.tabs > label {
+.tabbed > *[role="tablist"] > label[role="tab"] {
     background: var(--fg-color);
     margin-bottom: -2px;
     padding: 0 var(--spacing);
 }
 
-.tabs > label:first-of-type {
+.tabbed > *[role="tablist"] > label[role="tab"]:first-of-type {
     border-top-left-radius: 2px;
 }
 
-.tabs > label:last-of-type {
+.tabbed > *[role="tablist"] > label[role="tab"]:last-of-type {
     border-top-right-radius: 2px;
 }
 
-.tab-content {
+.tabbed > *[role="tabpanel"] {
     display: none;
     background: var(--bg2-color);
 }
@@ -624,35 +624,35 @@ details > :not(summary){
     position: relative;
 }
 
-.tabbed.overlay > .tab-content {
+.tabbed.overlay > *[role="tabpanel"] {
     position: absolute;
     width: 100%;
 }
 
-.tabbed > input[type="radio"]:nth-of-type(1):checked ~ .tabs > label:nth-of-type(1),
-.tabbed > input[type="radio"]:nth-of-type(2):checked ~ .tabs > label:nth-of-type(2),
-.tabbed > input[type="radio"]:nth-of-type(3):checked ~ .tabs > label:nth-of-type(3),
-.tabbed > input[type="radio"]:nth-of-type(4):checked ~ .tabs > label:nth-of-type(4),
-.tabbed > input[type="radio"]:nth-of-type(5):checked ~ .tabs > label:nth-of-type(5),
-.tabbed > input[type="radio"]:nth-of-type(6):checked ~ .tabs > label:nth-of-type(6),
-.tabbed > input[type="radio"]:nth-of-type(7):checked ~ .tabs > label:nth-of-type(7),
-.tabbed > input[type="radio"]:nth-of-type(8):checked ~ .tabs > label:nth-of-type(8),
-.tabbed > input[type="radio"]:nth-of-type(9):checked ~ .tabs > label:nth-of-type(9),
-.tabbed > input[type="radio"]:nth-of-type(10):checked ~ .tabs > label:nth-of-type(10) {
+.tabbed > input[type="radio"]:nth-of-type(1):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(1),
+.tabbed > input[type="radio"]:nth-of-type(2):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(2),
+.tabbed > input[type="radio"]:nth-of-type(3):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(3),
+.tabbed > input[type="radio"]:nth-of-type(4):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(4),
+.tabbed > input[type="radio"]:nth-of-type(5):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(5),
+.tabbed > input[type="radio"]:nth-of-type(6):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(6),
+.tabbed > input[type="radio"]:nth-of-type(7):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(7),
+.tabbed > input[type="radio"]:nth-of-type(8):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(8),
+.tabbed > input[type="radio"]:nth-of-type(9):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(9),
+.tabbed > input[type="radio"]:nth-of-type(10):checked ~ *[role="tablist"] > label[role="tab"]:nth-of-type(10) {
     background: var(--bg2-color);
     border-bottom: 2px solid var(--bg2-color);
 }
 
-input[type="radio"]:nth-of-type(1):checked ~ .tab-content:nth-child(5),
-input[type="radio"]:nth-of-type(2):checked ~ .tab-content:nth-child(6),
-input[type="radio"]:nth-of-type(3):checked ~ .tab-content:nth-child(7),
-input[type="radio"]:nth-of-type(4):checked ~ .tab-content:nth-child(8),
-input[type="radio"]:nth-of-type(5):checked ~ .tab-content:nth-child(9),
-input[type="radio"]:nth-of-type(6):checked ~ .tab-content:nth-child(10),
-input[type="radio"]:nth-of-type(7):checked ~ .tab-content:nth-child(11),
-input[type="radio"]:nth-of-type(8):checked ~ .tab-content:nth-child(12),
-input[type="radio"]:nth-of-type(9):checked ~ .tab-content:nth-child(13),
-input[type="radio"]:nth-of-type(10):checked ~ .tab-content:nth-child(14) {
+input[type="radio"]:nth-of-type(1):checked ~ *[role="tabpanel"]:nth-child(5),
+input[type="radio"]:nth-of-type(2):checked ~ *[role="tabpanel"]:nth-child(6),
+input[type="radio"]:nth-of-type(3):checked ~ *[role="tabpanel"]:nth-child(7),
+input[type="radio"]:nth-of-type(4):checked ~ *[role="tabpanel"]:nth-child(8),
+input[type="radio"]:nth-of-type(5):checked ~ *[role="tabpanel"]:nth-child(9),
+input[type="radio"]:nth-of-type(6):checked ~ *[role="tabpanel"]:nth-child(10),
+input[type="radio"]:nth-of-type(7):checked ~ *[role="tabpanel"]:nth-child(11),
+input[type="radio"]:nth-of-type(8):checked ~ *[role="tabpanel"]:nth-child(12),
+input[type="radio"]:nth-of-type(9):checked ~ *[role="tabpanel"]:nth-child(13),
+input[type="radio"]:nth-of-type(10):checked ~ *[role="tabpanel"]:nth-child(14) {
     display: block;
 }
 
@@ -739,6 +739,14 @@ input[type="checkbox"].toggle-switch:checked {
     background: var(--primary-color);
     filter: brightness(1);
 }
+
+/*
+-------------------------------------------------------------------------------
+9.  Modal [sec-09]
+-------------------------------------------------------------------------------
+*/
+
+
 
 /*
 -------------------------------------------------------------------------------
