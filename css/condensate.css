@@ -675,15 +675,14 @@ input[type="radio"]:nth-of-type(10):checked ~ .tab-content:nth-child(14) {
     flex-shrink: 0;
     margin-right: var(--spacing);
     border-radius: var(--border-radius);
-    transform-origin: center center;
-    transform: scale(1);
-    transition: transform 0.5s;
+    margin: auto 0;
     width: 100%;
     position: relative;
 }
 
 .carousel-slides {
     display: flex;
+    align-content: center;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
@@ -699,6 +698,46 @@ input[type="radio"]:nth-of-type(10):checked ~ .tab-content:nth-child(14) {
     width: 0.7em;
     margin: 0 0.2em;
     border-radius: 50%;
+}
+
+/*
+-------------------------------------------------------------------------------
+10.  Toggle Switch [sec-10]
+-------------------------------------------------------------------------------
+*/
+
+input[type="checkbox"].toggle-switch {
+    background: var(--bg2-color);
+    filter: brightness(0.6);
+    appearance: none;
+    border-radius: 1em;
+    height: 1em;
+    width: 2em;
+    margin: 0.25em 0;
+    position: relative;
+}
+
+input[type="checkbox"].toggle-switch::before {
+    position: absolute;
+    content: '';
+    background: var(--fg-color);
+    filter: brightness(1.4);
+    border-radius: 1em;
+    width: calc(1em - 4px);
+    height: calc(1em - 4px);
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+input[type="checkbox"].toggle-switch:checked::before {
+    transform: translateX(calc(100% + 4px));
+    filter: brightness(1);
+}
+
+input[type="checkbox"].toggle-switch:checked {
+    background: var(--primary-color);
+    filter: brightness(1);
 }
 
 /*
