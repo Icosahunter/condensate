@@ -4,7 +4,7 @@ clean:
 setup:
     npm install
 
-build: 
+build: setup clean
     mkdir css-dist
-    npx sass ./css/condensate.scss > ./css-dist/condensate.css
+    npx sass ./src/condensate.scss > ./css-dist/condensate.css
     npx css-minify -f css-dist/condensate.css

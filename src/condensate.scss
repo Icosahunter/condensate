@@ -187,13 +187,15 @@ summary {
   --dm-primary-color: #3b60f5;
   --dm-border-color: #1a1c24;
   --dm-font-color: #ddd;
+  --dm-check-color: var(--dm-font-color);
 
   --lm-bg-color: #fff;
-  --lm-bg2-color: #f0f0f0;
-  --lm-fg-color: #dddddd;
+  --lm-bg2-color: #fafafa;
+  --lm-fg-color: #ccc;
   --lm-primary-color: #3b60f5;
   --lm-border-color: #353747;
   --lm-font-color: #000;
+  --lm-check-color: var(--lm-bg-color);
 }
 
 @mixin use-lm {
@@ -203,6 +205,7 @@ summary {
   --primary-color: var(--lm-primary-color);
   --border-color: var(--lm-border-color);
   --font-color: var(--lm-font-color);
+  --check-color: var(--lm-check-color);
 }
 
 @mixin use-dm {
@@ -212,6 +215,7 @@ summary {
   --primary-color: var(--dm-primary-color);
   --border-color: var(--dm-border-color);
   --font-color: var(--dm-font-color);
+  --check-color: var(--dm-check-color);
 }
 
 @media (prefers-color-scheme: light) {
@@ -349,7 +353,7 @@ code, kbd {
   cursor: pointer;
 
   &:hover {
-    filter: brightness(150%);
+    filter: brightness(110%);
   }
 
   &:focus {
@@ -426,13 +430,117 @@ details > :not(summary){
 
 /*
 -------------------------------------------------------------------------------
+5.  Checkbox & Radio Buttons [sec-5]
+-------------------------------------------------------------------------------
+*/
+
+@keyframes checkbox-like-pulse {
+  0% {outline-width: 0;}
+  50% {outline-width: 3px;}
+  100% {outline-width: 0px;}
+}
+
+@keyframes checkbox-check-grow {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    left: 0.25em;
+    top: 0.05em;
+    width: 0.3em;
+    height: 0.6em;
+    opacity: 100%;
+    transform: rotate(45deg);
+  }
+}
+
+%checkbox-like {
+  outline: 0 solid var(--primary-color);
+  width: 0.8em;
+  height: 0.8em;
+  background: var(--bg2-color);
+  border: 2px solid var(--fg-color);
+  appearance: none;
+
+  &:checked {
+    animation-name: checkbox-like-pulse;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+input[type="checkbox"]:not([role="switch"]) {
+  @extend %checkbox-like;
+
+  position: relative;
+  border-radius: 0.2em;
+
+  &:checked {
+    background-color: var(--primary-color);
+    border: none;
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid var(--check-color);
+    border-right: 2px solid var(--check-color);
+    left: 0.4em;
+    top: 0.4em;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  
+  &:checked::before {
+    animation-name: checkbox-check-grow;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+input[type="radio"] {
+  @extend %checkbox-like;
+
+  position: relative;
+  border-radius: 0.8em;
+
+  &:checked {
+    border: 2px solid var(--primary-color);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: var(--primary-color);
+    border-radius: 0;
+    width: 0;
+    height: 0;
+    top: 0.35em;
+    left: 0.35em;
+    transition: 0.2s;
+  }
+
+  &:checked::before {
+    content: "";
+    position: absolute;
+    background: var(--primary-color);
+    border-radius: 0.3em;
+    width: 0.3em;
+    height: 0.3em;
+    top: 0.125em;
+    left: 0.125em;
+  }
+}
+
+/*
+-------------------------------------------------------------------------------
 5.  Toggle Switch [sec-5]
 -------------------------------------------------------------------------------
 */
 
 input[type="checkbox"][role="switch"] {
-  background: var(--bg2-color);
-  filter: brightness(0.6);
+  background: var(--fg-color);
   appearance: none;
   border-radius: 1em;
   height: 1em;
@@ -443,8 +551,7 @@ input[type="checkbox"][role="switch"] {
   &::before {
     position: absolute;
     content: '';
-    background: var(--fg-color);
-    filter: brightness(1.4);
+    background: var(--check-color);
     border-radius: 1em;
     width: calc(1em - 4px);
     height: calc(1em - 4px);
@@ -455,12 +562,10 @@ input[type="checkbox"][role="switch"] {
   
   &:checked::before {
     transform: translateX(calc(100% + 4px));
-    filter: brightness(1);
   }
   
   &:checked {
     background: var(--primary-color);
-    filter: brightness(1);
   }
 }
 
@@ -701,7 +806,7 @@ main.hbox {
       padding: 0 var(--spacing);
 
       &:hover {
-        filter: brightness(150%);
+        filter: brightness(110%);
         cursor: pointer;
       }
       
