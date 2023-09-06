@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="css-dist/condensate.css">
+    <style>
+      :root {
+        --spacing: 1rem;
+      }
+    </style>
   </head>
   <body>
     <div id="modal1" role="dialog" aria-modal="true">
-      <div class="card">
-        <header>
+      <div class="card vbox">
+        <header class="hbox">
           <p>Modal 1</p>
           <div class="spacer"></div>
           <a aria-label="close" href="#"></a>
@@ -17,22 +22,22 @@
       </div>
     </div>
     <main class="hbox fullscreen">
-      <div class="sidebar-wrapper">
-        <input type="checkbox" class="sidebar-btn">
-        <div class="sidebar">
+      <details class="sidebar">
+        <summary class="button"></summary>
+        <div class="vbox">
           <a>link 1</a>
           <a>link 2</a>
           <a>link 3</a>
           <a>link 4</a>
         </div>
-      </div>
+      </details>
       <div class="vbox">
         <div class="hbox">
           <h1>Demo</h1>
           <div class="spacer"></div>
           <nav class="hbox">
-            <button class="combine">Button 1</button>
-            <button class="combine">Button 2</button>
+            <button>Button 1</button>
+            <button>Button 2</button>
             <button>Button 3</button>
           </nav>
         </div>
@@ -56,15 +61,15 @@
             </div>
   
             <pre role="tabpanel">
-              Content 1
-              Apple
-              Sorble
+              Some
+              Long
+              Content
             </pre>
             <div role="tabpanel">
-              Content 2
+              Some more content
             </div>
             <div role="tabpanel">
-              Content 3
+              Even more content
             </div>
           </div>
           <div class="carousel">
@@ -87,7 +92,7 @@
           </table>
           <a href="#modal1" class="button">Open modal!</a>
           <form class="vbox">
-            <fieldset id="forms__input" class="vbox">
+            <fieldset id="forms__input" class="card vbox">
               <legend>Input fields</legend>
               <label for="input__text">Text Input</label>
               <input id="input__text" type="text" placeholder="Text Input">
@@ -110,7 +115,7 @@
               <label for="input__text5">Disabled Text Input</label>
               <input id="input__text5" type="text" placeholder="Disabled Text Input" disabled="">
               <div class="hbox">
-                <input class="combine pill" type="search" name="input__text6" id="input__text6" placeholder="Search">
+                <input class="pill" type="search" name="input__text6" id="input__text6" placeholder="Search">
                 <button class="icon pill">
                   search
                 </button>
@@ -122,7 +127,7 @@
               <input type="text" name="input__text8" id="input__text8" placeholder="Password">
               <button>Submit</button>
             </fieldset>
-            <fieldset id="forms__select" class="vbox">
+            <fieldset id="forms__select" class="card vbox">
               <legend>Select menus</legend>
                 <label for="select">Select</label>
                 <select id="select">
@@ -133,7 +138,7 @@
                   </optgroup>
                 </select>
             </fieldset>
-            <fieldset id="forms__checkbox" class="vbox">
+            <fieldset id="forms__checkbox" class="card vbox">
               <legend>Checkboxes</legend>
                 <label for="checkbox1"><input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
                   Choice A</label>
@@ -142,7 +147,7 @@
                 <label for="checkbox3"><input id="checkbox3" name="checkbox" type="checkbox">
                   Choice C</label>
             </fieldset>
-            <fieldset id="forms__radio" class="vbox">
+            <fieldset id="forms__radio" class="card vbox">
               <legend>Radio buttons</legend>
                 <label for="radio1"><input id="radio1" name="radio" type="radio" class="radio" checked="checked">
                   Option 1</label>
@@ -151,12 +156,12 @@
                 <label for="radio3"><input id="radio3" name="radio" type="radio" class="radio">
                   Option 3</label>
             </fieldset>
-            <fieldset id="forms__textareas" class="vbox">
+            <fieldset id="forms__textareas" class="card vbox">
               <legend>Textarea</legend>
                 <label for="textarea">Textarea</label>
                 <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
             </fieldset>
-            <fieldset id="forms__html5" class="vbox">
+            <fieldset id="forms__html5" class="card vbox">
               <legend>HTML5 inputs</legend>
                 <label for="ic">Color input</label>
                 <input type="color" id="ic" value="#000000">

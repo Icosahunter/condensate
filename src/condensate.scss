@@ -422,10 +422,6 @@ select {
   cursor: pointer;
 }
 
-fieldset {
-  @extend %card-like;
-}
-
 details > :not(summary){
   margin-left: 0.8rem;
 }
@@ -650,13 +646,13 @@ td:first-child {
   }
 }
 
-%vbox-like {
+.vbox {
 
   @extend %box-like;
 
   flex-direction: column;
 
-  & > :not(%no-margins) {
+  & > :not(.no-margins) {
 
     &:not(:first-child) {
       margin-top: calc(0.5*var(--spacing));
@@ -664,6 +660,19 @@ td:first-child {
 
     &:not(:last-child) {
       margin-bottom: calc(0.5*var(--spacing));
+    }
+  }
+
+  &:is(%box-padding) > :not(.no-margins):not(%header-like) {
+    margin-left: var(--spacing);
+    margin-right: var(--spacing);
+
+    &:last-child {
+      margin-bottom: var(--spacing);
+    }
+  
+    &:first-child {
+      margin-top: var(--spacing);
     }
   }
 
@@ -690,34 +699,33 @@ td:first-child {
   &.scroll {
     overflow-y: scroll;
   }
-
-  & > header:first-child {
-    @extend %hbox-like;
-    @extend %hbox-margins;
-    background: var(--fg-color);
-    margin-bottom: var(--spacing);
-  }
-
-  & > footer:last-child {
-    @extend %hbox-like;
-    @extend %hbox-margins;
-    background: var(--fg-color);
-    margin-bottom: var(--spacing);
-  }
 }
 
-%hbox-like {
+.hbox {
   @extend %box-like;
 
   flex-direction: row;
 
-  & > :not(%no-margins) {
+  & > :not(.no-margins) {
     &:not(:first-child) {
       margin-left: calc(0.5*var(--spacing));
     }
 
     &:not(:last-child) {
       margin-right: calc(0.5*var(--spacing));
+    }
+  }
+
+  &:is(%box-padding) > :not(.no-margins):not(%header-like){
+    margin-top: var(--spacing);
+    margin-bottom: var(--spacing);
+
+    &:last-child {
+      margin-right: var(--spacing);
+    }
+  
+    &:first-child {
+      margin-left: var(--spacing);
     }
   }
 
@@ -746,50 +754,14 @@ td:first-child {
   }
 }
 
-%vbox-margins {
-  & > :not(%no-margins):not(header):not(footer) {
-    margin-left: var(--spacing);
-    margin-right: var(--spacing);
-
-    &:last-child:not(footer){
-      margin-bottom: var(--spacing);
-    }
-  
-    &:first-child:not(header){
-      margin-top: var(--spacing);
-    }
-  }
+header, footer {
+  @extend %box-padding;
+  @extend %header-like;
+  background: var(--fg-color);
 }
 
-%hbox-margins {
-  & > :not(%no-margins) {
-    margin-top: var(--spacing);
-    margin-bottom: var(--spacing);
-
-    &:last-child{
-      margin-right: var(--spacing);
-    }
-  
-    &:first-child{
-      margin-left: var(--spacing);
-    }
-  }
-}
-
-.vbox {
-  @extend %vbox-like;
-}
-
-.hbox {
-  @extend %hbox-like;
-}
-
-main.vbox {
-  @extend %vbox-margins;
-}
-
-main.hbox {
-  @extend %hbox-margins;
+main {
+  @extend %box-padding;
 }
 
 .spacer {
@@ -802,17 +774,12 @@ main.hbox {
 -------------------------------------------------------------------------------
 */
 
-%card-like {
-  @extend %vbox-like;
-  @extend %vbox-margins;
+.card {
+  @extend %box-padding;
 
   border: 2px solid var(--fg-color);
   border-radius: var(--border-radius);
   background: var(--bg2-color);
-}
-
-.card {
-  @extend %card-like;
 }
 
 /*
@@ -832,7 +799,6 @@ main.hbox {
   
   & > *[role="tablist"] {
     display: flex;
-    border-bottom: 2px solid var(--fg-color);
 
     & > label[role="tab"] {
       background: var(--fg-color);
@@ -857,6 +823,9 @@ main.hbox {
   & > *[role="tabpanel"] {
     display: none;
     background: var(--bg2-color);
+    border-radius: var(--border-radius);
+    border-top-left-radius: 0;
+    border-top: 2px solid var(--fg-color);
   }
   
   &.overlay {
@@ -1002,83 +971,73 @@ main.hbox {
 -------------------------------------------------------------------------------
 */
 
-.sidebar-wrapper {
-  @extend %no-margins;
-  position: relative;
+details.sidebar {
+  @extend %header-like;
   flex-shrink: 0;
-  min-width: 3em;
-  margin-right: 0.5em;
-}
+  position: relative;
+  width: calc(2em + 2*var(--spacing));
 
-.sidebar {
-  @extend %vbox-like;
-  @extend %vbox-margins;
-  background: var(--bg2-color);
-  width: 0;
-  height: 100%;
-
-  & * {
-    visibility: collapse;
+  & > *:not(summary) {
+    @extend %box-padding;
+    margin: 0;
+    background: var(--bg2-color);
+    height: 100%;
   }
-}
-
-input[type="checkbox"].sidebar-btn {
-  @extend %button-like;
-  appearance: none;
-  position: absolute;
-  padding: 0;
-  width: 2em;
-  height: 2em;
-  top: 1em;
-  left: calc(100% - 2em);
-
-  &::before {
-    content: "";
+  
+  & > summary {
+    display: block;
+    appearance: none;
     position: absolute;
-    top: 0.5em;
-    left: 0.5em;
-    width: 1em;
-    height: calc(0.5em + 1px);
-    transition: 0.4s;
-    border-top: 2px solid var(--font-color);
-    border-bottom: 2px solid var(--font-color);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 1em;
-    left: 0.5em;
-    width: 1em;
-    height: 0.5em;
-    transition: 0.4s;
-    border-bottom: 2px solid var(--font-color);
-  }
-
-  &:checked {
-    left: calc(100% - 3em);
-
+    padding: 0;
+    width: 2em;
+    height: 2em;
+    top: calc(1.5*var(--spacing));
+    left: calc(1.5*var(--spacing));
+  
     &::before {
-      border-bottom: none;
-      top: 0.87em;
-      left: 0.2em;
-      width: 1.3em;
-      transform: rotate(45deg)
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: 0.5em;
+      width: 1em;
+      height: calc(0.5em + 1px);
+      transition: 0.4s;
+      border-top: 2px solid var(--font-color);
+      border-bottom: 2px solid var(--font-color);
     }
   
     &::after {
-      top: 0.63em;
-      left: 0.2em;
-      width: 1.3em;
-      transform: rotate(-45deg);
+      content: "";
+      position: absolute;
+      top: 1em;
+      left: 0.5em;
+      width: 1em;
+      height: 0.5em;
+      transition: 0.4s;
+      border-bottom: 2px solid var(--font-color);
     }
+  }
+  
+  &[open] {
+    width: auto;
+    min-width: 12em;
 
-    & ~ .sidebar {
-      width: auto;
-      min-width: 12em;
+    & > summary {
+      left: calc(100% - 2em - 1.5*var(--spacing));
 
-      & * {
-        visibility: visible;
+      &::before {
+        border-bottom: none;
+        top: 0.88em;
+        left: 0.2em;
+        width: 1.3em;
+        transform: rotate(45deg)
+      }
+    
+      &::after {
+        top: 0.62em;
+        left: 0.2em;
+        width: 1.3em;
+        transform: rotate(-45deg);
       }
     }
   }
@@ -1112,10 +1071,6 @@ input[type="checkbox"].sidebar-btn {
 
 .margins {
   margin: var(--spacing);
-}
-
-.no-margins {
-  @extend %no-margins;
 }
 
 .square {
