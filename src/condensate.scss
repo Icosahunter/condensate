@@ -13,13 +13,15 @@ Table of contents:
     3.  Typography ----------------------------------------------- [sec-03]
     4.  Buttons, Inputs, Forms ----------------------------------- [sec-04]
     5.  Toggle Switch -------------------------------------------- [sec-05]
-    6.  Scrollbar ------------------------------------------------ [sec-06]
-    7.  HBox/VBox ------------------------------------------------ [sec-07]
-    8.  Card ----------------------------------------------------- [sec-08]
-    9.  Tabbed --------------------------------------------------- [sec-09]
-    10. Carousel ------------------------------------------------- [sec-10]
-    11. Modal ---------------------------------------------------- [sec-11]
-    12. Utility -------------------------------------------------- [sec-12]
+    6.  Table ---------------------------------------------------- [sec-06]
+    7.  Scrollbar ------------------------------------------------ [sec-07]
+    8.  HBox/VBox ------------------------------------------------ [sec-08]
+    9.  Card ----------------------------------------------------- [sec-09]
+    10. Tabbed --------------------------------------------------- [sec-10]
+    11. Carousel ------------------------------------------------- [sec-11]
+    12. Modal ---------------------------------------------------- [sec-12]
+    13. Sidebar -------------------------------------------------- [sec-13]
+    14. Utility -------------------------------------------------- [sec-14]
     
 */
 
@@ -469,7 +471,7 @@ details > :not(summary){
   }
 }
 
-input[type="checkbox"]:not([role="switch"]) {
+input[type="checkbox"]:not([role="switch"], .sidebar-btn) {
   @extend %checkbox-like;
 
   position: relative;
@@ -571,7 +573,38 @@ input[type="checkbox"][role="switch"] {
 
 /*
 -------------------------------------------------------------------------------
-6.  Scrollbar [sec-06]
+6. Table [sec-06]
+-------------------------------------------------------------------------------
+*/
+
+tr:first-child {
+  background: var(--fg-color);
+}
+
+table {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--fg-color);
+  border-spacing: 0;
+}
+
+td {
+  padding: calc(0.4*var(--spacing)) var(--spacing);
+  border-top: 2px solid var(--fg-color);
+  border-left: 2px solid var(--fg-color);
+}
+
+th {
+  border-radius: var(--border-radius);
+  padding: calc(0.4*var(--spacing)) var(--spacing);
+}
+
+td:first-child {
+  border-left: none;
+}
+
+/*
+-------------------------------------------------------------------------------
+7.  Scrollbar [sec-07]
 -------------------------------------------------------------------------------
 */
 
@@ -597,7 +630,7 @@ input[type="checkbox"][role="switch"] {
 
 /*
 -------------------------------------------------------------------------------
-7. HBox/VBox [sec-07]
+8. HBox/VBox [sec-08]
 -------------------------------------------------------------------------------
 */
 
@@ -623,12 +656,15 @@ input[type="checkbox"][role="switch"] {
 
   flex-direction: column;
 
-  & > *:not(:first-child) {
-    margin-top: calc(0.5*var(--spacing));
-  }
+  & > :not(%no-margins) {
 
-  & > *:not(:last-child) {
-    margin-bottom: calc(0.5*var(--spacing));
+    &:not(:first-child) {
+      margin-top: calc(0.5*var(--spacing));
+    }
+
+    &:not(:last-child) {
+      margin-bottom: calc(0.5*var(--spacing));
+    }
   }
 
   & > :is(a, button, input) {
@@ -659,18 +695,14 @@ input[type="checkbox"][role="switch"] {
     @extend %hbox-like;
     @extend %hbox-margins;
     background: var(--fg-color);
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
+    margin-bottom: var(--spacing);
   }
 
   & > footer:last-child {
     @extend %hbox-like;
     @extend %hbox-margins;
     background: var(--fg-color);
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
+    margin-bottom: var(--spacing);
   }
 }
 
@@ -679,12 +711,14 @@ input[type="checkbox"][role="switch"] {
 
   flex-direction: row;
 
-  & > *:not(:first-child) {
-    margin-left: calc(0.5*var(--spacing));
-  }
+  & > :not(%no-margins) {
+    &:not(:first-child) {
+      margin-left: calc(0.5*var(--spacing));
+    }
 
-  & > *:not(:last-child) {
-    margin-right: calc(0.5*var(--spacing));
+    &:not(:last-child) {
+      margin-right: calc(0.5*var(--spacing));
+    }
   }
 
   & > :is(a, button, input) {
@@ -713,32 +747,32 @@ input[type="checkbox"][role="switch"] {
 }
 
 %vbox-margins {
-  & > * {
+  & > :not(%no-margins):not(header):not(footer) {
     margin-left: var(--spacing);
     margin-right: var(--spacing);
-  }
 
-  & > *:last-child:not(footer){
-    margin-bottom: var(--spacing);
-  }
-
-  & > *:first-child:not(header){
-    margin-top: var(--spacing);
+    &:last-child:not(footer){
+      margin-bottom: var(--spacing);
+    }
+  
+    &:first-child:not(header){
+      margin-top: var(--spacing);
+    }
   }
 }
 
 %hbox-margins {
-  & > * {
+  & > :not(%no-margins) {
     margin-top: var(--spacing);
     margin-bottom: var(--spacing);
-  }
 
-  & > *:last-child{
-    margin-right: var(--spacing);
-  }
-
-  & > *:first-child{
-    margin-left: var(--spacing);
+    &:last-child{
+      margin-right: var(--spacing);
+    }
+  
+    &:first-child{
+      margin-left: var(--spacing);
+    }
   }
 }
 
@@ -764,7 +798,7 @@ main.hbox {
 
 /*
 -------------------------------------------------------------------------------
-8. Card [sec-08]
+9. Card [sec-09]
 -------------------------------------------------------------------------------
 */
 
@@ -783,7 +817,7 @@ main.hbox {
 
 /*
 -------------------------------------------------------------------------------
-9.  Tabbed [sec-09]
+10.  Tabbed [sec-10]
     Notes:
     - Based on this neat css only tabs concept by Michał Pawełczyk:
       https://codepen.io/MPDoctor/pen/mpJdYe
@@ -864,7 +898,7 @@ main.hbox {
 
 /*
 -------------------------------------------------------------------------------
-10.  Carousel [sec-10]
+11.  Carousel [sec-11]
     Notes:
     - Based on the first CSS only carousel example from this CSS-Tricks
       article: https://css-tricks.com/css-only-carousel/
@@ -908,7 +942,7 @@ main.hbox {
 
 /*
 -------------------------------------------------------------------------------
-11. Modal [sec-11]
+12. Modal [sec-12]
 -------------------------------------------------------------------------------
 */
 
@@ -964,7 +998,49 @@ main.hbox {
 
 /*
 -------------------------------------------------------------------------------
-12. Utility [sec-12]
+13.  Sidebar [sec-13]
+-------------------------------------------------------------------------------
+*/
+
+.sidebar-wrapper {
+  @extend %no-margins;
+  position: relative;
+  flex-shrink: 0;
+  min-width: 3em;
+  margin-right: 0.5em;
+}
+
+.sidebar {
+  @extend %vbox-like;
+  @extend %vbox-margins;
+  background: var(--bg2-color);
+  display: none;
+  height: 100%;
+}
+
+input[type="checkbox"].sidebar-btn {
+  @extend %button-like;
+  appearance: none;
+  position: absolute;
+  padding: 0;
+  width: 2em;
+  height: 2em;
+  top: 1em;
+  left: calc(100% - 2em);
+
+  &:checked {
+    left: calc(100% - 3em);
+
+    & ~ .sidebar {
+      display: flex;
+      min-width: 12em;
+    }
+  }
+}
+
+/*
+-------------------------------------------------------------------------------
+14. Utility [sec-14]
 -------------------------------------------------------------------------------
 */
 
@@ -986,6 +1062,14 @@ main.hbox {
 
 .padding {
   padding: var(--spacing);
+}
+
+.margins {
+  margin: var(--spacing);
+}
+
+.no-margins {
+  @extend %no-margins;
 }
 
 .square {

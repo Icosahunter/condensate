@@ -1,5 +1,5 @@
 clean:
-    rm -r css-dist
+    rm -r css-dist || true
 
 setup:
     npm install
