@@ -652,14 +652,13 @@ td:first-child {
 
   flex-direction: column;
 
-  & > :not(.no-margins) {
-
-    &:not(:first-child) {
-      margin-top: calc(0.5*var(--spacing));
+  & > :not(.no-margins, :first-child) {
+    &:not(.scroll, footer){
+      margin-top: var(--spacing);
     }
 
-    &:not(:last-child) {
-      margin-bottom: calc(0.5*var(--spacing));
+    & > :is(:not(scroll) ~ footer, :not(header) ~ .scroll) {
+      margin-top: var(--spacing);
     }
   }
 
@@ -706,13 +705,13 @@ td:first-child {
 
   flex-direction: row;
 
-  & > :not(.no-margins) {
-    &:not(:first-child) {
-      margin-left: calc(0.5*var(--spacing));
+  & > :not(.no-margins, :first-child) {
+    &:not(.scroll, footer){
+      margin-left: var(--spacing);
     }
 
-    &:not(:last-child) {
-      margin-right: calc(0.5*var(--spacing));
+    & > :is(:not(scroll) ~ footer, :not(header) ~ .scroll) {
+      margin-left: var(--spacing);
     }
   }
 
