@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="css-dist/condensate.css">
+    <link rel="stylesheet" href="condensate.css">
     <style>
       :root {
         --spacing: 1rem;
@@ -22,9 +22,9 @@
       </div>
     </div>
     <div class="hbox fullscreen">
-      <details class="sidebar">
+      <details id="sbtn" class="sidebar">
         <summary class="button"></summary>
-        <div class="vbox">
+        <div class="vbox h-margins">
           <a>link 1</a>
           <a>link 2</a>
           <a>link 3</a>
@@ -32,16 +32,18 @@
         </div>
       </details>
       <main class="vbox">
-        <header class="hbox">
+        <header class="hbox header">
+          <div class="placeholder"></div>
           <img src="logo.svg" height="35">
           <div class="spacer"></div>
           <nav class="hbox">
+            <label for="sbtn">apple!</label>
             <button>Button 1</button>
             <button>Button 2</button>
             <button>Button 3</button>
           </nav>
         </header>
-        <div class="scroll vbox">
+        <div class="scroll vbox h-margins">
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur elementum quam at luctus. Fusce aliquam, orci et condimentum cursus, sapien sapien finibus quam, vel vestibulum enim neque vitae ipsum. Aenean felis enim, venenatis sed libero in, interdum semper tellus. Sed venenatis, velit id luctus ornare, sem velit laoreet risus, ut aliquet nisi ipsum eget lorem. Morbi nec bibendum sem, sed hendrerit sapien. Curabitur eleifend ullamcorper justo, sit amet condimentum ipsum convallis sed. Mauris risus odio, rutrum semper magna mattis, gravida pretium massa. </p>
           <b>Code Block</b>
           <code>print("hello world!")</code>

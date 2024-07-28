@@ -1,0 +1,1006 @@
+@charset "UTF-8";
+/*
+-------------------------------------------------------------------------------
+Condensate CSS
+Version: 0.1
+Licensed under MIT
+-------------------------------------------------------------------------------
+The above notice must be included in its entirety when this file is used.
+
+Table of contents:
+    0.  Normalize CSS -------------------------------------------- [sec-00]
+    1.  CSS Variables -------------------------------------------- [sec-01]
+    2.  Base Styles ---------------------------------------------- [sec-02]
+    3.  Typography ----------------------------------------------- [sec-03]
+    4.  Buttons, Inputs, Forms ----------------------------------- [sec-04]
+    5.  Toggle Switch -------------------------------------------- [sec-05]
+    6.  Table ---------------------------------------------------- [sec-06]
+    7.  Scrollbar ------------------------------------------------ [sec-07]
+    8.  HBox/VBox ------------------------------------------------ [sec-08]
+    9.  Card ----------------------------------------------------- [sec-09]
+    10. Tabbed --------------------------------------------------- [sec-10]
+    11. Carousel ------------------------------------------------- [sec-11]
+    12. Modal ---------------------------------------------------- [sec-12]
+    13. Sidebar -------------------------------------------------- [sec-13]
+    14. Utility -------------------------------------------------- [sec-14]
+
+*/
+/*
+-------------------------------------------------------------------------------
+0.  Normalize CSS [sec-00]
+
+    Notes:
+    - modern-normalize v2.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize
+    - Modified for use with Condensate CSS
+    - Comments have been removed
+-------------------------------------------------------------------------------
+*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  margin: 0;
+}
+
+hr {
+  height: 0;
+  color: inherit;
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+summary {
+  display: list-item;
+}
+
+/*
+-------------------------------------------------------------------------------
+1.  CSS Variables [sec-01]
+-------------------------------------------------------------------------------
+*/
+:root {
+  --font-size: 1rem;
+  --font-family: sans-serif;
+  --mono-font-family: monospace;
+  --border-radius: 0.4rem;
+  --button-border-radius: var(--border-radius);
+  --search-border-radius: var(--border-radius);
+  --spacing: 0.6rem;
+  --dm-bg-color: #282a36;
+  --dm-bg2-color: #2f3240;
+  --dm-fg-color: #44475a;
+  --dm-primary-color: #3b60f5;
+  --dm-border-color: #1a1c24;
+  --dm-font-color: #ddd;
+  --dm-check-color: var(--dm-font-color);
+  --lm-bg-color: #fff;
+  --lm-bg2-color: #fafafa;
+  --lm-fg-color: #ccc;
+  --lm-primary-color: #3b60f5;
+  --lm-border-color: #353747;
+  --lm-font-color: #000;
+  --lm-check-color: var(--lm-bg-color);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: var(--lm-bg-color);
+    --bg2-color: var(--lm-bg2-color);
+    --fg-color: var(--lm-fg-color);
+
+    --primary-color: var(--lm-primary-color);
+    --border-color: var(--lm-border-color);
+    --font-color: var(--lm-font-color);
+    --check-color: var(--lm-check-color);
+  }
+  * {
+    color-scheme: light;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--dm-bg-color);
+    --bg2-color: var(--dm-bg2-color);
+    --fg-color: var(--dm-fg-color);
+    --primary-color: var(--dm-primary-color);
+    --border-color: var(--dm-border-color);
+    --font-color: var(--dm-font-color);
+    --check-color: var(--dm-check-color);
+  }
+  * {
+    color-scheme: dark;
+  }
+}
+
+.lm {
+  --bg-color: var(--lm-bg-color);
+  --bg2-color: var(--lm-bg2-color);
+  --fg-color: var(--lm-fg-color);
+  --primary-color: var(--lm-primary-color);
+  --border-color: var(--lm-border-color);
+  --font-color: var(--lm-font-color);
+  --check-color: var(--lm-check-color);
+}
+
+.dm {
+  --bg-color: var(--dm-bg-color);
+  --bg2-color: var(--dm-bg2-color);
+  --fg-color: var(--dm-fg-color);
+  --primary-color: var(--dm-primary-color);
+  --border-color: var(--dm-border-color);
+  --font-color: var(--dm-font-color);
+  --check-color: var(--dm-check-color);
+}
+
+/*
+-------------------------------------------------------------------------------
+2.  Base styles [sec-02]
+-------------------------------------------------------------------------------
+*/
+@font-face {
+  font-family: "Material Symbols Outlined";
+  src: url("../fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf");
+}
+body {
+  background: var(--bg-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: var(--font-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  border: None;
+}
+
+:not(input, button) {
+  line-height: 1.5;
+}
+
+/*
+-------------------------------------------------------------------------------
+3.  Typography [sec-03]
+-------------------------------------------------------------------------------
+*/
+p {
+  text-align: justify;
+  text-justify: distribute;
+}
+
+h1 {
+  font-size: calc(2.5 * var(--font-size));
+}
+
+h2 {
+  font-size: calc(2.25 * var(--font-size));
+}
+
+h3 {
+  font-size: calc(2 * var(--font-size));
+}
+
+h4 {
+  font-size: calc(1.75 * var(--font-size));
+}
+
+h5 {
+  font-size: calc(1.5 * var(--font-size));
+}
+
+h6 {
+  font-size: calc(1.25 * var(--font-size));
+}
+
+ul, ol {
+  padding-left: calc(4 * var(--spacing));
+}
+
+code, kbd {
+  background: var(--bg2-color);
+  padding-top: calc(0.3 * var(--spacing));
+  padding-bottom: calc(0.3 * var(--spacing));
+  padding-left: calc(0.8 * var(--spacing));
+  padding-right: calc(0.8 * var(--spacing));
+  border-radius: var(--border-radius);
+  font-family: var(--mono-font-family);
+}
+
+/*
+-------------------------------------------------------------------------------
+4.  Buttons, Inputs, Forms [sec-04]
+-------------------------------------------------------------------------------
+*/
+select, textarea, input:not([type=checkbox], [type=radio], [type=range]), button, .button {
+  border-radius: var(--border-radius);
+  background: var(--fg-color);
+  padding-top: calc(0.4 * var(--spacing));
+  padding-bottom: calc(0.4 * var(--spacing));
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
+}
+
+select:focus, textarea:focus, input:focus:not([type=checkbox], [type=radio], [type=range]), button:focus, .button:focus {
+  outline: 2px solid var(--primary-color);
+}
+select.pill, textarea.pill, input.pill:not([type=checkbox], [type=radio], [type=range]), button.pill, .pill.button {
+  border-radius: 1.5em;
+}
+
+button, .button {
+  border-radius: var(--button-border-radius);
+  text-decoration: none;
+  cursor: pointer;
+}
+button:hover, .button:hover {
+  filter: brightness(110%);
+}
+button:focus, .button:focus {
+  outline: none;
+}
+
+input:not([type=checkbox], [type=radio], [type=range])[type=search] {
+  border-radius: var(--search-border-radius);
+}
+input:not([type=checkbox], [type=radio], [type=range])[type=number]::-webkit-inner-spin-button {
+  color: var(--bg2-color);
+}
+input:not([type=checkbox], [type=radio], [type=range])[type=color] {
+  padding: 5px;
+  cursor: pointer;
+}
+input:not([type=checkbox], [type=radio], [type=range])[type=color]::-webkit-color-swatch {
+  border: none;
+}
+input:not([type=checkbox], [type=radio], [type=range])[type=color]::-moz-color-swatch {
+  border: none;
+}
+
+input:is([type=radio], [type=checkbox]) {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: var(--font-color);
+  opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+  color: var(--font-color);
+  opacity: 0.5;
+}
+
+select {
+  cursor: pointer;
+}
+
+details > :not(summary) {
+  margin-left: 0.8rem;
+}
+
+/*
+-------------------------------------------------------------------------------
+5.  Checkbox & Radio Buttons [sec-5]
+-------------------------------------------------------------------------------
+*/
+@keyframes checkbox-like-pulse {
+  0% {
+    outline-width: 0;
+  }
+  50% {
+    outline-width: 3px;
+  }
+  100% {
+    outline-width: 0px;
+  }
+}
+@keyframes checkbox-check-grow {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    left: 0.25em;
+    top: 0.05em;
+    width: 0.3em;
+    height: 0.6em;
+    opacity: 100%;
+    transform: rotate(45deg);
+  }
+}
+input[type=radio], input[type=checkbox]:not([role=switch], .sidebar-btn) {
+  outline: 0 solid var(--primary-color);
+  width: 0.8em;
+  height: 0.8em;
+  background: var(--bg2-color);
+  border: 2px solid var(--fg-color);
+  appearance: none;
+}
+input[type=radio]:checked, input[type=checkbox]:checked:not([role=switch], .sidebar-btn) {
+  animation-name: checkbox-like-pulse;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+input[type=checkbox]:not([role=switch], .sidebar-btn) {
+  position: relative;
+  border-radius: 0.2em;
+}
+input[type=checkbox]:not([role=switch], .sidebar-btn):checked {
+  background-color: var(--primary-color);
+  border: none;
+}
+input[type=checkbox]:not([role=switch], .sidebar-btn)::before {
+  content: "";
+  position: absolute;
+  border-bottom: 2px solid var(--check-color);
+  border-right: 2px solid var(--check-color);
+  left: 0.4em;
+  top: 0.4em;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+input[type=checkbox]:not([role=switch], .sidebar-btn):checked::before {
+  animation-name: checkbox-check-grow;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+input[type=radio] {
+  position: relative;
+  border-radius: 0.8em;
+}
+input[type=radio]:checked {
+  border: 2px solid var(--primary-color);
+}
+input[type=radio]::before {
+  content: "";
+  position: absolute;
+  background: var(--primary-color);
+  border-radius: 0;
+  width: 0;
+  height: 0;
+  top: 0.35em;
+  left: 0.35em;
+  transition: 0.2s;
+}
+input[type=radio]:checked::before {
+  content: "";
+  position: absolute;
+  background: var(--primary-color);
+  border-radius: 0.3em;
+  width: 0.3em;
+  height: 0.3em;
+  top: 0.125em;
+  left: 0.125em;
+}
+
+/*
+-------------------------------------------------------------------------------
+5.  Toggle Switch [sec-5]
+-------------------------------------------------------------------------------
+*/
+input[type=checkbox][role=switch] {
+  background: var(--fg-color);
+  appearance: none;
+  border-radius: 1em;
+  height: 1em;
+  width: 2em;
+  margin: 0.25em 0;
+  position: relative;
+}
+input[type=checkbox][role=switch]::before {
+  position: absolute;
+  content: "";
+  background: var(--check-color);
+  border-radius: 1em;
+  width: calc(1em - 4px);
+  height: calc(1em - 4px);
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+input[type=checkbox][role=switch]:checked::before {
+  transform: translateX(calc(100% + 4px));
+}
+input[type=checkbox][role=switch]:checked {
+  background: var(--primary-color);
+}
+
+/*
+-------------------------------------------------------------------------------
+6. Table [sec-06]
+-------------------------------------------------------------------------------
+*/
+tr:first-child {
+  background: var(--fg-color);
+}
+
+table {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--fg-color);
+  border-spacing: 0;
+}
+
+td {
+  padding: calc(0.4 * var(--spacing)) var(--spacing);
+  border-top: 2px solid var(--fg-color);
+  border-left: 2px solid var(--fg-color);
+}
+
+th {
+  border-radius: var(--border-radius);
+  padding: calc(0.4 * var(--spacing)) var(--spacing);
+}
+
+td:first-child {
+  border-left: none;
+}
+
+/*
+-------------------------------------------------------------------------------
+7.  Scrollbar [sec-07]
+-------------------------------------------------------------------------------
+*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg2-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--fg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-color);
+}
+
+* {
+  scrollbar-color: var(--fg-color) var(--bg2-color);
+}
+
+/*
+-------------------------------------------------------------------------------
+8. HBox/VBox [sec-08]
+-------------------------------------------------------------------------------
+*/
+:is(.hbox, .vbox) > :is(a, button, input) {
+  flex-shrink: 0;
+}
+
+:is(.hbox, .vbox) > .center {
+  align-self: center;
+}
+
+:is(.hbox, .vbox) > .stretch {
+  align-self: stretch;
+}
+
+.vbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.vbox > * {
+  margin-top: var(--spacing);
+}
+
+.vbox > :last-child{
+  margin-bottom: var(--spacing);
+}
+
+.vbox.scroll {
+    overflow-y: scroll;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.hbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.hbox > * {
+  margin-left: var(--spacing);
+}
+
+.hbox > :last-child{
+    margin-right: var(--spacing);
+}
+
+.hbox.scroll {
+    overflow-x: scroll;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
+    margin: 0
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+/*
+-------------------------------------------------------------------------------
+9. Header/Footer [sec-08]
+-------------------------------------------------------------------------------
+*/
+
+.hbox, .vbox > :is(.header, .footer) {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.vbox > .header {
+  margin-top: 0;
+}
+
+.vbox > .footer {
+  margin-bottom: 0;
+}
+
+.hbox > .header {
+  margin-left: 0;
+}
+
+.hbox > .footer {
+  margin-right: 0;
+}
+
+.header, .footer {
+  background: var(--bg2-color);
+}
+
+.hbox:is(.header, .footer) > * {
+    margin-top: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+.vbox:is(.header, .footer) > * {
+    margin-left: var(--spacing);
+    margin-right: var(--spacing);
+}
+
+/*
+-------------------------------------------------------------------------------
+9. Card [sec-09]
+-------------------------------------------------------------------------------
+*/
+.card {
+  border: 2px solid var(--fg-color);
+  border-radius: var(--border-radius);
+  background: var(--bg2-color);
+}
+
+.card.vbox > * {
+    margin-left: var(--spacing);
+    margin-right: var(--spacing);
+}
+
+.card.hbox > * {
+    margin-top: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+/*
+-------------------------------------------------------------------------------
+10.  Tabbed [sec-10]
+    Notes:
+    - Based on this neat css only tabs concept by Michał Pawełczyk:
+      https://codepen.io/MPDoctor/pen/mpJdYe
+-------------------------------------------------------------------------------
+*/
+.tabbed > input[type=radio] {
+  display: none;
+}
+.tabbed > *[role=tablist] {
+  display: flex;
+}
+.tabbed > *[role=tablist] > label[role=tab] {
+  background: var(--fg-color);
+  margin-bottom: -2px;
+  padding: 0 var(--spacing);
+}
+.tabbed > *[role=tablist] > label[role=tab]:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+.tabbed > *[role=tablist] > label[role=tab]:first-of-type {
+  border-top-left-radius: 2px;
+}
+.tabbed > *[role=tablist] > label[role=tab]:last-of-type {
+  border-top-right-radius: 2px;
+}
+.tabbed > *[role=tabpanel] {
+  display: none;
+  background: var(--bg2-color);
+  border-radius: var(--border-radius);
+  border-top-left-radius: 0;
+  border-top: 2px solid var(--fg-color);
+}
+.tabbed.overlay {
+  position: relative;
+}
+.tabbed.overlay > *[role=tabpanel] {
+  position: absolute;
+  width: 100%;
+}
+.tabbed > input[type=radio]:nth-of-type(1):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(1), .tabbed > input[type=radio]:nth-of-type(2):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(2), .tabbed > input[type=radio]:nth-of-type(3):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(3), .tabbed > input[type=radio]:nth-of-type(4):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(4), .tabbed > input[type=radio]:nth-of-type(5):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(5), .tabbed > input[type=radio]:nth-of-type(6):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(6), .tabbed > input[type=radio]:nth-of-type(7):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(7), .tabbed > input[type=radio]:nth-of-type(8):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(8), .tabbed > input[type=radio]:nth-of-type(9):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(9), .tabbed > input[type=radio]:nth-of-type(10):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(10) {
+  background: var(--bg2-color);
+  border-bottom: 2px solid var(--bg2-color);
+}
+.tabbed > input[type=radio]:nth-of-type(1):checked ~ *[role=tabpanel]:nth-child(5), .tabbed > input[type=radio]:nth-of-type(2):checked ~ *[role=tabpanel]:nth-child(6), .tabbed > input[type=radio]:nth-of-type(3):checked ~ *[role=tabpanel]:nth-child(7), .tabbed > input[type=radio]:nth-of-type(4):checked ~ *[role=tabpanel]:nth-child(8), .tabbed > input[type=radio]:nth-of-type(5):checked ~ *[role=tabpanel]:nth-child(9), .tabbed > input[type=radio]:nth-of-type(6):checked ~ *[role=tabpanel]:nth-child(10), .tabbed > input[type=radio]:nth-of-type(7):checked ~ *[role=tabpanel]:nth-child(11), .tabbed > input[type=radio]:nth-of-type(8):checked ~ *[role=tabpanel]:nth-child(12), .tabbed > input[type=radio]:nth-of-type(9):checked ~ *[role=tabpanel]:nth-child(13), .tabbed > input[type=radio]:nth-of-type(10):checked ~ *[role=tabpanel]:nth-child(14) {
+  display: block;
+}
+
+/*
+-------------------------------------------------------------------------------
+11.  Carousel [sec-11]
+    Notes:
+    - Based on the first CSS only carousel example from this CSS-Tricks
+      article: https://css-tricks.com/css-only-carousel/
+-------------------------------------------------------------------------------
+*/
+.carousel {
+  text-align: center;
+  width: 33.33%;
+}
+.carousel > .carousel-slides {
+  display: flex;
+  align-content: center;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  flex-shrink: 0;
+}
+.carousel > .carousel-slides > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  margin-right: var(--spacing);
+  border-radius: var(--border-radius);
+  margin: auto 0;
+  width: 100%;
+  position: relative;
+}
+.carousel > a.carousel-btn {
+  display: inline-flex;
+  background-color: var(--fg-color);
+  height: 0.7em;
+  width: 0.7em;
+  margin: 0 0.2em;
+  border-radius: 50%;
+}
+
+/*
+-------------------------------------------------------------------------------
+12. Modal [sec-12]
+-------------------------------------------------------------------------------
+*/
+[role=dialog][aria-modal=true] {
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  backdrop-filter: blur(10px) brightness(80%);
+}
+[role=dialog][aria-modal=true]:target {
+  visibility: visible;
+}
+[role=dialog][aria-modal=true] [aria-label=close] {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  appearance: none;
+  background: none;
+}
+[role=dialog][aria-modal=true] [aria-label=close]:hover {
+  filter: brightness(150%);
+}
+[role=dialog][aria-modal=true] [aria-label=close]::before {
+  content: "";
+  width: 1em;
+  border-top: 2px solid var(--font-color);
+  position: absolute;
+  top: 0.1em;
+  left: 0.14em;
+  transform-origin: left center;
+  transform: rotate(45deg);
+}
+[role=dialog][aria-modal=true] [aria-label=close]::after {
+  content: "";
+  width: 1em;
+  border-top: 2px solid var(--font-color);
+  position: absolute;
+  top: calc(100% - 0.2em);
+  left: 0.14em;
+  transform-origin: left center;
+  transform: rotate(-45deg);
+}
+
+/*
+-------------------------------------------------------------------------------
+13.  Sidebar [sec-13]
+-------------------------------------------------------------------------------
+*/
+details.sidebar {
+  flex-shrink: 0;
+  position: relative;
+  /*width: calc(2em + 3 * var(--spacing));*/
+}
+details.sidebar > *:not(summary) {
+  margin: 0;
+  background: var(--bg2-color);
+  height: 100%;
+}
+details.sidebar > summary {
+  display: block;
+  appearance: none;
+  position: absolute;
+  padding: 0;
+  width: 2em;
+  height: 2em;
+  top: var(--spacing);
+  left: var(--spacing);
+}
+details.sidebar > summary::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  width: 1em;
+  height: calc(0.5em + 1px);
+  transition: 0.4s;
+  border-top: 2px solid var(--font-color);
+  border-bottom: 2px solid var(--font-color);
+}
+details.sidebar > summary::after {
+  content: "";
+  position: absolute;
+  top: 1em;
+  left: 0.5em;
+  width: 1em;
+  height: 0.5em;
+  transition: 0.4s;
+  border-bottom: 2px solid var(--font-color);
+}
+details.sidebar[open] {
+  width: auto;
+  min-width: 12em;
+}
+details.sidebar[open] > summary {
+  left: calc(100% - 2em - var(--spacing));
+}
+details.sidebar[open] > summary::before {
+  border-bottom: none;
+  top: 0.88em;
+  left: 0.2em;
+  width: 1.3em;
+  transform: rotate(45deg);
+}
+details.sidebar[open] > summary::after {
+  top: 0.62em;
+  left: 0.2em;
+  width: 1.3em;
+  transform: rotate(-45deg);
+}
+
+/*
+-------------------------------------------------------------------------------
+14. Utility [sec-14]
+-------------------------------------------------------------------------------
+*/
+
+.fullscreen {
+    height: 100vh;
+    width: 100vw;
+}
+
+.bg-color {
+  background: var(--bg-color);
+}
+
+.bg2-color {
+  background: var(--bg2-color);
+}
+
+.fg-color {
+  background: var(--fg-color);
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.padding {
+  padding: var(--spacing);
+}
+
+.margins {
+  margin: var(--spacing);
+}
+
+.v-margins {
+    margin-top: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+.h-margins {
+    margin-right: var(--spacing);
+    margin-left: var(--spacing);
+}
+
+.square {
+  height: 1.5em;
+  width: 1.5em;
+  text-align: center;
+  padding: 0;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 1.5em;
+  width: 1.5em;
+  text-align: center;
+  padding: 0;
+}
+
+.icon {
+  font-family: "Material Symbols Outlined";
+  font-size: calc(1.15 * var(--font-size));
+}
+
+.border {
+  border: 2px solid var(--fg-color);
+  border-radius: var(--border-radius);
+}
+
+.no-border {
+  border: none;
+}
+
+.fullscreen {
+  height: 100vh;
+  width: 100vw;
+}
+
+.placeholder {
+    width: calc(3 * var(--spacing));
+    height: var(--spacing);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dm-hidden {
+    visibility: hidden;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .lm-hidden {
+    visibility: hidden;
+  }
+}
