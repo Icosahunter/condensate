@@ -8,32 +8,32 @@ Licensed under MIT
 The above notice must be included in its entirety when this file is used.
 
 Table of contents:
-    0.  Normalize CSS -------------------------------------------- [sec-00]
-    1.  CSS Variables -------------------------------------------- [sec-01]
-    2.  Base Styles ---------------------------------------------- [sec-02]
-    3.  Typography ----------------------------------------------- [sec-03]
-    4.  Buttons, Inputs, Forms ----------------------------------- [sec-04]
-    5.  Toggle Switch -------------------------------------------- [sec-05]
-    6.  Table ---------------------------------------------------- [sec-06]
-    7.  Scrollbar ------------------------------------------------ [sec-07]
-    8.  HBox/VBox ------------------------------------------------ [sec-08]
-    9.  Header/Footer -------------------------------------------- [sec-09]
-    10.  Card ---------------------------------------------------- [sec-10]
-    11. Tabbed --------------------------------------------------- [sec-11]
-    12. Carousel ------------------------------------------------- [sec-12]
-    13. Modal ---------------------------------------------------- [sec-13]
-    14. Sidebar -------------------------------------------------- [sec-14]
-    15. Utility -------------------------------------------------- [sec-15]
+  0.  Normalize CSS -------------------------------------------- [sec-00]
+  1.  CSS Variables -------------------------------------------- [sec-01]
+  2.  Base Styles ---------------------------------------------- [sec-02]
+  3.  Typography ----------------------------------------------- [sec-03]
+  4.  Buttons, Inputs, Forms ----------------------------------- [sec-04]
+  5.  Toggle Switch -------------------------------------------- [sec-05]
+  6.  Table ---------------------------------------------------- [sec-06]
+  7.  Scrollbar ------------------------------------------------ [sec-07]
+  8.  HBox/VBox ------------------------------------------------ [sec-08]
+  9.  Header/Footer -------------------------------------------- [sec-09]
+  10. Card ----------------------------------------------------- [sec-10]
+  11. Tabbed --------------------------------------------------- [sec-11]
+  12. Carousel ------------------------------------------------- [sec-12]
+  13. Modal ---------------------------------------------------- [sec-13]
+  14. Sidebar -------------------------------------------------- [sec-14]
+  15. Utility -------------------------------------------------- [sec-15]
 
 */
 /*
 -------------------------------------------------------------------------------
 0.  Normalize CSS [sec-00]
 
-    Notes:
-    - modern-normalize v2.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize
-    - Modified for use with Condensate CSS
-    - Comments have been removed
+  Notes:
+  - modern-normalize v2.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize
+  - Modified for use with Condensate CSS
+  - Comments have been removed
 -------------------------------------------------------------------------------
 */
 *,
@@ -174,8 +174,10 @@ summary {
 -------------------------------------------------------------------------------
 */
 :root {
-  --font-size: 1rem;
+  color-scheme: light dark;
+  --font-size: 1.1rem;
   --font-family: sans-serif;
+  --header-font-family: var(--font-family);
   --mono-font-family: monospace;
   --border-radius: 0.4rem;
   --button-border-radius: var(--border-radius);
@@ -202,14 +204,10 @@ summary {
     --bg-color: var(--lm-bg-color);
     --bg2-color: var(--lm-bg2-color);
     --fg-color: var(--lm-fg-color);
-
     --primary-color: var(--lm-primary-color);
     --border-color: var(--lm-border-color);
     --font-color: var(--lm-font-color);
     --check-color: var(--lm-check-color);
-  }
-  * {
-    color-scheme: light;
   }
 }
 
@@ -222,9 +220,6 @@ summary {
     --border-color: var(--dm-border-color);
     --font-color: var(--dm-font-color);
     --check-color: var(--dm-check-color);
-  }
-  * {
-    color-scheme: dark;
   }
 }
 
@@ -279,33 +274,35 @@ body {
 3.  Typography [sec-03]
 -------------------------------------------------------------------------------
 */
+
 p {
   text-align: justify;
   text-justify: distribute;
 }
 
+a {
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font-family);
+}
+
 h1 {
-  font-size: calc(2.5 * var(--font-size));
-}
-
-h2 {
-  font-size: calc(2.25 * var(--font-size));
-}
-
-h3 {
   font-size: calc(2 * var(--font-size));
 }
 
-h4 {
-  font-size: calc(1.75 * var(--font-size));
+h2 {
+  font-size: calc(1.60 * var(--font-size));
 }
 
-h5 {
-  font-size: calc(1.5 * var(--font-size));
+h3 {
+  font-size: calc(1.30 * var(--font-size));
 }
 
-h6 {
-  font-size: calc(1.25 * var(--font-size));
+h4, h5, h6 {
+  font-size: calc(1.15 * var(--font-size));
 }
 
 ul, ol {
@@ -327,7 +324,9 @@ code, kbd {
 4.  Buttons, Inputs, Forms [sec-04]
 -------------------------------------------------------------------------------
 */
+
 select, textarea, input:not([type=checkbox], [type=radio], [type=range]), button, .button {
+  color: var(--font-color);
   border-radius: var(--border-radius);
   background: var(--fg-color);
   padding-top: calc(0.4 * var(--spacing));
@@ -349,26 +348,26 @@ button, .button {
   cursor: pointer;
 }
 button:hover, .button:hover {
-  filter: brightness(110%);
+  filter: brightness(120%);
 }
 button:focus, .button:focus {
   outline: none;
 }
 
-input:not([type=checkbox], [type=radio], [type=range])[type=search] {
+input[type=search] {
   border-radius: var(--search-border-radius);
 }
-input:not([type=checkbox], [type=radio], [type=range])[type=number]::-webkit-inner-spin-button {
+input[type=number]::-webkit-inner-spin-button {
   color: var(--bg2-color);
 }
-input:not([type=checkbox], [type=radio], [type=range])[type=color] {
+input[type=color] {
   padding: 5px;
   cursor: pointer;
 }
-input:not([type=checkbox], [type=radio], [type=range])[type=color]::-webkit-color-swatch {
+input[type=color]::-webkit-color-swatch {
   border: none;
 }
-input:not([type=checkbox], [type=radio], [type=range])[type=color]::-moz-color-swatch {
+input[type=color]::-moz-color-swatch {
   border: none;
 }
 
@@ -436,7 +435,6 @@ input[type=radio]:checked, input[type=checkbox]:checked:not([role=switch], .side
   animation-duration: 0.2s;
   animation-fill-mode: forwards;
 }
-
 input[type=checkbox]:not([role=switch], .sidebar-btn) {
   position: relative;
   border-radius: 0.2em;
@@ -461,7 +459,6 @@ input[type=checkbox]:not([role=switch], .sidebar-btn):checked::before {
   animation-duration: 0.2s;
   animation-fill-mode: forwards;
 }
-
 input[type=radio] {
   position: relative;
   border-radius: 0.8em;
@@ -583,62 +580,77 @@ td:first-child {
 8. HBox/VBox [sec-08]
 -------------------------------------------------------------------------------
 */
-:is(.hbox, .vbox) > :is(a, button, input) {
+
+:is(.hbox, .vbox, .rbox) > :is(a, button, input) {
   flex-shrink: 0;
 }
 
-:is(.hbox, .vbox) > .center {
+:is(.hbox, .vbox, .rbox) > .center {
   align-self: center;
 }
 
-:is(.hbox, .vbox) > .stretch {
+:is(.hbox, .vbox, .rbox) > .stretch {
   align-self: stretch;
 }
 
-.vbox {
+.hbox, .vbox, .rbox {
   display: flex;
+}
+
+:is(.hbox, .vbox, .rbox):not(:has(.sidebar, .scroll)) {
+  gap: var(--spacing);
+}
+
+:is(.vbox, .hbox, .rbox) > .center {
+  align-self: center;
+}
+
+:is(.vbox, .hbox, .rbox) > .start {
+  align-self: flex-start;
+}
+
+:is(.vbox, .hbox, .rbox) > .end {
+  align-self: flex-end;
+}
+
+.vbox {
   flex-direction: column;
 }
 
-.vbox > * {
-  margin-top: var(--spacing);
-}
-
-.vbox > :last-child{
-  margin-bottom: var(--spacing);
-}
-
 .vbox.scroll {
-    overflow-y: scroll;
-    margin-top: 0;
-    margin-bottom: 0;
+  overflow-y: scroll;
 }
 
 .hbox {
-  display: flex;
   flex-direction: row;
 }
 
-.hbox > * {
-  margin-left: var(--spacing);
-}
-
-.hbox > :last-child{
-    margin-right: var(--spacing);
-}
-
 .hbox.scroll {
-    overflow-x: scroll;
-    margin-right: 0;
-    margin-left: 0;
+  overflow-x: scroll;
 }
 
-body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
-    margin: 0
+@media (min-aspect-ratio: 1.2) {
+  .rbox {
+    flex-direction: row;
+  }
+  
+  .rbox.scroll {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-aspect-ratio: 1.2) {
+  .rbox {
+    flex-direction: column;
+  }
+  
+  .rbox.scroll {
+    overflow-y: scroll;
+  }
 }
 
 .spacer {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 /*
@@ -647,39 +659,9 @@ body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
 -------------------------------------------------------------------------------
 */
 
-.hbox, .vbox > :is(.header, .footer) {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.vbox > .header {
-  margin-top: 0;
-}
-
-.vbox > .footer {
-  margin-bottom: 0;
-}
-
-.hbox > .header {
-  margin-left: 0;
-}
-
-.hbox > .footer {
-  margin-right: 0;
-}
-
 .header, .footer {
-  background: var(--bg2-color);
-}
-
-.hbox:is(.header, .footer) > * {
-    margin-top: var(--spacing);
-    margin-bottom: var(--spacing);
-}
-
-.vbox:is(.header, .footer) > * {
-    margin-left: var(--spacing);
-    margin-right: var(--spacing);
+  background: var(--fg-color);
+  padding: var(--spacing);
 }
 
 /*
@@ -693,46 +675,40 @@ body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
   background: var(--bg2-color);
 }
 
-.card.vbox > * {
-    margin-left: var(--spacing);
-    margin-right: var(--spacing);
-}
-
-.card.hbox > * {
-    margin-top: var(--spacing);
-    margin-bottom: var(--spacing);
+.card:not(:has(.header, .footer)) {
+  padding: var(--spacing);
 }
 
 /*
 -------------------------------------------------------------------------------
 11.  Tabbed [sec-11]
-    Notes:
-    - Based on this neat css only tabs concept by Michał Pawełczyk:
-      https://codepen.io/MPDoctor/pen/mpJdYe
+  Notes:
+  - Based on this neat css only tabs concept by Michał Pawełczyk:
+    https://codepen.io/MPDoctor/pen/mpJdYe
 -------------------------------------------------------------------------------
 */
 .tabbed > input[type=radio] {
   display: none;
 }
-.tabbed > *[role=tablist] {
+.tabbed > .tabs {
   display: flex;
 }
-.tabbed > *[role=tablist] > label[role=tab] {
+.tabbed > .tabs > label {
   background: var(--fg-color);
   margin-bottom: -2px;
   padding: 0 var(--spacing);
 }
-.tabbed > *[role=tablist] > label[role=tab]:hover {
-  filter: brightness(110%);
+.tabbed > .tabs > label:hover {
+  filter: brightness(120%);
   cursor: pointer;
 }
-.tabbed > *[role=tablist] > label[role=tab]:first-of-type {
+.tabbed > .tabs > label:first-of-type {
   border-top-left-radius: 2px;
 }
-.tabbed > *[role=tablist] > label[role=tab]:last-of-type {
+.tabbed > .tabs > label:last-of-type {
   border-top-right-radius: 2px;
 }
-.tabbed > *[role=tabpanel] {
+.tabbed > .tab-panel {
   display: none;
   background: var(--bg2-color);
   border-radius: var(--border-radius);
@@ -742,56 +718,16 @@ body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
 .tabbed.overlay {
   position: relative;
 }
-.tabbed.overlay > *[role=tabpanel] {
+.tabbed.overlay > .tab-panel {
   position: absolute;
   width: 100%;
 }
-.tabbed > input[type=radio]:nth-of-type(1):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(1), .tabbed > input[type=radio]:nth-of-type(2):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(2), .tabbed > input[type=radio]:nth-of-type(3):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(3), .tabbed > input[type=radio]:nth-of-type(4):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(4), .tabbed > input[type=radio]:nth-of-type(5):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(5), .tabbed > input[type=radio]:nth-of-type(6):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(6), .tabbed > input[type=radio]:nth-of-type(7):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(7), .tabbed > input[type=radio]:nth-of-type(8):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(8), .tabbed > input[type=radio]:nth-of-type(9):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(9), .tabbed > input[type=radio]:nth-of-type(10):checked ~ *[role=tablist] > label[role=tab]:nth-of-type(10) {
+.tabbed > input[type=radio]:nth-of-type(1):checked ~ .tabs > label:nth-of-type(1), .tabbed > input[type=radio]:nth-of-type(2):checked ~ .tabs > label:nth-of-type(2), .tabbed > input[type=radio]:nth-of-type(3):checked ~ .tabs > label:nth-of-type(3), .tabbed > input[type=radio]:nth-of-type(4):checked ~ .tabs > label:nth-of-type(4), .tabbed > input[type=radio]:nth-of-type(5):checked ~ .tabs > label:nth-of-type(5), .tabbed > input[type=radio]:nth-of-type(6):checked ~ .tabs > label:nth-of-type(6), .tabbed > input[type=radio]:nth-of-type(7):checked ~ .tabs > label:nth-of-type(7), .tabbed > input[type=radio]:nth-of-type(8):checked ~ .tabs > label:nth-of-type(8), .tabbed > input[type=radio]:nth-of-type(9):checked ~ .tabs > label:nth-of-type(9), .tabbed > input[type=radio]:nth-of-type(10):checked ~ .tabs > label:nth-of-type(10) {
   background: var(--bg2-color);
   border-bottom: 2px solid var(--bg2-color);
 }
-.tabbed > input[type=radio]:nth-of-type(1):checked ~ *[role=tabpanel]:nth-child(5), .tabbed > input[type=radio]:nth-of-type(2):checked ~ *[role=tabpanel]:nth-child(6), .tabbed > input[type=radio]:nth-of-type(3):checked ~ *[role=tabpanel]:nth-child(7), .tabbed > input[type=radio]:nth-of-type(4):checked ~ *[role=tabpanel]:nth-child(8), .tabbed > input[type=radio]:nth-of-type(5):checked ~ *[role=tabpanel]:nth-child(9), .tabbed > input[type=radio]:nth-of-type(6):checked ~ *[role=tabpanel]:nth-child(10), .tabbed > input[type=radio]:nth-of-type(7):checked ~ *[role=tabpanel]:nth-child(11), .tabbed > input[type=radio]:nth-of-type(8):checked ~ *[role=tabpanel]:nth-child(12), .tabbed > input[type=radio]:nth-of-type(9):checked ~ *[role=tabpanel]:nth-child(13), .tabbed > input[type=radio]:nth-of-type(10):checked ~ *[role=tabpanel]:nth-child(14) {
+.tabbed > input[type=radio]:nth-of-type(1):checked ~ .tab-panel:nth-child(5), .tabbed > input[type=radio]:nth-of-type(2):checked ~ .tab-panel:nth-child(6), .tabbed > input[type=radio]:nth-of-type(3):checked ~ .tab-panel:nth-child(7), .tabbed > input[type=radio]:nth-of-type(4):checked ~ .tab-panel:nth-child(8), .tabbed > input[type=radio]:nth-of-type(5):checked ~ .tab-panel:nth-child(9), .tabbed > input[type=radio]:nth-of-type(6):checked ~ .tab-panel:nth-child(10), .tabbed > input[type=radio]:nth-of-type(7):checked ~ .tab-panel:nth-child(11), .tabbed > input[type=radio]:nth-of-type(8):checked ~ .tab-panel:nth-child(12), .tabbed > input[type=radio]:nth-of-type(9):checked ~ .tab-panel:nth-child(13), .tabbed > input[type=radio]:nth-of-type(10):checked ~ .tab-panel:nth-child(14) {
   display: block;
-}
-
-/*
--------------------------------------------------------------------------------
-12.  Carousel [sec-12]
-    Notes:
-    - Based on the first CSS only carousel example from this CSS-Tricks
-      article: https://css-tricks.com/css-only-carousel/
--------------------------------------------------------------------------------
-*/
-.carousel {
-  text-align: center;
-  width: 33.33%;
-}
-.carousel > .carousel-slides {
-  display: flex;
-  align-content: center;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-  flex-shrink: 0;
-}
-.carousel > .carousel-slides > * {
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  margin-right: var(--spacing);
-  border-radius: var(--border-radius);
-  margin: auto 0;
-  width: 100%;
-  position: relative;
-}
-.carousel > a.carousel-btn {
-  display: inline-flex;
-  background-color: var(--fg-color);
-  height: 0.7em;
-  width: 0.7em;
-  margin: 0 0.2em;
-  border-radius: 50%;
 }
 
 /*
@@ -799,31 +735,34 @@ body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
 13. Modal [sec-13]
 -------------------------------------------------------------------------------
 */
-[role=dialog][aria-modal=true] {
+.modal {
   visibility: hidden;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   z-index: 99;
   backdrop-filter: blur(10px) brightness(80%);
 }
-[role=dialog][aria-modal=true]:target {
+.modal:target {
   visibility: visible;
 }
-[role=dialog][aria-modal=true] [aria-label=close] {
+.modal-close {
   width: 1em;
   height: 1em;
   position: relative;
   appearance: none;
   background: none;
 }
-[role=dialog][aria-modal=true] [aria-label=close]:hover {
+.modal-close:hover {
   filter: brightness(150%);
 }
-[role=dialog][aria-modal=true] [aria-label=close]::before {
+.modal-close::before {
   content: "";
   width: 1em;
   border-top: 2px solid var(--font-color);
@@ -833,7 +772,7 @@ body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
   transform-origin: left center;
   transform: rotate(45deg);
 }
-[role=dialog][aria-modal=true] [aria-label=close]::after {
+.modal-close::after {
   content: "";
   width: 1em;
   border-top: 2px solid var(--font-color);
@@ -850,7 +789,7 @@ body > :is(.hbox, .vbox) > :is(.hbox, .vbox, *) {
 -------------------------------------------------------------------------------
 */
 details.sidebar {
-  flex-shrink: 0;
+  height: 100%;
   position: relative;
   /*width: calc(2em + 3 * var(--spacing));*/
 }
@@ -890,9 +829,17 @@ details.sidebar > summary::after {
   transition: 0.4s;
   border-bottom: 2px solid var(--font-color);
 }
-details.sidebar[open] {
-  width: auto;
-  min-width: 12em;
+@media (min-aspect-ratio: 1.2) {
+  details.sidebar[open] {
+    width: 17em;
+    min-width: 17em;
+  }
+}
+@media (max-aspect-ratio: 1.2) {
+  details.sidebar[open] {
+    width: 80vw;
+    min-width: 80vw;
+  }
 }
 details.sidebar[open] > summary {
   left: calc(100% - 2em - var(--spacing));
@@ -913,25 +860,52 @@ details.sidebar[open] > summary::after {
 
 /*
 -------------------------------------------------------------------------------
+15. Captioned [sec-15]
+-------------------------------------------------------------------------------
+*/
+
+.captioned {
+  display: table;
+  width: 1px;
+}
+
+.captioned > .caption {
+  display: table-caption;
+  caption-side: bottom;
+}
+
+.captioned > .caption.left {
+  caption-side: left;
+}
+
+.captioned > .caption.right {
+  caption-side: right;
+}
+
+.captioned > .caption.top {
+  caption-side: top;
+}
+
+/*
+-------------------------------------------------------------------------------
 15. Utility [sec-15]
 -------------------------------------------------------------------------------
 */
 
-.fullscreen {
-    height: 100vh;
-    width: 100vw;
-}
-
-.bg-color {
+.bg {
   background: var(--bg-color);
 }
 
-.bg2-color {
+.bg2 {
   background: var(--bg2-color);
 }
 
-.fg-color {
+.fg {
   background: var(--fg-color);
+}
+
+.primary {
+  background: var(--primary-color);
 }
 
 .no-padding {
@@ -942,18 +916,28 @@ details.sidebar[open] > summary::after {
   padding: var(--spacing);
 }
 
+.h-padding {
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
+}
+
+.v-padding {
+  padding-top: var(--spacing);
+  padding-bottom: var(--spacing);
+}
+
 .margins {
   margin: var(--spacing);
 }
 
 .v-margins {
-    margin-top: var(--spacing);
-    margin-bottom: var(--spacing);
+  margin-top: var(--spacing);
+  margin-bottom: var(--spacing);
 }
 
 .h-margins {
-    margin-right: var(--spacing);
-    margin-left: var(--spacing);
+  margin-right: var(--spacing);
+  margin-left: var(--spacing);
 }
 
 .square {
@@ -986,22 +970,63 @@ details.sidebar[open] > summary::after {
 }
 
 .fullscreen {
-  height: 100vh;
-  width: 100vw;
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .placeholder {
-    width: calc(3 * var(--spacing));
-    height: var(--spacing);
+  width: calc(3 * var(--spacing));
+  height: var(--spacing);
 }
 
 @media (prefers-color-scheme: dark) {
   .dm-hidden {
     visibility: hidden;
   }
+  .dm-invert {
+    -webkit-filter: invert(1); filter: invert(1);
+  }
 }
+
 @media (prefers-color-scheme: light) {
   .lm-hidden {
     visibility: hidden;
+  }
+  .lm-invert {
+    -webkit-filter: invert(1); filter: invert(1);
+  }
+}
+
+@media (min-aspect-ratio: 1.2) {
+  .rsize-lg {
+    height: 60vh;
+  }
+  .rsize-md {
+    height: 40vh;
+  }
+  .rsize-sm {
+    height: 20vh;
+  }
+  .landscape-hidden {
+    display: none;
+  }
+}
+
+@media (max-aspect-ratio: 1.2) {
+  .rsize-lg {
+    width: 80vw;
+  }
+  .rsize-md {
+    width: 80vw;
+  }
+  .rsize-sm {
+    width: 40vw;
+  }
+  .portrait-hidden {
+    display: none;
   }
 }
