@@ -199,9 +199,11 @@ summary {
   --dm-font-color: #ddd;
   --dm-alt-font-color: #000;
   --dm-check-color: var(--dm-font-color);
+  --dm-hover-brightness: 130%;
+  --dm-alt-hover-brightness: 130%;
   --lm-bg-color: #fff;
   --lm-bg2-color: #fafafa;
-  --lm-fg-color: #eee;
+  --lm-fg-color: #ddd;
   --lm-primary-color: #6969ff;
   --lm-secondary-color: #2cb1ff;
   --lm-success-color: #3bf589;
@@ -211,6 +213,8 @@ summary {
   --lm-font-color: #000;
   --lm-alt-font-color: var(--lm-font-color);
   --lm-check-color: var(--lm-bg-color);
+  --lm-hover-brightness: 110%;
+  --lm-alt-hover-brightness: 130%;
 }
 
 @media (prefers-color-scheme: light) {
@@ -227,6 +231,8 @@ summary {
     --font-color: var(--lm-font-color);
     --alt-font-color: var(--lm-alt-font-color);
     --check-color: var(--lm-check-color);
+    --hover-brightness: var(--lm-hover-brightness);
+    --alt-hover-brightness:  var(--lm-alt-hover-brightness);
   }
 }
 
@@ -244,6 +250,8 @@ summary {
     --font-color: var(--dm-font-color);
     --alt-font-color: var(--dm-alt-font-color);
     --check-color: var(--dm-check-color);
+    --hover-brightness: var(--dm-hover-brightness);
+    --alt-hover-brightness:  var(--dm-alt-hover-brightness);
   }
 }
 
@@ -260,6 +268,8 @@ summary {
   --font-color: var(--lm-font-color);
   --alt-font-color: var(--lm-alt-font-color);
   --check-color: var(--lm-check-color);
+  --hover-brightness: var(--lm-hover-brightness);
+  --alt-hover-brightness:  var(--lm-alt-hover-brightness);
 }
 
 .dm {
@@ -275,6 +285,8 @@ summary {
   --font-color: var(--dm-font-color);
   --alt-font-color: var(--dm-alt-font-color);
   --check-color: var(--dm-check-color);
+  --hover-brightness: var(--dm-hover-brightness);
+  --alt-hover-brightness:  var(--dm-alt-hover-brightness);
 }
 
 /*
@@ -387,9 +399,11 @@ button, .button {
   text-decoration: none;
   cursor: pointer;
 }
+
 button:hover, .button:hover {
-  filter: brightness(120%);
+  filter: brightness(var(--hover-brightness));
 }
+
 button:focus, .button:focus {
   outline: none;
 }
@@ -902,17 +916,24 @@ details.dropdown > :not(summary) {
 .modal:target {
   visibility: visible;
 }
-.modal-close {
+
+/*
+-------------------------------------------------------------------------------
+13. Close Button [sec-13]
+-------------------------------------------------------------------------------
+*/
+
+.close {
   width: 1em;
   height: 1em;
   position: relative;
   appearance: none;
   background: none;
 }
-.modal-close:hover {
+.close:hover {
   filter: brightness(150%);
 }
-.modal-close::before {
+.close::before {
   content: "";
   width: 1em;
   border-top: 2px solid var(--font-color);
@@ -922,7 +943,7 @@ details.dropdown > :not(summary) {
   transform-origin: left center;
   transform: rotate(45deg);
 }
-.modal-close::after {
+.close::after {
   content: "";
   width: 1em;
   border-top: 2px solid var(--font-color);
@@ -1076,6 +1097,10 @@ details.sidebar[open] > :not(summary) {
 
 :is(.primary, .secondary, .success, .warning, .error) :is(.header, .footer, th) {
   --font-color: var(--alt-font-color);
+}
+
+:is(button, .button):is(.primary, .secondary, .success, .warning, .error):hover {
+  filter: brightness(var(--alt-hover-brightness));
 }
 
 .primary {
@@ -1279,11 +1304,6 @@ details.sidebar[open] > :not(summary) {
   left: 0;
   height: 100%;
   width: 100%;
-}
-
-.placeholder {
-  width: calc(3 * var(--spacing));
-  height: var(--spacing);
 }
 
 @media (prefers-color-scheme: dark) {
