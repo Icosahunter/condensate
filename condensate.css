@@ -1140,6 +1140,15 @@ details.sidebar[open] > :not(summary) {
   .rsize-sm {
     height: 20vh;
   }
+  .rwidth-sm {
+    width: 25%;
+  }
+  .rwidth-md {
+    width: 50%;
+  }
+  .rwidth-lg {
+    width: 75%;
+  }
   .landscape-hidden {
     display: none;
   }
@@ -1154,6 +1163,15 @@ details.sidebar[open] > :not(summary) {
   }
   .rsize-sm {
     width: 40vw;
+  }
+  .rwidth-sm {
+    width: 100%;
+  }
+  .rwidth-md {
+    width: 100%;
+  }
+  .rwidth-lg {
+    width: 100%;
   }
   .portrait-hidden {
     display: none;
