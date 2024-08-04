@@ -168,6 +168,10 @@ summary {
   display: list-item;
 }
 
+:root {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /*
 -------------------------------------------------------------------------------
 1.  CSS Variables [sec-01]
@@ -186,16 +190,26 @@ summary {
   --dm-bg-color: #282a36;
   --dm-bg2-color: #2f3240;
   --dm-fg-color: #44475a;
-  --dm-primary-color: #3b60f5;
-  --dm-border-color: #1a1c24;
+  --dm-primary-color: #6969ff;
+  --dm-secondary-color: #2cb1ff;
+  --dm-success-color: #3bf589;
+  --dm-warning-color: #f5c33b;
+  --dm-error-color: #f53b3b;
+  --dm-border-color: var(--dm-fg-color);
   --dm-font-color: #ddd;
+  --dm-alt-font-color: #000;
   --dm-check-color: var(--dm-font-color);
   --lm-bg-color: #fff;
   --lm-bg2-color: #fafafa;
-  --lm-fg-color: #ccc;
-  --lm-primary-color: #3b60f5;
-  --lm-border-color: #353747;
+  --lm-fg-color: #eee;
+  --lm-primary-color: #6969ff;
+  --lm-secondary-color: #2cb1ff;
+  --lm-success-color: #3bf589;
+  --lm-warning-color: #f5c33b;
+  --lm-error-color: #f53b3b;
+  --lm-border-color: var(--lm-fg-color);
   --lm-font-color: #000;
+  --lm-alt-font-color: var(--lm-font-color);
   --lm-check-color: var(--lm-bg-color);
 }
 
@@ -205,8 +219,13 @@ summary {
     --bg2-color: var(--lm-bg2-color);
     --fg-color: var(--lm-fg-color);
     --primary-color: var(--lm-primary-color);
+    --secondary-color: var(--lm-secondary-color);
+    --success-color: var(--lm-success-color);
+    --warning-color: var(--lm-warning-color);
+    --error-color: var(--lm-error-color);
     --border-color: var(--lm-border-color);
     --font-color: var(--lm-font-color);
+    --alt-font-color: var(--lm-alt-font-color);
     --check-color: var(--lm-check-color);
   }
 }
@@ -217,8 +236,13 @@ summary {
     --bg2-color: var(--dm-bg2-color);
     --fg-color: var(--dm-fg-color);
     --primary-color: var(--dm-primary-color);
+    --secondary-color: var(--dm-secondary-color);
+    --success-color: var(--dm-success-color);
+    --warning-color: var(--dm-warning-color);
+    --error-color: var(--dm-error-color);
     --border-color: var(--dm-border-color);
     --font-color: var(--dm-font-color);
+    --alt-font-color: var(--dm-alt-font-color);
     --check-color: var(--dm-check-color);
   }
 }
@@ -228,8 +252,13 @@ summary {
   --bg2-color: var(--lm-bg2-color);
   --fg-color: var(--lm-fg-color);
   --primary-color: var(--lm-primary-color);
+  --secondary-color: var(--lm-secondary-color);
+  --success-color: var(--lm-success-color);
+  --warning-color: var(--lm-warning-color);
+  --error-color: var(--lm-error-color);
   --border-color: var(--lm-border-color);
   --font-color: var(--lm-font-color);
+  --alt-font-color: var(--lm-alt-font-color);
   --check-color: var(--lm-check-color);
 }
 
@@ -238,8 +267,13 @@ summary {
   --bg2-color: var(--dm-bg2-color);
   --fg-color: var(--dm-fg-color);
   --primary-color: var(--dm-primary-color);
+  --secondary-color: var(--dm-secondary-color);
+  --success-color: var(--dm-success-color);
+  --warning-color: var(--dm-warning-color);
+  --error-color: var(--dm-error-color);
   --border-color: var(--dm-border-color);
   --font-color: var(--dm-font-color);
+  --alt-font-color: var(--dm-alt-font-color);
   --check-color: var(--dm-check-color);
 }
 
@@ -262,7 +296,9 @@ body {
   color: var(--font-color);
   font-family: var(--font-family);
   font-size: var(--font-size);
-  border: None;
+  border-style: none;
+  border-color: var(--border-color);
+  border-width: 2px;
 }
 
 :not(input, button) {
@@ -431,7 +467,7 @@ input[type=radio], input[type=checkbox]:not([role=switch], .sidebar-btn) {
   width: 0.8em;
   height: 0.8em;
   background: var(--bg2-color);
-  border: 2px solid var(--fg-color);
+  border-style: solid;
   appearance: none;
 }
 input[type=radio]:checked, input[type=checkbox]:checked:not([role=switch], .sidebar-btn) {
@@ -468,7 +504,8 @@ input[type=radio] {
   border-radius: 0.8em;
 }
 input[type=radio]:checked {
-  border: 2px solid var(--primary-color);
+  border-style: solid;
+  border-color: var(--primary-color);
 }
 input[type=radio]::before {
   content: "";
@@ -535,18 +572,17 @@ tr:first-child {
 
 table {
   border-radius: var(--border-radius);
-  border: 2px solid var(--fg-color);
+  border-style: solid;
   border-spacing: 0;
 }
 
 td {
   padding: calc(0.4 * var(--spacing)) var(--spacing);
-  border-top: 2px solid var(--fg-color);
-  border-left: 2px solid var(--fg-color);
+  border-top-style: solid;
+  border-left-style: solid;
 }
 
 th {
-  border-radius: var(--border-radius);
   padding: calc(0.4 * var(--spacing)) var(--spacing);
 }
 
@@ -593,7 +629,7 @@ details[open] > :not(summary){
 
 @keyframes details-expand-animation {
   0% {max-height: 1em;}
-  99% {max-height: 100em;}
+  99% {max-height: 2000px;}
   100% {max-height: none;}
 }
 
@@ -765,7 +801,7 @@ details[open] > :not(summary){
 -------------------------------------------------------------------------------
 */
 .card {
-  border: 2px solid var(--fg-color);
+  border-style: solid;
   border-radius: var(--border-radius);
   background: var(--bg2-color);
 }
@@ -836,6 +872,7 @@ details.dropdown {
 }
 
 details.dropdown > :not(summary) {
+  border-radius: var(--border-radius);
   background: var(--fg-color);
   min-width: 30vw;
   position: absolute;
@@ -1033,40 +1070,37 @@ details.sidebar[open] > :not(summary) {
   background: var(--fg-color);
 }
 
+.primary, .secondary, .success, .warning, .error {
+  color: var(--alt-font-color);
+}
+
+:is(.primary, .secondary, .success, .warning, .error) :is(.header, .footer, th) {
+  --font-color: var(--alt-font-color);
+}
+
 .primary {
-  background: var(--primary-color);
+  --fg-color: var(--primary-color);
+  --border-color: var(--primary-color);
 }
 
-.no-padding {
-  padding: 0;
+.secondary {
+  --fg-color: var(--secondary-color);
+  --border-color: var(--secondary-color);
 }
 
-.padding {
-  padding: var(--spacing);
+.success {
+  --fg-color: var(--success-color);
+  --border-color: var(--success-color);
 }
 
-.h-padding {
-  padding-left: var(--spacing);
-  padding-right: var(--spacing);
+.warning {
+  --fg-color: var(--warning-color);
+  --border-color: var(--warning-color);
 }
 
-.v-padding {
-  padding-top: var(--spacing);
-  padding-bottom: var(--spacing);
-}
-
-.margins {
-  margin: var(--spacing);
-}
-
-.v-margins {
-  margin-top: var(--spacing);
-  margin-bottom: var(--spacing);
-}
-
-.h-margins {
-  margin-right: var(--spacing);
-  margin-left: var(--spacing);
+.error {
+  --fg-color: var(--error-color);
+  --border-color: var(--error-color);
 }
 
 .square {
@@ -1089,13 +1123,153 @@ details.sidebar[open] > :not(summary) {
   font-size: calc(1.15 * var(--font-size));
 }
 
-.border {
-  border: 2px solid var(--fg-color);
-  border-radius: var(--border-radius);
+.no-padding {
+  padding: 0;
+}
+
+.padding {
+  padding: var(--spacing);
+}
+
+.padding-left {
+  padding-left: var(--spacing);
+}
+
+.padding-right {
+  padding-right: var(--spacing);
+}
+
+.padding-top {
+  padding-top: var(--spacing);
+}
+
+.padding-bottom {
+  padding-bottom: var(--spacing);
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.margin {
+  margin: var(--spacing);
+}
+
+.margin-right {
+  margin-right: var(--spacing);
+}
+
+.margin-left {
+  margin-left: var(--spacing);
+}
+
+.margin-top {
+  margin-top: var(--spacing);
+}
+
+.margin-bottom {
+  margin-bottom: var(--spacing);
 }
 
 .no-border {
   border: none;
+}
+
+.border {
+  border-style: solid;
+  border-radius: var(--border-radius);
+}
+
+.border-right {
+  border-right-style: solid;
+  border-radius: var(--border-radius);
+}
+
+.border-left {
+  border-left-style: solid;
+  border-radius: var(--border-radius);
+}
+
+.border-top {
+  border-top-style: solid;
+  border-radius: var(--border-radius);
+}
+
+.border-bottom {
+  border-bottom-style: solid;
+  border-radius: var(--border-radius);
+}
+
+.width-sm {
+  width: 2em;
+}
+
+.width-md {
+  width: 10em;
+}
+
+.width-lg {
+  width: 20em;
+}
+
+.height-sm {
+  height: 2em;
+}
+
+.height-md {
+  height: 10em;
+}
+
+.height-lg {
+  height: 20em;
+}
+
+.height-quarter {
+  height: 25%;
+}
+
+.height-third {
+  height: 33%;
+}
+
+.height-half {
+  height: 50%;
+}
+
+.height-two-thirds {
+  height: 66%;
+}
+
+.height-three-quarters {
+  height: 75%;
+}
+
+.height-full {
+  height: 100%;
+}
+
+.width-quarter {
+  width: 25%;
+}
+
+.width-third {
+  width: 33%;
+}
+
+.width-half {
+  width: 50%;
+}
+
+.width-two-thirds {
+  width: 66%;
+}
+
+.width-three-quarters {
+  width: 75%;
+}
+
+.width-full {
+  width: 100%;
 }
 
 .fullscreen {

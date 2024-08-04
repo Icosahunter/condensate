@@ -25,7 +25,7 @@
       <main class="vbox">
         <header class="hbox header">
           <div class="placeholder"></div>
-          <img src="logo.svg" height="35">
+          <img class="width-md" src="logo.svg">
 
           <div class="spacer"></div>
 
@@ -98,6 +98,21 @@
           <div>
             <input type="checkbox" role="switch">
           </div>
+          <div class="hbox">
+            <button class="primary">Primary</button>
+            <button class="secondary">Secondary</button>
+            <button class="success">Success</button>
+            <button class="warning">Warning</button>
+            <button class="error">Error</button>
+          </div>
+          <div class="card warning vbox">
+            <div class="header">
+              <h3>Warning!</h3>
+            </div>
+            <div class="body">
+              This is a warning card!
+            </div>
+          </div>
           <table>
             <tr><th>Header1</th><th>Header2</th><th>Header3</th></tr>
             <tr><td>Data1</td><td>Data2</td><td>Data3</td></tr>
@@ -121,10 +136,6 @@
               <input id="input__search" type="search" placeholder="Enter Search Term">
               <label for="input__text2">Number Input</label>
               <input id="input__text2" type="number" placeholder="Enter a Number">
-              <label for="input__text3" class="error">Error</label>
-              <input id="input__text3" class="error" type="text" placeholder="Text Input">
-              <label for="input__text4" class="success">Valid</label>
-              <input id="input__text4" class="success" type="text" placeholder="Text Input">
               <label for="input__text5">Disabled Text Input</label>
               <input id="input__text5" type="text" placeholder="Disabled Text Input" disabled="">
               <div class="hbox">
