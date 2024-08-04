@@ -285,6 +285,10 @@ a {
   cursor: pointer;
 }
 
+a:not(.button):hover {
+  text-decoration: underline;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--header-font-family);
 }
@@ -552,6 +556,49 @@ td:first-child {
 
 /*
 -------------------------------------------------------------------------------
+5.  Summary/Details [sec-5]
+-------------------------------------------------------------------------------
+*/
+
+summary {
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-left: 1em;
+}
+
+summary::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-style: solid;
+  border-color: var(--font-color);
+  border-width: 0 2px 2px 0;
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  transition: 0.4s;
+  transform-origin: center center;
+  transform: rotate(-45deg);
+}
+
+details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+details[open] > :not(summary){
+  overflow: hidden;
+  animation: details-expand-animation 1s;
+}
+
+@keyframes details-expand-animation {
+  0% {max-height: 1em;}
+  99% {max-height: 100em;}
+  100% {max-height: none;}
+}
+
+/*
+-------------------------------------------------------------------------------
 7.  Scrollbar [sec-07]
 -------------------------------------------------------------------------------
 */
@@ -655,13 +702,61 @@ td:first-child {
 
 /*
 -------------------------------------------------------------------------------
-9. Header/Footer [sec-09]
+9. Header/Footer/Body [sec-09]
 -------------------------------------------------------------------------------
 */
 
 .header, .footer {
   background: var(--fg-color);
   padding: var(--spacing);
+}
+
+.vbox > .body {
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
+}
+.vbox > body:first-child {
+  padding-top: var(--spacing);
+}
+.vbox > .body:last-child {
+  padding-bottom: var(--spacing);
+}
+
+.hbox > .body {
+  padding-top: var(--spacing);
+  padding-bottom: var(--spacing);
+}
+.hbox > body:first-child {
+  padding-left: var(--spacing);
+}
+.hbox > .body:last-child {
+  padding-right: var(--spacing);
+}
+
+@media (min-aspect-ratio: 1.2) {
+  .rbox > .body {
+    padding-top: var(--spacing);
+    padding-bottom: var(--spacing);
+  }
+  .rbox > body:first-child {
+    padding-right: var(--spacing);
+  }
+  .rbox > .body:last-child {
+    padding-left: var(--spacing);
+  }
+}
+
+@media (max-aspect-ratio: 1.2) {
+  .rbox > .body {
+    padding-left: var(--spacing);
+    padding-right: var(--spacing);
+  }
+  .rbox > body:first-child {
+    padding-top: var(--spacing);
+  }
+  .rbox > .body:last-child {
+    padding-bottom: var(--spacing);
+  }
 }
 
 /*
@@ -728,6 +823,24 @@ td:first-child {
 }
 .tabbed > input[type=radio]:nth-of-type(1):checked ~ .tab-panel:nth-child(5), .tabbed > input[type=radio]:nth-of-type(2):checked ~ .tab-panel:nth-child(6), .tabbed > input[type=radio]:nth-of-type(3):checked ~ .tab-panel:nth-child(7), .tabbed > input[type=radio]:nth-of-type(4):checked ~ .tab-panel:nth-child(8), .tabbed > input[type=radio]:nth-of-type(5):checked ~ .tab-panel:nth-child(9), .tabbed > input[type=radio]:nth-of-type(6):checked ~ .tab-panel:nth-child(10), .tabbed > input[type=radio]:nth-of-type(7):checked ~ .tab-panel:nth-child(11), .tabbed > input[type=radio]:nth-of-type(8):checked ~ .tab-panel:nth-child(12), .tabbed > input[type=radio]:nth-of-type(9):checked ~ .tab-panel:nth-child(13), .tabbed > input[type=radio]:nth-of-type(10):checked ~ .tab-panel:nth-child(14) {
   display: block;
+}
+
+/*
+-------------------------------------------------------------------------------
+13. Dropdown [sec-13]
+-------------------------------------------------------------------------------
+*/
+
+details.dropdown {
+  position: relative;
+}
+
+details.dropdown > :not(summary) {
+  background: var(--fg-color);
+  min-width: 30vw;
+  position: absolute;
+  right: -1em;
+  z-index: 1;
 }
 
 /*
@@ -816,8 +929,10 @@ details.sidebar > summary::before {
   width: 1em;
   height: calc(0.5em + 1px);
   transition: 0.4s;
-  border-top: 2px solid var(--font-color);
-  border-bottom: 2px solid var(--font-color);
+  transform: none;
+  border-style: solid;
+  border-color: var(--font-color);
+  border-width: 2px 0 2px 0;
 }
 details.sidebar > summary::after {
   content: "";
@@ -831,14 +946,26 @@ details.sidebar > summary::after {
 }
 @media (min-aspect-ratio: 1.2) {
   details.sidebar[open] {
-    width: 17em;
+    overflow: hidden;
+    animation: sidebar-expand-animation 0.4s;
     min-width: 17em;
+  }
+  @keyframes sidebar-expand-animation {
+    0% {min-width: 0; max-width: 0;}
+    99% {min-width: 17em; max-width: 2000px;}
+    100% {min-width: 17em; max-width: none;}
   }
 }
 @media (max-aspect-ratio: 1.2) {
   details.sidebar[open] {
-    width: 80vw;
+    overflow: hidden;
+    animation: sidebar-expand-animation 0.4s;
     min-width: 80vw;
+  }
+  @keyframes sidebar-expand-animation {
+    0% {min-width: 0; max-width: 0;}
+    99% {min-width: 80vw; max-width: 2000px;}
+    100% {min-width: 80vw; max-width: none;}
   }
 }
 details.sidebar[open] > summary {
@@ -857,7 +984,9 @@ details.sidebar[open] > summary::after {
   width: 1.3em;
   transform: rotate(-45deg);
 }
-
+details.sidebar[open] > :not(summary) {
+  animation: none;
+}
 /*
 -------------------------------------------------------------------------------
 15. Captioned [sec-15]

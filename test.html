@@ -13,25 +13,36 @@
   </head>
   <body>
     <div class="fullscreen hbox">
-      <details id="sbtn" class="sidebar">
-        <summary class="button"></summary>
-        <div class="vbox padding">
+      <details class="sidebar">
+        <summary class="button sidebar-button"></summary>
+        <nav class="vbox padding">
+          <h2>Navigation</h2>
           <a>link 1</a>
           <a>link 2</a>
           <a>link 3</a>
-          <a>link 4</a>
-        </div>
+        </nav>
       </details>
       <main class="vbox">
         <header class="hbox header">
           <div class="placeholder"></div>
           <img src="logo.svg" height="35">
+
           <div class="spacer"></div>
+
+          <details class="dropdown landscape-hidden">
+            <summary>Menu</summary>
+            <nav class="vbox">
+              <a class="button">Link 1</a>
+              <a class="button">Link 2</a>
+              <a class="button">Link 3</a>
+            </nav>
+          </details>
           <nav class="hbox portrait-hidden">
-            <button>Button 1</button>
-            <button>Button 2</button>
-            <button>Button 3</button>
+            <a class="button">Link 1</a>
+            <a class="button">Link 2</a>
+            <a class="button">Link 3</a>
           </nav>
+
         </header>
         <div class="scroll vbox padding">
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam efficitur elementum quam at luctus. Fusce aliquam, orci et condimentum cursus, sapien sapien finibus quam, vel vestibulum enim neque vitae ipsum. Aenean felis enim, venenatis sed libero in, interdum semper tellus. Sed venenatis, velit id luctus ornare, sem velit laoreet risus, ut aliquet nisi ipsum eget lorem. Morbi nec bibendum sem, sed hendrerit sapien. Curabitur eleifend ullamcorper justo, sit amet condimentum ipsum convallis sed. Mauris risus odio, rutrum semper magna mattis, gravida pretium massa. </p>
@@ -43,12 +54,14 @@
           </details>
           <div id="modal1" class="modal">
             <div class="card vbox">
-              <header class="hbox">
+              <div class="hbox header">
                 <p>Modal 1</p>
                 <div class="spacer"></div>
                 <a class="modal-close" href="#"></a>
-              </header>
-              <p>This is a modal, cool!</p>  
+              </div>
+              <div class="body">
+                <p>This is a modal, cool!</p>
+              </div>  
             </div>
           </div>
           <div class="captioned center">
@@ -56,7 +69,7 @@
             <p class="caption">This is a caption for the above image. Pretty cool huh?</p>
           </div>
           <div class="tabbed">
-            <input type="radio" id="tab1" name="tabs1">
+            <input type="radio" id="tab1" name="tabs1" checked="true">
             <input type="radio" id="tab2" name="tabs1">
             <input type="radio" id="tab3" name="tabs1">
   
@@ -66,11 +79,11 @@
               <label for="tab3">Tab3</label>
             </div>
   
-            <pre class="tab-panel padding">
-              Some
-              Long
-              Content
-            </pre>
+            <div class="tab-panel padding">
+              Some <br>
+              Long <br>
+              Content <br>
+            </div>
 
             <div class="tab-panel padding">
               Some more content
@@ -126,7 +139,7 @@
               <input type="text" name="input__text8" id="input__text8" placeholder="Password">
               <button>Submit</button>
             </fieldset>
-<!--             <fieldset id="forms__select" class="card vbox">
+            <fieldset id="forms__select" class="card vbox">
               <legend>Select menus</legend>
                 <label for="select">Select</label>
                 <select id="select">
@@ -178,7 +191,7 @@
                 <input type="datetime" id="idt" value="1970-01-01T00:00:00Z">
                 <label for="idtl">Datetime-local input</label>
                 <input type="datetime-local" id="idtl" value="1970-01-01T00:00">
-            </fieldset> -->
+            </fieldset>
           </form>
         </div>
       </main>
