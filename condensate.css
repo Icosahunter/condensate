@@ -13,17 +13,20 @@ Table of contents:
   2.  Base Styles ---------------------------------------------- [sec-02]
   3.  Typography ----------------------------------------------- [sec-03]
   4.  Buttons, Inputs, Forms ----------------------------------- [sec-04]
-  5.  Toggle Switch -------------------------------------------- [sec-05]
-  6.  Table ---------------------------------------------------- [sec-06]
-  7.  Scrollbar ------------------------------------------------ [sec-07]
-  8.  HBox/VBox ------------------------------------------------ [sec-08]
-  9.  Header/Footer -------------------------------------------- [sec-09]
-  10. Card ----------------------------------------------------- [sec-10]
-  11. Tabbed --------------------------------------------------- [sec-11]
-  12. Carousel ------------------------------------------------- [sec-12]
-  13. Modal ---------------------------------------------------- [sec-13]
-  14. Sidebar -------------------------------------------------- [sec-14]
-  15. Utility -------------------------------------------------- [sec-15]
+  5.  Checkbox, Radio Buttons ---------------------------------- [sec-05]
+  6.  Toggle Switch -------------------------------------------- [sec-06]
+  7.  Table ---------------------------------------------------- [sec-07]
+  8.  Summary, Details ----------------------------------------- [sec-08]
+  9.  Scrollbar ------------------------------------------------ [sec-09]
+  10. HBox, VBox, RBox ----------------------------------------- [sec-10]
+  11. Header, Footer, Body ------------------------------------- [sec-11]
+  12. Card ----------------------------------------------------- [sec-12]
+  13. Dropdown, Menu ------------------------------------------- [sec-13]
+  14. Modal, close --------------------------------------------- [sec-14]
+  15. Captioned ------------------------------------------------ [sec-15]
+  16. Tabbed --------------------------------------------------- [sec-16]
+  17. Sidebar -------------------------------------------------- [sec-17]
+  18. Utility -------------------------------------------------- [sec-18]
 
 */
 /*
@@ -545,7 +548,7 @@ input[type=radio]:checked::before {
 
 /*
 -------------------------------------------------------------------------------
-5.  Toggle Switch [sec-5]
+6.  Toggle Switch [sec-6]
 -------------------------------------------------------------------------------
 */
 input[type=checkbox][role=switch] {
@@ -577,7 +580,7 @@ input[type=checkbox][role=switch]:checked {
 
 /*
 -------------------------------------------------------------------------------
-6. Table [sec-06]
+7. Table [sec-07]
 -------------------------------------------------------------------------------
 */
 tr:first-child {
@@ -606,7 +609,7 @@ td:first-child {
 
 /*
 -------------------------------------------------------------------------------
-5.  Summary/Details [sec-5]
+8.  Summary, Details [sec-8]
 -------------------------------------------------------------------------------
 */
 
@@ -649,7 +652,7 @@ details[open] > :not(summary){
 
 /*
 -------------------------------------------------------------------------------
-7.  Scrollbar [sec-07]
+9.  Scrollbar [sec-09]
 -------------------------------------------------------------------------------
 */
 ::-webkit-scrollbar {
@@ -674,7 +677,7 @@ details[open] > :not(summary){
 
 /*
 -------------------------------------------------------------------------------
-8. HBox/VBox [sec-08]
+10. HBox, VBox, RBox [sec-10]
 -------------------------------------------------------------------------------
 */
 
@@ -752,12 +755,15 @@ details[open] > :not(summary){
 
 /*
 -------------------------------------------------------------------------------
-9. Header/Footer/Body [sec-09]
+11. Header, Footer, Body [sec-11]
 -------------------------------------------------------------------------------
 */
 
 .header, .footer {
   background: var(--fg-color);
+}
+
+:is(.header, .footer):not(:has(.menu)) {
   padding: var(--spacing);
 }
 
@@ -811,7 +817,7 @@ details[open] > :not(summary){
 
 /*
 -------------------------------------------------------------------------------
-10. Card [sec-10]
+12. Card [sec-12]
 -------------------------------------------------------------------------------
 */
 .card {
@@ -820,13 +826,127 @@ details[open] > :not(summary){
   background: var(--bg2-color);
 }
 
-.card:not(:has(.header, .footer)) {
+.card:not(:has(.header, .footer, .menu)) {
   padding: var(--spacing);
 }
 
 /*
 -------------------------------------------------------------------------------
-11.  Tabbed [sec-11]
+13. Dropdown, Menu [sec-13]
+-------------------------------------------------------------------------------
+*/
+
+details.dropdown {
+  position: relative;
+}
+
+details.dropdown > :not(summary) {
+  border-radius: var(--border-radius);
+  background: var(--fg-color);
+  min-width: 30vw;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+:is(.hbox, .vbox, .rbox).menu {
+  gap: 0;
+}
+
+.menu > :is(button, .button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing);
+  min-width: 7em;
+  border-radius: 0;
+}
+
+/*
+-------------------------------------------------------------------------------
+14. Modal, Close [sec-14]
+-------------------------------------------------------------------------------
+*/
+.modal {
+  visibility: hidden;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: 99;
+  backdrop-filter: blur(10px) brightness(80%);
+}
+.modal:target {
+  visibility: visible;
+}
+
+.close {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  appearance: none;
+  background: none;
+}
+.close:hover {
+  filter: brightness(150%);
+}
+.close::before {
+  content: "";
+  width: 1em;
+  border-top: 2px solid var(--font-color);
+  position: absolute;
+  top: 0.1em;
+  left: 0.14em;
+  transform-origin: left center;
+  transform: rotate(45deg);
+}
+.close::after {
+  content: "";
+  width: 1em;
+  border-top: 2px solid var(--font-color);
+  position: absolute;
+  top: calc(100% - 0.2em);
+  left: 0.14em;
+  transform-origin: left center;
+  transform: rotate(-45deg);
+}
+
+/*
+-------------------------------------------------------------------------------
+15. Captioned [sec-15]
+-------------------------------------------------------------------------------
+*/
+
+.captioned {
+  display: table;
+  width: 1px;
+}
+
+.captioned > .caption {
+  display: table-caption;
+  caption-side: bottom;
+}
+
+.captioned > .caption.left {
+  caption-side: left;
+}
+
+.captioned > .caption.right {
+  caption-side: right;
+}
+
+.captioned > .caption.top {
+  caption-side: top;
+}
+
+/*
+-------------------------------------------------------------------------------
+16.  Tabbed [sec-16]
   Notes:
   - Based on this neat css only tabs concept by Michał Pawełczyk:
     https://codepen.io/MPDoctor/pen/mpJdYe
@@ -877,86 +997,7 @@ details[open] > :not(summary){
 
 /*
 -------------------------------------------------------------------------------
-13. Dropdown [sec-13]
--------------------------------------------------------------------------------
-*/
-
-details.dropdown {
-  position: relative;
-}
-
-details.dropdown > :not(summary) {
-  border-radius: var(--border-radius);
-  background: var(--fg-color);
-  min-width: 30vw;
-  position: absolute;
-  right: -1em;
-  z-index: 1;
-}
-
-/*
--------------------------------------------------------------------------------
-13. Modal [sec-13]
--------------------------------------------------------------------------------
-*/
-.modal {
-  visibility: hidden;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  z-index: 99;
-  backdrop-filter: blur(10px) brightness(80%);
-}
-.modal:target {
-  visibility: visible;
-}
-
-/*
--------------------------------------------------------------------------------
-13. Close Button [sec-13]
--------------------------------------------------------------------------------
-*/
-
-.close {
-  width: 1em;
-  height: 1em;
-  position: relative;
-  appearance: none;
-  background: none;
-}
-.close:hover {
-  filter: brightness(150%);
-}
-.close::before {
-  content: "";
-  width: 1em;
-  border-top: 2px solid var(--font-color);
-  position: absolute;
-  top: 0.1em;
-  left: 0.14em;
-  transform-origin: left center;
-  transform: rotate(45deg);
-}
-.close::after {
-  content: "";
-  width: 1em;
-  border-top: 2px solid var(--font-color);
-  position: absolute;
-  top: calc(100% - 0.2em);
-  left: 0.14em;
-  transform-origin: left center;
-  transform: rotate(-45deg);
-}
-
-/*
--------------------------------------------------------------------------------
-14.  Sidebar [sec-14]
+17.  Sidebar [sec-17]
 -------------------------------------------------------------------------------
 */
 details.sidebar {
@@ -1045,39 +1086,16 @@ details.sidebar[open] > summary::after {
 details.sidebar[open] > :not(summary) {
   animation: none;
 }
-/*
--------------------------------------------------------------------------------
-15. Captioned [sec-15]
--------------------------------------------------------------------------------
-*/
-
-.captioned {
-  display: table;
-  width: 1px;
-}
-
-.captioned > .caption {
-  display: table-caption;
-  caption-side: bottom;
-}
-
-.captioned > .caption.left {
-  caption-side: left;
-}
-
-.captioned > .caption.right {
-  caption-side: right;
-}
-
-.captioned > .caption.top {
-  caption-side: top;
-}
 
 /*
 -------------------------------------------------------------------------------
-15. Utility [sec-15]
+18. Utility [sec-18]
 -------------------------------------------------------------------------------
 */
+
+:is(.hbox, .vbox, .rbox, *).no-gap {
+  gap: 0;
+}
 
 .bg {
   background: var(--bg-color);
