@@ -27,8 +27,8 @@ Table of contents:
   16. Tabbed --------------------------------------------------- [sec-16]
   17. Sidebar -------------------------------------------------- [sec-17]
   18. Utility -------------------------------------------------- [sec-18]
-
 */
+
 /*
 -------------------------------------------------------------------------------
 0.  Normalize CSS [sec-00]
@@ -39,6 +39,7 @@ Table of contents:
   - Comments have been removed
 -------------------------------------------------------------------------------
 */
+
 *,
 ::before,
 ::after {
@@ -301,6 +302,12 @@ summary {
   font-family: "Material Symbols Outlined";
   src: url("../fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf");
 }
+
+::selection {
+  background: var(--primary-color);
+  color: var(--alt-font-color);
+}
+
 body {
   background: var(--bg-color);
 }
@@ -316,7 +323,7 @@ body {
   border-width: 2px;
 }
 
-:not(input, button) {
+:not(input, button, .button) {
   line-height: 1.5;
 }
 
@@ -325,6 +332,11 @@ body {
 3.  Typography [sec-03]
 -------------------------------------------------------------------------------
 */
+
+title {
+  font-size: calc(2 * var(--font-size));
+  font-weight: bold;
+}
 
 p {
   text-align: justify;
@@ -341,23 +353,9 @@ a:not(.button):hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
   font-family: var(--header-font-family);
-}
-
-h1 {
-  font-size: calc(2 * var(--font-size));
-}
-
-h2 {
-  font-size: calc(1.60 * var(--font-size));
-}
-
-h3 {
-  font-size: calc(1.30 * var(--font-size));
-}
-
-h4, h5, h6 {
-  font-size: calc(1.15 * var(--font-size));
+  font-size: calc(1.25 * var(--font-size));
 }
 
 ul, ol {
@@ -372,6 +370,55 @@ code, kbd {
   padding-right: calc(0.8 * var(--spacing));
   border-radius: var(--border-radius);
   font-family: var(--mono-font-family);
+}
+
+kbd {
+  align-self: flex-start;
+}
+
+hr {
+  border-bottom: solid;
+  border-color: var(--fg-color);
+}
+
+ins {
+  color: var(--success-color);
+}
+
+del {
+  color: var(--error-color);
+}
+
+.font-xl {
+  font-size: calc(2 * var(--font-size));
+}
+
+.font-lg {
+  font-size: calc(1.25 * var(--font-size));
+}
+
+.font-md {
+  font-size: calc(1 * var(--font-size));
+}
+
+.font-sm {
+  font-size: calc(0.75 * var(--font-size));
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.strike-through {
+  text-decoration: line-through;
 }
 
 /*
@@ -398,6 +445,9 @@ select.pill, textarea.pill, input.pill:not([type=checkbox], [type=radio], [type=
 }
 
 button, .button {
+  user-select: none;
+  align-self: flex-start;
+  display: inline-block;
   border-radius: var(--button-border-radius);
   text-decoration: none;
   cursor: pointer;
@@ -479,7 +529,13 @@ details > :not(summary) {
     transform: rotate(45deg);
   }
 }
-input[type=radio], input[type=checkbox]:not([role=switch], .sidebar-btn) {
+
+input[type=radio], input[type=checkbox] {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+input[type=radio], input[type=checkbox]:not(.switch) {
   outline: 0 solid var(--primary-color);
   width: 0.8em;
   height: 0.8em;
@@ -487,20 +543,20 @@ input[type=radio], input[type=checkbox]:not([role=switch], .sidebar-btn) {
   border-style: solid;
   appearance: none;
 }
-input[type=radio]:checked, input[type=checkbox]:checked:not([role=switch], .sidebar-btn) {
+input[type=radio]:checked, input[type=checkbox]:checked:not(.switch) {
   animation-name: checkbox-like-pulse;
   animation-duration: 0.2s;
   animation-fill-mode: forwards;
 }
-input[type=checkbox]:not([role=switch], .sidebar-btn) {
+input[type=checkbox]:not(.switch) {
   position: relative;
   border-radius: 0.2em;
 }
-input[type=checkbox]:not([role=switch], .sidebar-btn):checked {
+input[type=checkbox]:not(.switch):checked {
   background-color: var(--primary-color);
   border: none;
 }
-input[type=checkbox]:not([role=switch], .sidebar-btn)::before {
+input[type=checkbox]:not(.switch)::before {
   content: "";
   position: absolute;
   border-bottom: 2px solid var(--check-color);
@@ -511,7 +567,7 @@ input[type=checkbox]:not([role=switch], .sidebar-btn)::before {
   height: 0;
   opacity: 0;
 }
-input[type=checkbox]:not([role=switch], .sidebar-btn):checked::before {
+input[type=checkbox]:not(.switch):checked::before {
   animation-name: checkbox-check-grow;
   animation-duration: 0.2s;
   animation-fill-mode: forwards;
@@ -551,16 +607,15 @@ input[type=radio]:checked::before {
 6.  Toggle Switch [sec-6]
 -------------------------------------------------------------------------------
 */
-input[type=checkbox][role=switch] {
+input[type=checkbox].switch {
   background: var(--fg-color);
   appearance: none;
   border-radius: 1em;
   height: 1em;
   width: 2em;
-  margin: 0.25em 0;
   position: relative;
 }
-input[type=checkbox][role=switch]::before {
+input[type=checkbox].switch::before {
   position: absolute;
   content: "";
   background: var(--check-color);
@@ -571,10 +626,10 @@ input[type=checkbox][role=switch]::before {
   left: 2px;
   transition: 0.3s;
 }
-input[type=checkbox][role=switch]:checked::before {
+input[type=checkbox].switch:checked::before {
   transform: translateX(calc(100% + 4px));
 }
-input[type=checkbox][role=switch]:checked {
+input[type=checkbox].switch:checked {
   background: var(--primary-color);
 }
 
@@ -633,6 +688,10 @@ summary::before {
   transition: 0.4s;
   transform-origin: center center;
   transform: rotate(-45deg);
+}
+
+details > :not(summary) {
+  margin-left: 1em;
 }
 
 details[open] > summary::before {
@@ -697,7 +756,7 @@ details[open] > :not(summary){
   display: flex;
 }
 
-:is(.hbox, .vbox, .rbox):not(:has(.sidebar, .scroll)) {
+:is(.hbox, .vbox, .rbox):not(:has(>:is(.sidebar, .scroll))) {
   gap: var(--spacing);
 }
 
@@ -761,6 +820,10 @@ details[open] > :not(summary){
 
 .header, .footer {
   background: var(--fg-color);
+}
+
+:is(.header, .footer).hbox {
+  align-items: center;
 }
 
 :is(.header, .footer):not(:has(.menu)) {
@@ -840,13 +903,22 @@ details.dropdown {
   position: relative;
 }
 
+details.dropdown >:not(summary):not(.menu) {
+  padding: var(--spacing);
+}
+
 details.dropdown > :not(summary) {
   border-radius: var(--border-radius);
   background: var(--fg-color);
-  min-width: 30vw;
+  min-width: 17em;
   position: absolute;
-  right: 0;
+  left: 0;
   z-index: 1;
+}
+
+details.dropdown > :not(summary).right {
+  right: 0;
+  left: auto;
 }
 
 :is(.hbox, .vbox, .rbox).menu {
@@ -930,6 +1002,7 @@ details.dropdown > :not(summary) {
 .captioned > .caption {
   display: table-caption;
   caption-side: bottom;
+  text-justify: inter-word;
 }
 
 .captioned > .caption.left {
@@ -1001,7 +1074,6 @@ details.dropdown > :not(summary) {
 -------------------------------------------------------------------------------
 */
 details.sidebar {
-  height: 100%;
   position: relative;
   /*width: calc(2em + 3 * var(--spacing));*/
 }
@@ -1146,6 +1218,26 @@ details.sidebar[open] > :not(summary) {
   --border-color: var(--error-color);
 }
 
+:is(span, p, i, b, em, a, strong, mark, small, del, ins, sub, sup, title, h1, h2, h3, h4, h5, h6).primary {
+  color: var(--primary-color);
+}
+
+:is(span, p, i, b, em, a, strong, mark, small, del, ins, sub, sup, title, h1, h2, h3, h4, h5, h6).secondary {
+  color: var(--secondary-color);
+}
+
+:is(span, p, i, b, em, a, strong, mark, small, del, ins, sub, sup, title, h1, h2, h3, h4, h5, h6).success {
+  color: var(--success-color);
+}
+
+:is(span, p, i, b, em, a, strong, mark, small, del, ins, sub, sup, title, h1, h2, h3, h4, h5, h6).warning {
+  color: var(--warning-color);
+}
+
+:is(span, p, i, b, em, a, strong, mark, small, del, ins, sub, sup, title, h1, h2, h3, h4, h5, h6).error {
+  color: var(--error-color);
+}
+
 .square {
   height: 1.5em;
   width: 1.5em;
@@ -1212,6 +1304,10 @@ details.sidebar[open] > :not(summary) {
 
 .margin-bottom {
   margin-bottom: var(--spacing);
+}
+
+.rounded {
+  border-radius: var(--border-radius);
 }
 
 .no-border {
