@@ -734,6 +734,30 @@ details[open] > :not(summary){
   scrollbar-color: var(--fg-color) var(--bg2-color);
 }
 
+.scroll-x {
+  overflow-x: scroll;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.hbox > header +.scroll-x {
+  margin-left: calc(-1 * var(--spacing));
+}
+
+.hbox > .scroll-x:has(+footer) {
+  margin-right: calc(-1 * var(--spacing));
+}
+
+.vbox > header +.scroll-y {
+  margin-top: calc(-1 * var(--spacing));
+}
+
+.vbox > .scroll-y:has(+footer) {
+  margin-bottom: calc(-1 * var(--spacing));
+}
+
 /*
 -------------------------------------------------------------------------------
 10. HBox, VBox, RBox [sec-10]
@@ -752,18 +776,6 @@ details[open] > :not(summary){
   align-self: stretch;
 }
 
-.hbox, .vbox, .rbox {
-  display: flex;
-}
-
-:is(.hbox, .vbox, .rbox):not(:has(>:is(.sidebar, .scroll))) {
-  gap: var(--spacing);
-}
-
-:is(.vbox, .hbox, .rbox) > .center {
-  align-self: center;
-}
-
 :is(.vbox, .hbox, .rbox) > .start {
   align-self: flex-start;
 }
@@ -772,39 +784,28 @@ details[open] > :not(summary){
   align-self: flex-end;
 }
 
-.vbox {
-  flex-direction: column;
+.hbox, .vbox, .rbox {
+  display: flex;
+  gap: var(--spacing);
 }
 
-.vbox.scroll {
-  overflow-y: scroll;
+.vbox {
+  flex-direction: column;
 }
 
 .hbox {
   flex-direction: row;
 }
 
-.hbox.scroll {
-  overflow-x: scroll;
-}
-
 @media (min-aspect-ratio: 1.2) {
   .rbox {
     flex-direction: row;
-  }
-  
-  .rbox.scroll {
-    overflow-x: scroll;
   }
 }
 
 @media (max-aspect-ratio: 1.2) {
   .rbox {
     flex-direction: column;
-  }
-  
-  .rbox.scroll {
-    overflow-y: scroll;
   }
 }
 
@@ -818,64 +819,27 @@ details[open] > :not(summary){
 -------------------------------------------------------------------------------
 */
 
-.header, .footer {
+header, footer {
   background: var(--fg-color);
-}
-
-:is(.header, .footer).hbox {
-  align-items: center;
-}
-
-:is(.header, .footer):not(:has(.menu)) {
   padding: var(--spacing);
 }
 
-.vbox > .body {
-  padding-left: var(--spacing);
-  padding-right: var(--spacing);
-}
-.vbox > body:first-child {
-  padding-top: var(--spacing);
-}
-.vbox > .body:last-child {
-  padding-bottom: var(--spacing);
+.vbox:is(.card, .padding) > header {
+  margin-top: calc(-1 * var(--spacing));
+  margin-left: calc(-1 * var(--spacing));
+  margin-right: calc(-1 * var(--spacing));
 }
 
-.hbox > .body {
-  padding-top: var(--spacing);
-  padding-bottom: var(--spacing);
-}
-.hbox > body:first-child {
-  padding-left: var(--spacing);
-}
-.hbox > .body:last-child {
-  padding-right: var(--spacing);
+.hbox:is(.card, .padding) > header {
+  margin-top: calc(-1 * var(--spacing));
+  margin-left: calc(-1 * var(--spacing));
+  margin-bottom: calc(-1 * var(--spacing));
 }
 
-@media (min-aspect-ratio: 1.2) {
-  .rbox > .body {
-    padding-top: var(--spacing);
-    padding-bottom: var(--spacing);
-  }
-  .rbox > body:first-child {
-    padding-right: var(--spacing);
-  }
-  .rbox > .body:last-child {
-    padding-left: var(--spacing);
-  }
-}
-
-@media (max-aspect-ratio: 1.2) {
-  .rbox > .body {
-    padding-left: var(--spacing);
-    padding-right: var(--spacing);
-  }
-  .rbox > body:first-child {
-    padding-top: var(--spacing);
-  }
-  .rbox > .body:last-child {
-    padding-bottom: var(--spacing);
-  }
+.vbox:is(.card, .padding) > footer {
+  margin-left: calc(-1 * var(--spacing));
+  margin-right: calc(-1 * var(--spacing));
+  margin-bottom: calc(-1 * var(--spacing));
 }
 
 /*
@@ -887,9 +851,6 @@ details[open] > :not(summary){
   border-style: solid;
   border-radius: var(--border-radius);
   background: var(--bg2-color);
-}
-
-.card:not(:has(.header, .footer, .menu)) {
   padding: var(--spacing);
 }
 
@@ -921,8 +882,14 @@ details.dropdown > :not(summary).right {
   left: auto;
 }
 
-:is(.hbox, .vbox, .rbox).menu {
-  gap: 0;
+.vbox > .menu {
+  margin-top: var(-1 * var(--spacing));
+  margin-bottom: var(-1 * var(--spacing));
+}
+
+.hbox > .menu {
+  margin-right: var(-1 * var(--spacing));
+  margin-right: var(-1 * var(--spacing));
 }
 
 .menu > :is(button, .button) {
@@ -1075,6 +1042,7 @@ details.dropdown > :not(summary).right {
 */
 details.sidebar {
   position: relative;
+  margin-right: calc(-1 * var(--spacing));
   /*width: calc(2em + 3 * var(--spacing));*/
 }
 details.sidebar > *:not(summary) {
@@ -1185,7 +1153,7 @@ details.sidebar[open] > :not(summary) {
   color: var(--alt-font-color);
 }
 
-:is(.primary, .secondary, .success, .warning, .error) :is(.header, .footer, th) {
+:is(.primary, .secondary, .success, .warning, .error) :is(header, footer, th) {
   --font-color: var(--alt-font-color);
 }
 
@@ -1254,8 +1222,9 @@ details.sidebar[open] > :not(summary) {
 }
 
 .icon {
-  font-family: "Material Symbols Outlined";
-  font-size: calc(1.15 * var(--font-size));
+  background-color: var(--font-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .no-padding {
