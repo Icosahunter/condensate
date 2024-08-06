@@ -758,26 +758,6 @@ details[open] > :not(summary){
   margin-bottom: calc(-1 * var(--spacing));
 }
 
-@media (min-aspect-ratio: 1.2) {
-  .rbox > header +.scroll-x {
-    margin-left: calc(-1 * var(--spacing));
-  }
-  
-  .rbox > .scroll-x:has(+footer) {
-    margin-right: calc(-1 * var(--spacing));
-  }
-}
-
-@media (max-aspect-ratio: 1.2) {
-  .rbox > header +.scroll-y {
-    margin-top: calc(-1 * var(--spacing));
-  }
-  
-  .rbox > .scroll-y:has(+footer) {
-    margin-bottom: calc(-1 * var(--spacing));
-  }
-}
-
 /*
 -------------------------------------------------------------------------------
 10. HBox, VBox, RBox [sec-10]
@@ -844,74 +824,22 @@ header, footer {
   padding: var(--spacing);
 }
 
-:is(.hbox, .vbox):is(.card, .padding, .padding-top) > header {
+.vbox:is(.card, .padding) > header {
   margin-top: calc(-1 * var(--spacing));
-}
-.hbox:is(.card, .padding, .padding-bottom) > header {
-  margin-bottom: calc(-1 * var(--spacing));
-}
-:is(.hbox, .vbox):is(.card, .padding, .padding-left) > header {
   margin-left: calc(-1 * var(--spacing));
-}
-.vbox:is(.card, .padding, .padding-right) > header {
   margin-right: calc(-1 * var(--spacing));
 }
 
-.hbox:is(.card, .padding, .padding-top) > footer {
+.hbox:is(.card, .padding) > header {
   margin-top: calc(-1 * var(--spacing));
-}
-:is(.hbox, .vbox):is(.card, .padding, .padding-bottom) > footer {
+  margin-left: calc(-1 * var(--spacing));
   margin-bottom: calc(-1 * var(--spacing));
 }
-:is(.hbox, .vbox):is(.card, .padding, .padding-left) > footer {
+
+.vbox:is(.card, .padding) > footer {
   margin-left: calc(-1 * var(--spacing));
-}
-.vbox:is(.card, .padding, .padding-right) > footer {
   margin-right: calc(-1 * var(--spacing));
-}
-
-@media (min-aspect-ratio: 1.2) {
-  .rbox:is(.card, .padding, .padding-top) > header {
-    margin-top: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-bottom) > header {
-    margin-bottom: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-left) > header {
-    margin-left: calc(-1 * var(--spacing));
-  }
-  
-  .rbox:is(.card, .padding, .padding-top) > footer {
-    margin-top: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-bottom) > footer {
-    margin-bottom: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-left) > footer {
-    margin-left: calc(-1 * var(--spacing));
-  }
-}
-
-@media (max-aspect-ratio: 1.2) {
-  .rbox:is(.card, .padding, .padding-top) > header {
-    margin-top: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-left) > header {
-    margin-left: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-right) > header {
-    margin-right: calc(-1 * var(--spacing));
-  }
-  
-  .rbox:is(.card, .padding, .padding-bottom) > footer {
-    margin-bottom: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-left) > footer {
-    margin-left: calc(-1 * var(--spacing));
-  }
-  .rbox:is(.card, .padding, .padding-right) > footer {
-    margin-right: calc(-1 * var(--spacing));
-  }
+  margin-bottom: calc(-1 * var(--spacing));
 }
 
 /*
