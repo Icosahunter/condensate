@@ -17,3 +17,5 @@ publish:
     git checkout website
     cp /tmp/condensate/index.html index.html
     cp /tmp/condensate/condensate.css condensate.css
+    git add --all
+    git commit -m "Publish"
