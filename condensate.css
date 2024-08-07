@@ -340,7 +340,7 @@ title {
 
 p {
   text-align: justify;
-  text-justify: distribute;
+  text-justify: inter-word;
 }
 
 a {
@@ -370,9 +370,14 @@ code, kbd {
   padding-right: calc(0.8 * var(--spacing));
   border-radius: var(--border-radius);
   font-family: var(--mono-font-family);
+  overflow-x: scroll;
 }
 
-kbd {
+:is(code, kbd) > * {
+  font-family: var(--mono-font-family);
+}
+
+.hbox > kbd {
   align-self: flex-start;
 }
 
@@ -448,6 +453,7 @@ button, .button {
   user-select: none;
   align-self: flex-start;
   display: inline-block;
+  box-sizing: content-box;
   border-radius: var(--button-border-radius);
   text-decoration: none;
   cursor: pointer;
@@ -882,14 +888,18 @@ details.dropdown > :not(summary).right {
   left: auto;
 }
 
-.vbox > .menu {
-  margin-top: var(-1 * var(--spacing));
-  margin-bottom: var(-1 * var(--spacing));
+.menu {
+  gap: 0;
 }
 
 .hbox > .menu {
-  margin-right: var(-1 * var(--spacing));
-  margin-right: var(-1 * var(--spacing));
+  margin-top: calc(-1 * var(--spacing));
+  margin-bottom: calc(-1 * var(--spacing));
+}
+
+.vbox > .menu {
+  margin-left: calc(-1 * var(--spacing));
+  margin-right: calc(-1 * var(--spacing));
 }
 
 .menu > :is(button, .button) {
@@ -1040,10 +1050,12 @@ details.dropdown > :not(summary).right {
 17.  Sidebar [sec-17]
 -------------------------------------------------------------------------------
 */
+
+:is(.vbox, .hbox, .rbox) > details.sidebar {
+  margin-right: calc(-1 * var(--spacing));
+}
 details.sidebar {
   position: relative;
-  margin-right: calc(-1 * var(--spacing));
-  /*width: calc(2em + 3 * var(--spacing));*/
 }
 details.sidebar > *:not(summary) {
   margin: 0;
