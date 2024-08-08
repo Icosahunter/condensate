@@ -188,8 +188,11 @@ summary {
   --header-font-family: var(--font-family);
   --mono-font-family: monospace;
   --border-radius: 0.4rem;
+  --border-width: 3px;
+  --input-border: 0;
+  --button-border: var(--input-border);
+  --panel-border: 0;
   --button-border-radius: var(--border-radius);
-  --search-border-radius: var(--border-radius);
   --spacing: 0.6rem;
   --dm-bg-color: #282a36;
   --dm-bg2-color: #2f3240;
@@ -202,7 +205,6 @@ summary {
   --dm-border-color: var(--dm-fg-color);
   --dm-font-color: #ddd;
   --dm-alt-font-color: #000;
-  --dm-check-color: var(--dm-font-color);
   --dm-hover-brightness: 130%;
   --dm-alt-hover-brightness: 130%;
   --lm-bg-color: #fff;
@@ -215,8 +217,7 @@ summary {
   --lm-error-color: #f53b3b;
   --lm-border-color: var(--lm-fg-color);
   --lm-font-color: #000;
-  --lm-alt-font-color: var(--lm-font-color);
-  --lm-check-color: var(--lm-bg-color);
+  --lm-alt-font-color: white;
   --lm-hover-brightness: 110%;
   --lm-alt-hover-brightness: 130%;
 }
@@ -234,7 +235,7 @@ summary {
     --border-color: var(--lm-border-color);
     --font-color: var(--lm-font-color);
     --alt-font-color: var(--lm-alt-font-color);
-    --check-color: var(--lm-check-color);
+    --alt-font-color: var(--lm-alt-font-color);
     --hover-brightness: var(--lm-hover-brightness);
     --alt-hover-brightness:  var(--lm-alt-hover-brightness);
   }
@@ -253,7 +254,7 @@ summary {
     --border-color: var(--dm-border-color);
     --font-color: var(--dm-font-color);
     --alt-font-color: var(--dm-alt-font-color);
-    --check-color: var(--dm-check-color);
+    --alt-font-color: var(--dm-alt-font-color);
     --hover-brightness: var(--dm-hover-brightness);
     --alt-hover-brightness:  var(--dm-alt-hover-brightness);
   }
@@ -271,7 +272,7 @@ summary {
   --border-color: var(--lm-border-color);
   --font-color: var(--lm-font-color);
   --alt-font-color: var(--lm-alt-font-color);
-  --check-color: var(--lm-check-color);
+  --alt-font-color: var(--lm-alt-font-color);
   --hover-brightness: var(--lm-hover-brightness);
   --alt-hover-brightness:  var(--lm-alt-hover-brightness);
 }
@@ -288,7 +289,7 @@ summary {
   --border-color: var(--dm-border-color);
   --font-color: var(--dm-font-color);
   --alt-font-color: var(--dm-alt-font-color);
-  --check-color: var(--dm-check-color);
+  --alt-font-color: var(--dm-alt-font-color);
   --hover-brightness: var(--dm-hover-brightness);
   --alt-hover-brightness:  var(--dm-alt-hover-brightness);
 }
@@ -318,9 +319,10 @@ body {
   color: var(--font-color);
   font-family: var(--font-family);
   font-size: var(--font-size);
-  border-style: none;
+  border-style: solid;
   border-color: var(--border-color);
-  border-width: 2px;
+  border-width: 0;
+  vertical-align: middle;
 }
 
 :not(input, button, .button) {
@@ -371,6 +373,7 @@ code, kbd {
   border-radius: var(--border-radius);
   font-family: var(--mono-font-family);
   overflow-x: scroll;
+  border-width: var(--panel-border);
 }
 
 :is(code, kbd) > * {
@@ -382,8 +385,7 @@ code, kbd {
 }
 
 hr {
-  border-bottom: solid;
-  border-color: var(--fg-color);
+  border-bottom-width: var(--border-width);
 }
 
 ins {
@@ -442,6 +444,10 @@ select, textarea, input:not([type=checkbox], [type=radio], [type=range]), button
   padding-right: var(--spacing);
 }
 
+select, textarea, input:not([type=checkbox], [type=radio], [type=range]) {
+  border-width: var(--input-border);
+}
+
 select:focus, textarea:focus, input:focus:not([type=checkbox], [type=radio], [type=range]), button:focus, .button:focus {
   outline: 2px solid var(--primary-color);
 }
@@ -457,6 +463,7 @@ button, .button {
   border-radius: var(--button-border-radius);
   text-decoration: none;
   cursor: pointer;
+  border-width: var(--button-border);
 }
 
 button:hover, .button:hover {
@@ -467,9 +474,6 @@ button:focus, .button:focus {
   outline: none;
 }
 
-input[type=search] {
-  border-radius: var(--search-border-radius);
-}
 input[type=number]::-webkit-inner-spin-button {
   color: var(--bg2-color);
 }
@@ -527,16 +531,17 @@ details > :not(summary) {
     transform: rotate(-45deg);
   }
   100% {
-    left: 0.25em;
-    top: 0.05em;
-    width: 0.3em;
-    height: 0.6em;
+    left: 0.2em;
+    top: 0;
+    width: 0.4em;
+    height: 0.65em;
     opacity: 100%;
     transform: rotate(45deg);
   }
 }
 
 input[type=radio], input[type=checkbox] {
+  box-sizing: content-box;
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
@@ -546,7 +551,7 @@ input[type=radio], input[type=checkbox]:not(.switch) {
   width: 0.8em;
   height: 0.8em;
   background: var(--bg2-color);
-  border-style: solid;
+  border-width: var(--border-width);
   appearance: none;
 }
 input[type=radio]:checked, input[type=checkbox]:checked:not(.switch) {
@@ -560,13 +565,15 @@ input[type=checkbox]:not(.switch) {
 }
 input[type=checkbox]:not(.switch):checked {
   background-color: var(--primary-color);
-  border: none;
+  border-color: var(--primary-color);
 }
 input[type=checkbox]:not(.switch)::before {
   content: "";
   position: absolute;
-  border-bottom: 2px solid var(--check-color);
-  border-right: 2px solid var(--check-color);
+  border-width: var(--border-width);
+  border-color: var(--alt-font-color);
+  border-bottom-style: solid;
+  border-right-style: solid;
   left: 0.4em;
   top: 0.4em;
   width: 0;
@@ -583,7 +590,7 @@ input[type=radio] {
   border-radius: 0.8em;
 }
 input[type=radio]:checked {
-  border-style: solid;
+  border-width: var(--border-width);
   border-color: var(--primary-color);
 }
 input[type=radio]::before {
@@ -593,8 +600,8 @@ input[type=radio]::before {
   border-radius: 0;
   width: 0;
   height: 0;
-  top: 0.35em;
-  left: 0.35em;
+  top: 0.3em;
+  left: 0.3em;
   transition: 0.2s;
 }
 input[type=radio]:checked::before {
@@ -602,8 +609,8 @@ input[type=radio]:checked::before {
   position: absolute;
   background: var(--primary-color);
   border-radius: 0.3em;
-  width: 0.3em;
-  height: 0.3em;
+  width: 0.5em;
+  height: 0.5em;
   top: 0.125em;
   left: 0.125em;
 }
@@ -614,7 +621,8 @@ input[type=radio]:checked::before {
 -------------------------------------------------------------------------------
 */
 input[type=checkbox].switch {
-  background: var(--fg-color);
+  background: var(--border-color);
+  border-width: var(--input-border);
   appearance: none;
   border-radius: 1em;
   height: 1em;
@@ -624,16 +632,17 @@ input[type=checkbox].switch {
 input[type=checkbox].switch::before {
   position: absolute;
   content: "";
-  background: var(--check-color);
+  background: var(--alt-font-color);
   border-radius: 1em;
-  width: calc(1em - 4px);
-  height: calc(1em - 4px);
-  top: 2px;
-  left: 2px;
+  width: 1em;
+  height: 1em;
+  top: 0;
+  left: 0;
   transition: 0.3s;
 }
 input[type=checkbox].switch:checked::before {
-  transform: translateX(calc(100% + 4px));
+  transform: translateX(calc(100%));
+  background: var(--border-color);
 }
 input[type=checkbox].switch:checked {
   background: var(--primary-color);
@@ -650,14 +659,14 @@ tr:first-child {
 
 table {
   border-radius: var(--border-radius);
-  border-style: solid;
+  border-width: var(--border-width);
   border-spacing: 0;
 }
 
 td {
   padding: calc(0.4 * var(--spacing)) var(--spacing);
-  border-top-style: solid;
-  border-left-style: solid;
+  border-top-width: var(--border-width);
+  border-left-width: var(--border-width);
 }
 
 th {
@@ -685,9 +694,9 @@ summary::before {
   content: "";
   width: 0.5em;
   height: 0.5em;
-  border-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
   border-color: var(--font-color);
-  border-width: 0 2px 2px 0;
   position: absolute;
   top: 0.5em;
   left: 0;
@@ -830,15 +839,29 @@ header, footer {
   padding: var(--spacing);
 }
 
+header {
+  border-bottom-width: var(--panel-border);
+}
+
+footer {
+  border-top-width: var(--panel-border);
+}
+
+.hbox:is(.card, .padding) > header {
+  margin-top: calc(-1 * var(--spacing));
+  margin-left: calc(-1 * var(--spacing));
+  margin-bottom: calc(-1 * var(--spacing));
+}
+
 .vbox:is(.card, .padding) > header {
   margin-top: calc(-1 * var(--spacing));
   margin-left: calc(-1 * var(--spacing));
   margin-right: calc(-1 * var(--spacing));
 }
 
-.hbox:is(.card, .padding) > header {
+.hbox:is(.card, .padding) > footer {
   margin-top: calc(-1 * var(--spacing));
-  margin-left: calc(-1 * var(--spacing));
+  margin-right: calc(-1 * var(--spacing));
   margin-bottom: calc(-1 * var(--spacing));
 }
 
@@ -848,13 +871,39 @@ header, footer {
   margin-bottom: calc(-1 * var(--spacing));
 }
 
+@media (min-aspect-ratio: 1.2) {
+  .rbox:is(.card, .padding) > header {
+    margin-top: calc(-1 * var(--spacing));
+    margin-left: calc(-1 * var(--spacing));
+    margin-bottom: calc(-1 * var(--spacing));
+  }
+  .rbox:is(.card, .padding) > footer {
+    margin-top: calc(-1 * var(--spacing));
+    margin-right: calc(-1 * var(--spacing));
+    margin-bottom: calc(-1 * var(--spacing));
+  }
+}
+
+@media (max-aspect-ratio: 1.2) {
+  .rbox:is(.card, .padding) > header {
+    margin-top: calc(-1 * var(--spacing));
+    margin-left: calc(-1 * var(--spacing));
+    margin-right: calc(-1 * var(--spacing));
+  }  
+  .rbox:is(.card, .padding) > footer {
+    margin-left: calc(-1 * var(--spacing));
+    margin-right: calc(-1 * var(--spacing));
+    margin-bottom: calc(-1 * var(--spacing));
+  }
+}
+
 /*
 -------------------------------------------------------------------------------
 12. Card [sec-12]
 -------------------------------------------------------------------------------
 */
 .card {
-  border-style: solid;
+  border-width: var(--border-width);
   border-radius: var(--border-radius);
   background: var(--bg2-color);
   padding: var(--spacing);
@@ -877,6 +926,7 @@ details.dropdown >:not(summary):not(.menu) {
 details.dropdown > :not(summary) {
   border-radius: var(--border-radius);
   background: var(--fg-color);
+  border-width: var(--panel-border);
   min-width: 17em;
   position: absolute;
   left: 0;
@@ -902,13 +952,33 @@ details.dropdown > :not(summary).right {
   margin-right: calc(-1 * var(--spacing));
 }
 
-.menu > :is(button, .button) {
+.menu > :is(button, .button, a) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing);
   min-width: 7em;
   border-radius: 0;
+}
+
+.hbox.menu > :is(button, .button):not(:first-child) {
+  border-left-width: 0;
+}
+
+.vbox.menu > :is(button, .button):not(:first-child) {
+  border-top-width: 0;
+}
+
+@media (min-aspect-ratio: 1.2) {
+  .rbox  > :is(button, .button):not(:first-child) {
+    border-left-width: 0;
+  }
+}
+
+@media (max-aspect-ratio: 1.2) {
+  .rbox  > :is(button, .button):not(:first-child) {
+    border-top-width: 0;
+  }
 }
 
 /*
@@ -947,7 +1017,8 @@ details.dropdown > :not(summary).right {
 .close::before {
   content: "";
   width: 1em;
-  border-top: 2px solid var(--font-color);
+  border-color: var(--font-color);
+  border-top-width: var(--border-width);
   position: absolute;
   top: 0.1em;
   left: 0.14em;
@@ -957,7 +1028,8 @@ details.dropdown > :not(summary).right {
 .close::after {
   content: "";
   width: 1em;
-  border-top: 2px solid var(--font-color);
+  border-color: var(--font-color);
+  border-top-width: var(--border-width);
   position: absolute;
   top: calc(100% - 0.2em);
   left: 0.14em;
@@ -1010,8 +1082,10 @@ details.dropdown > :not(summary).right {
 }
 .tabbed > .tabs > label {
   background: var(--fg-color);
-  margin-bottom: -2px;
+  margin-bottom: calc(-1 * var(--border-width));
   padding: 0 var(--spacing);
+  border-top-width: var(--panel-border);
+  border-right-width: var(--panel-border);
 }
 .tabbed > .tabs > label:hover {
   filter: brightness(120%);
@@ -1028,7 +1102,7 @@ details.dropdown > :not(summary).right {
   background: var(--bg2-color);
   border-radius: var(--border-radius);
   border-top-left-radius: 0;
-  border-top: 2px solid var(--fg-color);
+  border-top-width: var(--border-width);
 }
 .tabbed.overlay {
   position: relative;
@@ -1061,6 +1135,7 @@ details.sidebar > *:not(summary) {
   margin: 0;
   background: var(--bg2-color);
   height: 100%;
+  border-right-width: var(--panel-border);
 }
 details.sidebar > summary {
   display: block;
@@ -1078,12 +1153,12 @@ details.sidebar > summary::before {
   top: 0.5em;
   left: 0.5em;
   width: 1em;
-  height: calc(0.5em + 1px);
+  height: calc(0.5em + 0.5 * var(--border-width));
   transition: 0.4s;
   transform: none;
-  border-style: solid;
   border-color: var(--font-color);
-  border-width: 2px 0 2px 0;
+  border-width: var(--border-width) 0 var(--border-width) 0;
+  border-style: solid;
 }
 details.sidebar > summary::after {
   content: "";
@@ -1093,7 +1168,9 @@ details.sidebar > summary::after {
   width: 1em;
   height: 0.5em;
   transition: 0.4s;
-  border-bottom: 2px solid var(--font-color);
+  border-color: var(--font-color);
+  border-bottom-width: var(--border-width);
+  border-bottom-style: solid;
 }
 @media (min-aspect-ratio: 1.2) {
   details.sidebar[open] {
@@ -1123,16 +1200,22 @@ details.sidebar[open] > summary {
   left: calc(100% - 2em - var(--spacing));
 }
 details.sidebar[open] > summary::before {
-  border-bottom: none;
-  top: 0.88em;
-  left: 0.2em;
+  top: 0.87em;
+  left: 0.35em;
+  border-bottom-style: none;
+  height: 0;
   width: 1.3em;
+  transition: 0.4s 0.2s;
+  transform-origin: center;
   transform: rotate(45deg);
 }
 details.sidebar[open] > summary::after {
-  top: 0.62em;
-  left: 0.2em;
+  top: 0.87em;
+  left: 0.35em;
+  height: 0;
   width: 1.3em;
+  transition: 0.4s 0.2s;
+  transform-origin: center;
   transform: rotate(-45deg);
 }
 details.sidebar[open] > :not(summary) {
@@ -1296,27 +1379,27 @@ details.sidebar[open] > :not(summary) {
 }
 
 .border {
-  border-style: solid;
+  border-width: var(--border-width);
   border-radius: var(--border-radius);
 }
 
 .border-right {
-  border-right-style: solid;
+  border-right-width: var(--border-width);
   border-radius: var(--border-radius);
 }
 
 .border-left {
-  border-left-style: solid;
+  border-left-width: var(--border-width);
   border-radius: var(--border-radius);
 }
 
 .border-top {
-  border-top-style: solid;
+  border-top-width: var(--border-width);
   border-radius: var(--border-radius);
 }
 
 .border-bottom {
-  border-bottom-style: solid;
+  border-bottom-width: var(--border-width);
   border-radius: var(--border-radius);
 }
 
