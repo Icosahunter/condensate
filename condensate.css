@@ -977,6 +977,14 @@ details.dropdown > :not(summary).right {
   border-radius: 0;
 }
 
+.menu {
+  align-self: stretch;
+}
+
+.menu > * {
+  box-sizing: border-box;
+}
+
 .hbox.menu > :is(button, .button):not(:first-child) {
   border-left-width: 0;
 }
@@ -985,9 +993,21 @@ details.dropdown > :not(summary).right {
   border-top-width: 0;
 }
 
+.hbox.menu > :is(button, .button, a) {
+  height: 100%;
+}
+
+.vbox.menu > :is(button, .button, a) {
+  width: 100%;
+}
+
 @media (min-aspect-ratio: 1.2) {
   .rbox  > :is(button, .button):not(:first-child) {
     border-left-width: 0;
+    height: 100%;
+  }
+  .rbox.menu > :is(button, .button, a) {
+    height: 100%;
   }
   .menu > :is(button, .button, a) {
     min-width: 7em;
@@ -1000,6 +1020,10 @@ details.dropdown > :not(summary).right {
 @media (max-aspect-ratio: 1.2) {
   .rbox  > :is(button, .button):not(:first-child) {
     border-top-width: 0;
+    width: 100%;
+  }
+  .rbox.menu > :is(button, .button, a) {
+    width: 100%;
   }
 }
 
