@@ -515,6 +515,7 @@ details > :not(summary) {
 5.  Checkbox & Radio Buttons [sec-5]
 -------------------------------------------------------------------------------
 */
+
 @keyframes checkbox-like-pulse {
   0% {
     outline-width: 0;
@@ -526,6 +527,7 @@ details > :not(summary) {
     outline-width: 0px;
   }
 }
+
 @keyframes checkbox-check-grow {
   0% {
     transform: rotate(-45deg);
@@ -791,12 +793,28 @@ details[open] > :not(summary){
   align-self: stretch;
 }
 
-:is(.vbox, .hbox, .rbox) > .start {
+:is(.vbox, .hbox, .rbox) > :is(.left, .top) {
   align-self: flex-start;
 }
 
-:is(.vbox, .hbox, .rbox) > .end {
+:is(.vbox, .hbox, .rbox) > :is(.right, .bottom) {
   align-self: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.items-left, .items-top {
+  align-items: flex-start;
+}
+
+.items-right, .items-bottom {
+  align-items: flex-end;
 }
 
 .hbox, .vbox, .rbox {
@@ -1009,8 +1027,8 @@ details.dropdown > :not(summary).right {
 }
 
 .close {
-  width: 1em;
-  height: 1em;
+  width: 2em;
+  height: 2em;
   position: relative;
   appearance: none;
   background: none;
@@ -1020,24 +1038,28 @@ details.dropdown > :not(summary).right {
 }
 .close::before {
   content: "";
-  width: 1em;
+  border-style: solid;
   border-color: var(--font-color);
   border-top-width: var(--border-width);
   position: absolute;
-  top: 0.1em;
-  left: 0.14em;
-  transform-origin: left center;
+  top: 0.85em;
+  left: 0.35em;
+  height: 0;
+  width: 1.3em;
+  transform-origin: center;
   transform: rotate(45deg);
 }
 .close::after {
   content: "";
-  width: 1em;
+  border-style: solid;
   border-color: var(--font-color);
   border-top-width: var(--border-width);
   position: absolute;
-  top: calc(100% - 0.2em);
-  left: 0.14em;
-  transform-origin: left center;
+  top: 0.85em;
+  left: 0.35em;
+  height: 0;
+  width: 1.3em;
+  transform-origin: center;
   transform: rotate(-45deg);
 }
 
