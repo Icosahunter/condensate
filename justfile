@@ -12,7 +12,7 @@ publish:
     #!/usr/bin/env bash
     rm -rf /tmp/condensate
     mkdir /tmp/condensate
-    cp test.html /tmp/condensate/index.html
+    cp index.html /tmp/condensate/index.html
     cp condensate.css /tmp/condensate/condensate.css
     git checkout website
     cp /tmp/condensate/index.html index.html
