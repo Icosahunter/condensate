@@ -1064,7 +1064,7 @@ details.dropdown > :not(summary).right {
   content: "";
   border-style: solid;
   border-color: var(--font-color);
-  border-top-width: var(--border-width);
+  border-width: var(--border-width) 0 0 0;
   position: absolute;
   top: 0.85em;
   left: 0.35em;
@@ -1077,7 +1077,7 @@ details.dropdown > :not(summary).right {
   content: "";
   border-style: solid;
   border-color: var(--font-color);
-  border-top-width: var(--border-width);
+  border-width: var(--border-width) 0 0 0;
   position: absolute;
   top: 0.85em;
   left: 0.35em;
@@ -1250,7 +1250,7 @@ details.sidebar[open] > summary {
   left: calc(100% - 2em - var(--spacing));
 }
 details.sidebar[open] > summary::before {
-  top: 0.87em;
+  top: 0.95em;
   left: 0.35em;
   border-bottom-style: none;
   height: 0;
@@ -1260,7 +1260,7 @@ details.sidebar[open] > summary::before {
   transform: rotate(45deg);
 }
 details.sidebar[open] > summary::after {
-  top: 0.87em;
+  top: 0.95em;
   left: 0.35em;
   height: 0;
   width: 1.3em;
