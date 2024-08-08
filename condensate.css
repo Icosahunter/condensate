@@ -927,7 +927,6 @@ details.dropdown > :not(summary) {
   border-radius: var(--border-radius);
   background: var(--fg-color);
   border-width: var(--panel-border);
-  min-width: 17em;
   position: absolute;
   left: 0;
   z-index: 1;
@@ -957,7 +956,6 @@ details.dropdown > :not(summary).right {
   align-items: center;
   justify-content: center;
   padding: var(--spacing);
-  min-width: 7em;
   border-radius: 0;
 }
 
@@ -972,6 +970,12 @@ details.dropdown > :not(summary).right {
 @media (min-aspect-ratio: 1.2) {
   .rbox  > :is(button, .button):not(:first-child) {
     border-left-width: 0;
+  }
+  .menu > :is(button, .button, a) {
+    min-width: 7em;
+  }
+  details.dropdown > :not(summary) {
+    min-width: 10em;
   }
 }
 
