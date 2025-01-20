@@ -24,14 +24,15 @@
       <div class="vbox width-full">
 
         <header class="hbox items-center">
-          <div class="width-sm"></div>
-          <img class="height-sm" src="logo.svg">
+          <div class="size-xs"></div>
+          <img class="height-font-xl" src="logo.svg">
           <div class="spacer"></div>
           <input type="checkbox" class="dm-toggle switch">
         </header>
 
         <div class="scroll-y vbox padding">
-          <div class="vbox rwidth-lg center">
+
+          <div class="vbox width-xl center">
             <h1 class="font-xl">Documentation</h1>
             <hr>
             <h2>Typography</h2>
@@ -290,6 +291,36 @@
               </div>
             </div>
             <hr>
+            <h2>Hero</h2>
+            <div class="rbox">
+              <code>
+  <pre>
+  &lt;div class=&quot;scroll-y height-full rwidth-lg&quot;&gt;
+    &lt;div class=&quot;hero graphic&quot; style=&quot;background-image: url(test-images/test-img-2.jpg);&quot;&gt;
+        &lt;h1 class=&quot;center left font-alt&quot;&gt;This is a hero!&lt;/h1&gt;
+        &lt;button class=&quot;center bottom&quot;&gt;Button&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;padding&quot;&gt;
+        &lt;p&gt;
+            Lorem ipsum dolor sit amet, [...] condimentum.
+        &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  </pre>
+              </code>
+              <div class="scroll-y width-lg">
+                <div class="hero graphic" style="background-image: url(test-images/test-img-2.jpg);">
+                    <h1 class="center left font-alt">This is a hero!</h1>
+                    <button class="center bottom">Button</button>
+                </div>
+                <div class="padding">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat dolor sit amet diam feugiat efficitur. Maecenas vitae aliquam nisl. Curabitur mollis sodales nisi suscipit ullamcorper. Suspendisse id bibendum leo. Nam sit amet purus non tellus commodo pharetra nec eu elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tincidunt urna at nunc maximus condimentum.
+                    </p>
+                </div>
+              </div>
+            </div>
+            <hr>
             <h2>Captioned</h2>
             <div class="rbox">
               <code>
@@ -304,7 +335,7 @@
   </pre>
               </code>
               <div class="captioned">
-                <img class="rsize-md" src="test-images/test-img-1.jpg">
+                <img class="width-md" src="test-images/test-img-1.jpg">
                 <p class="caption">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Aliquam efficitur elementum quam at luctus.
@@ -317,29 +348,29 @@
               <code>
   <pre>
   &lt;div class=&quot;card vbox&quot;&gt;
-    &lt;div class=&quot;header&quot;&gt;
+    &lt;header&gt;
       Header
-    &lt;/div&gt;
-    &lt;div class=&quot;body&quot;&gt;
+    &lt;/header&gt;
+    &lt;p&gt;
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br&gt;
       Aliquam efficitur elementum quam at luctus.
-    &lt;/div&gt;
-    &lt;div class=&quot;footer&quot;&gt;
+    &lt;/p&gt;
+    &lt;footer&gt;
       Footer
-    &lt;/div&gt;
+    &lt;/footer&gt;
   &lt;/div&gt;
 
   &lt;div class=&quot;card vbox primary&quot;&gt;
-    &lt;div class=&quot;header&quot;&gt;
+    &lt;header&gt;
       Header
-    &lt;/div&gt;
-    &lt;div class=&quot;body&quot;&gt;
+    &lt;/header&gt;
+    &lt;p&gt;
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br&gt;
       Aliquam efficitur elementum quam at luctus.
-    &lt;/div&gt;
-    &lt;div class=&quot;footer&quot;&gt;
+    &lt;/p&gt;
+    &lt;footer&gt;
       Footer
-    &lt;/div&gt;
+    &lt;/footer&gt;
   &lt;/div&gt;
   </pre>
               </code>
@@ -378,30 +409,52 @@
   <pre>
   &lt;div class=&quot;hbox card&quot;&gt;
     &lt;p&gt;HBox&lt;/p&gt;
-    &lt;div class=&quot;width-sm height-sm primary fg rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;width-sm height-sm primary fg rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;width-sm height-sm primary fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;vbox card&quot;&gt;
     &lt;p&gt;VBox&lt;/p&gt;
-    &lt;div class=&quot;width-sm height-sm primary fg rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;width-sm height-sm primary fg rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;width-sm height-sm primary fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;graphic card height-md&quot;&gt;
+    &lt;p class=&quot;top center&quot;&gt;Graphic&lt;/p&gt;
+    &lt;div class=&quot;top left width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;top right width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;center left width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;center width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;center right width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;bottom left width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;bottom center width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;bottom right width-sm height-sm fg rounded&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   </pre>
               </code>
               <div class="vbox">
                 <div class="hbox card">
                   <p>HBox</p>
-                  <div class="width-sm height-sm primary fg rounded"></div>
-                  <div class="width-sm height-sm primary fg rounded"></div>
-                  <div class="width-sm height-sm primary fg rounded"></div>
+                  <div class="square fg rounded"></div>
+                  <div class="square fg rounded"></div>
+                  <div class="square fg rounded"></div>
                 </div>
                 <div class="vbox card">
                   <p>VBox</p>
-                  <div class="width-sm height-sm primary fg rounded"></div>
-                  <div class="width-sm height-sm primary fg rounded"></div>
-                  <div class="width-sm height-sm primary fg rounded"></div>
+                  <div class="square fg rounded"></div>
+                  <div class="square fg rounded"></div>
+                  <div class="square fg rounded"></div>
+                </div>
+                <div class="graphic card height-md">
+                  <p class="top center">Graphic</p>
+                  <div class="top left square fg rounded"></div>
+                  <div class="top right square fg rounded"></div>
+                  <div class="center left square fg rounded"></div>
+                  <div class="center square fg rounded"></div>
+                  <div class="center right square fg rounded"></div>
+                  <div class="bottom left square fg rounded"></div>
+                  <div class="bottom center square fg rounded"></div>
+                  <div class="bottom right square fg rounded"></div>
                 </div>
               </div>
             </div>
@@ -437,7 +490,7 @@
                       <a>link 3</a>
                     </div>
                   </details>
-                  <div class="padding width-lg">
+                  <div class="padding width-md">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat dolor sit amet diam feugiat efficitur. Maecenas vitae aliquam nisl. Curabitur mollis sodales nisi suscipit ullamcorper. Suspendisse id bibendum leo. Nam sit amet purus non tellus commodo pharetra nec eu elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tincidunt urna at nunc maximus condimentum.
                   </div>
                 </div>
@@ -471,7 +524,7 @@
 &lt;/div&gt;
 </pre>
             </code>
-            <div class="rwidth-lg">
+            <div class="width-md">
               <div class="tabbed">
                 <input type="radio" id="tab1" name="tabs1" checked>
                 <input type="radio" id="tab2" name="tabs1">
