@@ -394,6 +394,10 @@ hr {
     border-bottom-width: var(--border-width);
 }
 
+.vr {
+    border-right-width: var(--border-width);
+}
+
 ins {
     color: var(--success-color);
 }
@@ -420,6 +424,10 @@ del {
 
 .font-sm, small {
     font-size: calc(0.75 * var(--font-size));
+}
+
+.monospace {
+    font-family: var(--mono-font-family);
 }
 
 .bold {
