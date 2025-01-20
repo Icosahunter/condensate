@@ -1,0 +1,5 @@
+1. Remove tabbed control (too convoluted)
+2. Remove captioned (figure/captions already exist)
+3. Replace "menu" with button-group and add more styling variables for it
+4. Add more styling options for tables
+5. Add explanations to Documentation, add demos for responsive components
