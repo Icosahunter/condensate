@@ -488,8 +488,11 @@ select:focus, textarea:focus, input:focus:not([type="checkbox"], [type="radio"],
 }
 
 button, .button {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     user-select: none;
-    display: inline-block;
     box-sizing: content-box;
     border-radius: var(--button-border-radius);
     text-decoration: none;
