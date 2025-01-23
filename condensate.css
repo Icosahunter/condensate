@@ -23,10 +23,8 @@ Table of contents:
   12. Cards, Graphics, Heros ----------------------------------- [sec-12]
   13. Dropdown, Menu ------------------------------------------- [sec-13]
   14. Modal, close --------------------------------------------- [sec-14]
-  15. Captioned ------------------------------------------------ [sec-15]
-  16. Tabbed --------------------------------------------------- [sec-16]
-  17. Sidebar -------------------------------------------------- [sec-17]
-  18. Utility -------------------------------------------------- [sec-18]
+  15. Sidebar -------------------------------------------------- [sec-15]
+  16. Utility -------------------------------------------------- [sec-16]
 */
 
 /*
@@ -192,8 +190,7 @@ summary {
     --input-border: 0;
     --button-border: var(--input-border);
     --panel-border: 0;
-    --button-group-sep-color: var(--border-color);
-    --button-group-sep-border: var(--button-group-border);
+    --button-group-sep-border: var(--button-border);
     --table-border: var(--border-width);
     --table-v-border: var(--table-border);
     --table-h-border: var(--table-border);
@@ -1153,13 +1150,19 @@ details.dropdown > :not(summary).right {
 }
 
 .hbox.button-group > :not(:first-child) {
-    border-left-color: var(--button-group-sep-color);
     border-left-width: var(--button-group-sep-border);
 }
 
 .vbox.button-group > :not(:first-child) {
-    border-top-color: var(--button-group-sep-color);
     border-top-width: var(--button-group-sep-border);
+}
+
+.hbox.button-group.flush > :not(:first-child) {
+    border-left-color: var(--button-color);
+}
+
+.vbox.button-group.flush > :not(:first-child) {
+    border-top-color: var(--button-color);
 }
 
 .hbox.button-group > :not(:first-child) {
@@ -1286,116 +1289,7 @@ details.dropdown > :not(summary).right {
 
 /*
 -------------------------------------------------------------------------------
-15. Captioned [sec-15]
--------------------------------------------------------------------------------
-*/
-
-.captioned {
-    display: table;
-    width: 1px;
-}
-
-.captioned > .caption {
-    display: table-caption;
-    caption-side: bottom;
-    text-justify: inter-word;
-}
-
-.captioned > .caption.left {
-    caption-side: left;
-}
-
-.captioned > .caption.right {
-    caption-side: right;
-}
-
-.captioned > .caption.top {
-    caption-side: top;
-}
-
-/*
--------------------------------------------------------------------------------
-16.  Tabbed [sec-16]
-  Notes:
-  - Based on this neat css only tabs concept by Michał Pawełczyk:
-    https://codepen.io/MPDoctor/pen/mpJdYe
--------------------------------------------------------------------------------
-*/
-.tabbed > input[type="radio"] {
-    display: none;
-}
-
-.tabbed > .tabs {
-    display: flex;
-}
-
-.tabbed > .tabs > label {
-    background: var(--panel-color);
-    margin-bottom: calc(-1 * var(--border-width));
-    padding: 0 var(--spacing);
-    border-top-width: var(--panel-border);
-    border-right-width: var(--panel-border);
-}
-
-.tabbed > .tabs > label:hover {
-    filter: brightness(var(--hover-brightness));
-    cursor: pointer;
-}
-
-.tabbed > .tabs > label:first-of-type {
-    border-top-left-radius: 2px;
-}
-
-.tabbed > .tabs > label:last-of-type {
-    border-top-right-radius: 2px;
-}
-
-.tabbed > .tab-panel {
-    display: none;
-    background: var(--alt-background-color);
-    border-radius: var(--border-radius);
-    border-top-left-radius: 0;
-    border-top-width: var(--border-width);
-}
-
-.tabbed.overlay {
-    position: relative;
-}
-
-.tabbed.overlay > .tab-panel {
-    position: absolute;
-    width: 100%;
-}
-
-.tabbed > input[type="radio"]:nth-of-type(1):checked ~ .tabs > label:nth-of-type(1),
-.tabbed > input[type="radio"]:nth-of-type(2):checked ~ .tabs > label:nth-of-type(2),
-.tabbed > input[type="radio"]:nth-of-type(3):checked ~ .tabs > label:nth-of-type(3),
-.tabbed > input[type="radio"]:nth-of-type(4):checked ~ .tabs > label:nth-of-type(4),
-.tabbed > input[type="radio"]:nth-of-type(5):checked ~ .tabs > label:nth-of-type(5),
-.tabbed > input[type="radio"]:nth-of-type(6):checked ~ .tabs > label:nth-of-type(6),
-.tabbed > input[type="radio"]:nth-of-type(7):checked ~ .tabs > label:nth-of-type(7),
-.tabbed > input[type="radio"]:nth-of-type(8):checked ~ .tabs > label:nth-of-type(8),
-.tabbed > input[type="radio"]:nth-of-type(9):checked ~ .tabs > label:nth-of-type(9),
-.tabbed > input[type="radio"]:nth-of-type(10):checked ~ .tabs > label:nth-of-type(10) {
-    background: var(--alt-background-color);
-    border-bottom: 2px solid var(--alt-background-color);
-}
-.tabbed > input[type="radio"]:nth-of-type(1):checked ~ .tab-panel:nth-child(5),
-.tabbed > input[type="radio"]:nth-of-type(2):checked ~ .tab-panel:nth-child(6),
-.tabbed > input[type="radio"]:nth-of-type(3):checked ~ .tab-panel:nth-child(7),
-.tabbed > input[type="radio"]:nth-of-type(4):checked ~ .tab-panel:nth-child(8),
-.tabbed > input[type="radio"]:nth-of-type(5):checked ~ .tab-panel:nth-child(9),
-.tabbed > input[type="radio"]:nth-of-type(6):checked ~ .tab-panel:nth-child(10),
-.tabbed > input[type="radio"]:nth-of-type(7):checked ~ .tab-panel:nth-child(11),
-.tabbed > input[type="radio"]:nth-of-type(8):checked ~ .tab-panel:nth-child(12),
-.tabbed > input[type="radio"]:nth-of-type(9):checked ~ .tab-panel:nth-child(13),
-.tabbed > input[type="radio"]:nth-of-type(10):checked ~ .tab-panel:nth-child(14) {
-    display: block;
-}
-
-/*
--------------------------------------------------------------------------------
-17.  Sidebar [sec-17]
+15.  Sidebar [sec-15]
 -------------------------------------------------------------------------------
 */
 
@@ -1520,7 +1414,7 @@ details.sidebar:not([open]) ~ * > header {
 
 /*
 -------------------------------------------------------------------------------
-18. Utility [sec-18]
+16. Utility [sec-16]
 -------------------------------------------------------------------------------
 */
 

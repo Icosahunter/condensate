@@ -23,11 +23,9 @@
                         <a href="#modals">Modals</a>
                         <a href="#buttons">Buttons & Menus</a>
                         <a href="#hero">Hero</a>
-                        <a href="#captioned">Captioned</a>
                         <a href="#cards">Cards, Headers, & Footers</a>
                         <a href="#boxes">VBoxes, HBoxes, & RBoxes</a>
                         <a href="#sidebar">Sidebar</a>
-                        <a href="#tabbed">Tabbed</a>
                         <a href="#sizing">Sizing</a>
                         <a href="#utilities">Styling Utilities</a>
                     </div>
@@ -62,6 +60,12 @@
 --input-border
 --button-border
 --panel-border
+--button-group-sep-border
+--table-border
+--table-v-border
+--table-h-border
+--table-header-bg
+--table-body-bg
 --button-border-radius
 --spacing
                     </pre>
@@ -69,9 +73,10 @@
 --dm-font-color
 --dm-alt-font-color
 --dm-check-color
---dm-bg-color
---dm-bg2-color
---dm-fg-color
+--dm-background-color
+--dm-alt-background-color
+--dm-panel-color
+--dm-button-color
 --dm-primary-color
 --dm-secondary-color
 --dm-success-color
@@ -85,9 +90,10 @@
 --lm-font-color
 --lm-alt-font-color
 --lm-check-color
---lm-bg-color
---lm-bg2-color
---lm-fg-color
+--lm-background-color
+--lm-alt-background-color
+--lm-panel-color
+--lm-button-color
 --lm-primary-color
 --lm-secondary-color
 --lm-success-color
@@ -395,28 +401,6 @@
                     </div>
                 </div>
                 <hr>
-                <h2 id="captioned">Captioned</h2>
-                <div class="rbox">
-                    <code>
-                        <pre>
-    &lt;div class=&quot;captioned&quot;&gt;
-        &lt;img class=&quot;rsize-md&quot; src=&quot;test-images/test-img-1.jpg&quot;&gt;
-        &lt;p class=&quot;caption&quot;&gt;
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Aliquam efficitur elementum quam at luctus.
-        &lt;/p&gt;
-    &lt;/div&gt;
-                        </pre>
-                    </code>
-                    <div class="captioned">
-                        <img class="width-md" src="test-images/test-img-1.jpg">
-                        <p class="caption">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam efficitur elementum quam at luctus.
-                        </p>
-                    </div>
-                </div>
-                <hr>
                 <h2 id="cards">Cards, Headers, &amp; Footers</h2>
                 <div class="rbox">
                     <code>
@@ -566,58 +550,6 @@
                             </details>
                             <div class="padding width-md">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat dolor sit amet diam feugiat efficitur. Maecenas vitae aliquam nisl. Curabitur mollis sodales nisi suscipit ullamcorper. Suspendisse id bibendum leo. Nam sit amet purus non tellus commodo pharetra nec eu elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tincidunt urna at nunc maximus condimentum.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="tabbed">Tabbed</h2>
-                <div class="rbox">
-                    <code>
-                        <pre>
-&lt;div class=&quot;tabbed&quot;&gt;
-&lt;input type=&quot;radio&quot; id=&quot;tab1&quot; name=&quot;tabs1&quot; checked&gt;
-&lt;input type=&quot;radio&quot; id=&quot;tab2&quot; name=&quot;tabs1&quot;&gt;
-&lt;input type=&quot;radio&quot; id=&quot;tab3&quot; name=&quot;tabs1&quot;&gt;
-
-&lt;div class=&quot;tabs&quot;&gt;
-    &lt;label for=&quot;tab1&quot;&gt;Tab1&lt;/label&gt;
-    &lt;label for=&quot;tab2&quot;&gt;Tab2&lt;/label&gt;
-    &lt;label for=&quot;tab3&quot;&gt;Tab3&lt;/label&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;tab-panel padding&quot;&gt;
-    Lorem ipsum dolor sit amet, [...] condimentum.
-&lt;/div&gt;
-&lt;div class=&quot;tab-panel padding&quot;&gt;
-    Lorem ipsum dolor sit amet, [...] massa.
-&lt;/div&gt;
-&lt;div class=&quot;tab-panel padding&quot;&gt;
-    Lorem ipsum dolor sit amet, [...] quam.
-&lt;/div&gt;
-&lt;/div&gt;
-                        </pre>
-                    </code>
-                    <div class="width-md">
-                        <div class="tabbed">
-                            <input type="radio" id="tab1" name="tabs1" checked>
-                            <input type="radio" id="tab2" name="tabs1">
-                            <input type="radio" id="tab3" name="tabs1">
-
-                            <div class="tabs">
-                                <label for="tab1">Tab1</label>
-                                <label for="tab2">Tab2</label>
-                                <label for="tab3">Tab3</label>
-                            </div>
-
-                            <div class="tab-panel padding">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat dolor sit amet diam feugiat efficitur. Maecenas vitae aliquam nisl. Curabitur mollis sodales nisi suscipit ullamcorper. Suspendisse id bibendum leo. Nam sit amet purus non tellus commodo pharetra nec eu elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tincidunt urna at nunc maximus condimentum.
-                            </div>
-                            <div class="tab-panel padding">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin mollis mi a aliquam. Nunc magna lectus, lobortis vel porta ac, accumsan non lacus. Integer rutrum metus nec lorem interdum, sit amet luctus tortor efficitur. Fusce eleifend nec orci et auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae imperdiet erat. Cras venenatis quam in lobortis auctor. Integer porttitor purus at eros condimentum ultricies. Pellentesque sed suscipit magna, quis vulputate velit. Quisque tortor neque, imperdiet in aliquet ut, rutrum id massa.
-                            </div>
-                            <div class="tab-panel padding">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas, risus in sagittis vestibulum, arcu eros porttitor massa, nec egestas enim orci ac diam. Fusce ante ex, convallis id nisi eget, bibendum fermentum risus. Ut posuere urna eget efficitur eleifend. Nunc mattis justo at blandit finibus. Pellentesque ut ante eget metus tincidunt tempus pretium sit amet diam. Etiam quis imperdiet diam. Praesent ornare mollis orci, non tempor mi. Curabitur tortor erat, tempus sed ante sed, hendrerit fermentum leo. In eu neque placerat, posuere lacus eu, cursus quam.
                             </div>
                         </div>
                     </div>
