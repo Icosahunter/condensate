@@ -192,43 +192,55 @@ summary {
     --input-border: 0;
     --button-border: var(--input-border);
     --panel-border: 0;
+    --button-group-sep-color: var(--border-color);
+    --button-group-sep-border: var(--button-group-border);
+    --table-border: var(--border-width);
+    --table-v-border: var(--table-border);
+    --table-h-border: var(--table-border);
+    --table-header-bg: var(--panel-color);
+    --table-body-bg: var(--background-color);
     --button-border-radius: var(--border-radius);
     --spacing: 0.6rem;
+
     --dm-font-color: #ddd;
     --dm-alt-font-color: #000;
     --dm-check-color: #fff;
-    --dm-bg-color: #282a36;
-    --dm-bg2-color: #2f3240;
-    --dm-fg-color: #44475a;
+    --dm-background-color: #282a36;
+    --dm-alt-background-color: #2f3240;
+    --dm-panel-color: #3a3d4f;
+    --dm-button-color: #474a61;
     --dm-primary-color: #6969ff;
     --dm-secondary-color: #2cb1ff;
     --dm-success-color: #3bf589;
     --dm-warning-color: #f5c33b;
     --dm-error-color: #f53b3b;
-    --dm-border-color: var(--dm-fg-color);
+    --dm-border-color: var(--dm-panel-color);
     --dm-hover-brightness: 130%;
     --dm-alt-hover-brightness: 75%;
+
     --lm-font-color: #000;
     --lm-alt-font-color: #fff;
     --lm-check-color: #fff;
-    --lm-bg-color: #fff;
-    --lm-bg2-color: #fafafa;
-    --lm-fg-color: #ddd;
+    --lm-background-color: #fff;
+    --lm-alt-background-color: #fafafa;
+    --lm-panel-color: #ddd;
+    --lm-button-color: #ccc;
     --lm-primary-color: #6969ff;
     --lm-secondary-color: #2cb1ff;
     --lm-success-color: #3bf589;
     --lm-warning-color: #f5c33b;
     --lm-error-color: #f53b3b;
-    --lm-border-color: var(--lm-fg-color);
+    --lm-border-color: var(--lm-panel-color);
     --lm-hover-brightness: 105%;
     --lm-alt-hover-brightness: 88%;
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg-color: var(--lm-bg-color);
-        --bg2-color: var(--lm-bg2-color);
-        --fg-color: var(--lm-fg-color);
+        --background-color: var(--lm-background-color);
+        --alt-background-color: var(--lm-alt-background-color);
+        --panel-color: var(--lm-panel-color);
+        --button-color: var(--lm-button-color);
         --primary-color: var(--lm-primary-color);
         --secondary-color: var(--lm-secondary-color);
         --success-color: var(--lm-success-color);
@@ -245,9 +257,10 @@ summary {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: var(--dm-bg-color);
-        --bg2-color: var(--dm-bg2-color);
-        --fg-color: var(--dm-fg-color);
+        --background-color: var(--dm-background-color);
+        --alt-background-color: var(--dm-alt-background-color);
+        --panel-color: var(--dm-panel-color);
+        --button-color: var(--dm-button-color);
         --primary-color: var(--dm-primary-color);
         --secondary-color: var(--dm-secondary-color);
         --success-color: var(--dm-success-color);
@@ -263,9 +276,10 @@ summary {
 }
 
 .lm, :root:has(input[type="checkbox"].dm-toggle) {
-    --bg-color: var(--lm-bg-color);
-    --bg2-color: var(--lm-bg2-color);
-    --fg-color: var(--lm-fg-color);
+    --background-color: var(--lm-background-color);
+    --alt-background-color: var(--lm-alt-background-color);
+    --panel-color: var(--lm-panel-color);
+    --button-color: var(--lm-button-color);
     --primary-color: var(--lm-primary-color);
     --secondary-color: var(--lm-secondary-color);
     --success-color: var(--lm-success-color);
@@ -280,9 +294,10 @@ summary {
 }
 
 .dm, :root:has(input[type="checkbox"].dm-toggle:checked) {
-    --bg-color: var(--dm-bg-color);
-    --bg2-color: var(--dm-bg2-color);
-    --fg-color: var(--dm-fg-color);
+    --background-color: var(--dm-background-color);
+    --alt-background-color: var(--dm-alt-background-color);
+    --panel-color: var(--dm-panel-color);
+    --button-color: var(--dm-button-color);
     --primary-color: var(--dm-primary-color);
     --secondary-color: var(--dm-secondary-color);
     --success-color: var(--dm-success-color);
@@ -312,7 +327,7 @@ summary {
 }
 
 body {
-    background: var(--bg-color);
+    background: var(--background-color);
 }
 
 * {
@@ -372,7 +387,7 @@ ul, ol {
 }
 
 code, kbd {
-    background: var(--bg2-color);
+    background: var(--alt-background-color);
     padding-top: calc(0.3 * var(--spacing));
     padding-bottom: calc(0.3 * var(--spacing));
     padding-left: calc(0.8 * var(--spacing));
@@ -456,7 +471,7 @@ del {
 select, textarea, input:not([type="checkbox"], [type="radio"], [type="range"]), button, .button {
     color: var(--font-color);
     border-radius: var(--border-radius);
-    background: var(--fg-color);
+    background: var(--button-color);
     padding-top: calc(0.4 * var(--spacing));
     padding-bottom: calc(0.4 * var(--spacing));
     padding-left: var(--spacing);
@@ -504,7 +519,7 @@ button:focus, .button:focus {
 }
 
 input[type="number"]::-webkit-inner-spin-button {
-    color: var(--bg2-color);
+    color: var(--alt-background-color);
 }
 input[type="color"] {
     padding: 5px;
@@ -600,7 +615,7 @@ input[type="checkbox"]:not(.switch, .dm-toggle) {
     outline: 0 solid var(--primary-color);
     width: 1em;
     height: 1em;
-    background: var(--bg2-color);
+    background: var(--alt-background-color);
     border-width: var(--border-width);
     appearance: none;
 }
@@ -674,7 +689,7 @@ input[type="radio"]:checked::before {
 -------------------------------------------------------------------------------
 */
 input[type="checkbox"].switch {
-    background: var(--fg-color);
+    background: var(--button-color);
     border-width: var(--input-border);
     appearance: none;
     border-radius: 1em;
@@ -722,7 +737,7 @@ input[type="checkbox"].dm-toggle.switch {
 }
 
 input[type="checkbox"].dm-toggle.switch::before {
-    background: var(--fg-color);
+    background: var(--button-color);
 }
 
 input[type="checkbox"].dm-toggle:not(.switch) {
@@ -740,23 +755,24 @@ input[type="checkbox"].dm-toggle:not(.switch)::before {
 -------------------------------------------------------------------------------
 */
 tr:first-child {
-    background: var(--fg-color);
+    background: var(--table-header-bg);
 }
 
 table {
     border-radius: var(--border-radius);
-    border-width: var(--border-width);
+    border-width: var(--table-border);
     border-spacing: 0;
 }
 
 td {
     padding: calc(0.4 * var(--spacing)) var(--spacing);
-    border-top-width: var(--border-width);
-    border-left-width: var(--border-width);
+    border-top-width: var(--table-h-border);
+    border-left-width: var(--table-v-border);
 }
 
 th {
     padding: calc(0.4 * var(--spacing)) var(--spacing);
+    border-bottom-width: var(--border-width);
 }
 
 td:first-child {
@@ -826,19 +842,19 @@ details[open] > :not(summary) {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--bg2-color);
+    background-color: var(--alt-background-color);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--fg-color);
+    background: var(--button-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--fg-color);
+    background: var(--button-color);
 }
 
 * {
-    scrollbar-color: var(--fg-color) var(--bg2-color);
+    scrollbar-color: var(--button-color) var(--alt-background-color);
 }
 
 .scroll-x {
@@ -947,7 +963,7 @@ details[open] > :not(summary) {
 */
 
 header, footer {
-    background: var(--fg-color);
+    background: var(--panel-color);
     padding: var(--spacing);
 }
 
@@ -1021,7 +1037,7 @@ footer {
 .card {
     border-width: var(--border-width);
     border-radius: var(--border-radius);
-    background: var(--bg2-color);
+    background: var(--alt-background-color);
     padding: var(--spacing);
 }
 
@@ -1075,7 +1091,7 @@ footer {
 
 /*
 -------------------------------------------------------------------------------
-13. Dropdown, Menu [sec-13]
+13. Dropdown, Button Group [sec-13]
 -------------------------------------------------------------------------------
 */
 
@@ -1089,7 +1105,7 @@ details.dropdown > :not(summary):not(.menu) {
 
 details.dropdown > :not(summary) {
     border-radius: var(--border-radius);
-    background: var(--fg-color);
+    background: var(--panel-color);
     border-width: var(--panel-border);
     position: absolute;
     left: 0;
@@ -1101,75 +1117,110 @@ details.dropdown > :not(summary).right {
     left: auto;
 }
 
-.menu {
+.button-group {
     gap: 0;
 }
 
-.hbox > .menu {
+.hbox > .button-group.flush {
     margin-top: calc(-1 * var(--spacing));
     margin-bottom: calc(-1 * var(--spacing));
 }
 
-.vbox > .menu {
+.vbox > .button-group.flush {
     margin-left: calc(-1 * var(--spacing));
     margin-right: calc(-1 * var(--spacing));
 }
 
-.menu > :is(button, .button, a) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing);
-    border-radius: 0;
-}
-
-.menu {
+.button-group {
     align-self: stretch;
 }
 
-.menu > * {
+.button-group > * {
     box-sizing: border-box;
 }
 
-.hbox.menu > :is(button, .button):not(:first-child) {
-    border-left-width: 0;
+.button-group.flush > * {
+    border-radius: 0;
+    background: var(--panel-color);
 }
 
-.vbox.menu > :is(button, .button):not(:first-child) {
-    border-top-width: 0;
-}
-
-.hbox.menu > :is(button, .button, a) {
+.hbox.button-group.flush > * {
     height: 100%;
 }
 
-.vbox.menu > :is(button, .button, a) {
+.vbox.button-group.flush > * {
     width: 100%;
 }
 
+.hbox.button-group > :not(:first-child) {
+    border-left-color: var(--button-group-sep-color);
+    border-left-width: var(--button-group-sep-border);
+}
+
+.vbox.button-group > :not(:first-child) {
+    border-top-color: var(--button-group-sep-color);
+    border-top-width: var(--button-group-sep-border);
+}
+
+.hbox.button-group > :not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.hbox.button-group > :not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.vbox.button-group > :not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.vbox.button-group > :not(:last-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 @media (min-aspect-ratio: 1.2) {
-    .rbox > :is(button, .button):not(:first-child) {
-        border-left-width: 0;
+    .rbox.button-group > :not(:first-child) {
+        border-left-color: var(--button-group-sep-color);
+        border-left-width: var(--button-group-sep-border);
+    }
+    .rbox.button-group > * {
         height: 100%;
     }
-    .rbox.menu > :is(button, .button, a) {
-        height: 100%;
+    .rbox.button-group > :not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
-    .menu > :is(button, .button, a) {
-        min-width: 7em;
+    .rbox.button-group > :not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
     }
     details.dropdown > :not(summary) {
         min-width: 10em;
     }
+    .button-group.flush > * {
+        min-width: 7em;
+    }
 }
 
 @media (max-aspect-ratio: 1.2) {
-    .rbox > :is(button, .button):not(:first-child) {
-        border-top-width: 0;
+    .rbox.button-group > :not(:first-child) {
+        border-top-color: var(--button-group-sep-color);
+        border-top-width: var(--button-group-sep-border);
+    }
+    .rbox.button-group > * {
         width: 100%;
     }
-    .rbox.menu > :is(button, .button, a) {
-        width: 100%;
+    .rbox.button-group > :not(:first-child) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .rbox.button-group > :not(:last-child) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 
@@ -1279,7 +1330,7 @@ details.dropdown > :not(summary).right {
 }
 
 .tabbed > .tabs > label {
-    background: var(--fg-color);
+    background: var(--panel-color);
     margin-bottom: calc(-1 * var(--border-width));
     padding: 0 var(--spacing);
     border-top-width: var(--panel-border);
@@ -1301,7 +1352,7 @@ details.dropdown > :not(summary).right {
 
 .tabbed > .tab-panel {
     display: none;
-    background: var(--bg2-color);
+    background: var(--alt-background-color);
     border-radius: var(--border-radius);
     border-top-left-radius: 0;
     border-top-width: var(--border-width);
@@ -1326,8 +1377,8 @@ details.dropdown > :not(summary).right {
 .tabbed > input[type="radio"]:nth-of-type(8):checked ~ .tabs > label:nth-of-type(8),
 .tabbed > input[type="radio"]:nth-of-type(9):checked ~ .tabs > label:nth-of-type(9),
 .tabbed > input[type="radio"]:nth-of-type(10):checked ~ .tabs > label:nth-of-type(10) {
-    background: var(--bg2-color);
-    border-bottom: 2px solid var(--bg2-color);
+    background: var(--alt-background-color);
+    border-bottom: 2px solid var(--alt-background-color);
 }
 .tabbed > input[type="radio"]:nth-of-type(1):checked ~ .tab-panel:nth-child(5),
 .tabbed > input[type="radio"]:nth-of-type(2):checked ~ .tab-panel:nth-child(6),
@@ -1356,7 +1407,7 @@ details.sidebar {
 }
 details.sidebar > *:not(summary) {
     margin: 0;
-    background: var(--bg2-color);
+    background: var(--alt-background-color);
     height: 100%;
     border-right-width: var(--panel-border);
 }
@@ -1478,15 +1529,15 @@ details.sidebar:not([open]) ~ * > header {
 }
 
 .bg {
-    background: var(--bg-color);
+    background: var(--background-color);
 }
 
 .bg2 {
-    background: var(--bg2-color);
+    background: var(--alt-background-color);
 }
 
 .fg {
-    background: var(--fg-color);
+    background: var(--panel-color);
 }
 
 .font-alt {
