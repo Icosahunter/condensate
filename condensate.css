@@ -1676,21 +1676,39 @@ details.sidebar:not([open]) ~ * > header {
     width: 100%;
 }
 
+:root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-hidden {
+    display: none;
+}
+
+:root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-invert {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+
+:root:has(input[type="checkbox"].dm-toggle:checked) .dm-hidden {
+    display: none;
+}
+
+:root:has(input[type="checkbox"].dm-toggle:checked) .dm-invert {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+
 @media (prefers-color-scheme: dark) {
-    .dm-hidden {
-        visibility: hidden;
+    :root:not(:has(input[type="checkbox"].dm-toggle)) .dm-hidden {
+        display: none;
     }
-    .dm-invert {
+    :root:not(:has(input[type="checkbox"].dm-toggle)) .dm-invert {
         -webkit-filter: invert(1);
         filter: invert(1);
     }
 }
 
 @media (prefers-color-scheme: light) {
-    .lm-hidden {
-        visibility: hidden;
+    :root:not(:has(input[type="checkbox"].dm-toggle)) .lm-hidden {
+        display: none;
     }
-    .lm-invert {
+    :root:not(:has(input[type="checkbox"].dm-toggle)) .lm-invert {
         -webkit-filter: invert(1);
         filter: invert(1);
     }
