@@ -353,11 +353,6 @@ title, h1, h2, h3, h4, h5, h6, p, b, i, strong, em, small, big, sup, sub, time, 
 -------------------------------------------------------------------------------
 */
 
-title {
-    font-size: calc(3 * var(--font-size));
-    font-weight: bold;
-}
-
 p {
     text-align: justify;
     text-justify: inter-word;
@@ -457,6 +452,26 @@ del {
 
 .strike-through {
     text-decoration: line-through;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-indent {
+    text-indent: 3rem;
 }
 
 /*
@@ -1425,15 +1440,15 @@ details.sidebar:not([open]) ~ * > header {
     gap: 0;
 }
 
-.bg {
+.background-color {
     background: var(--background-color);
 }
 
-.bg2 {
+.alt-background-color {
     background: var(--alt-background-color);
 }
 
-.fg {
+.panel-color {
     background: var(--panel-color);
 }
 
@@ -1722,7 +1737,7 @@ details.sidebar:not([open]) ~ * > header {
     height: calc(0.75 * var(--font-size));
 }
 
-.height-font {
+.height-font-md {
     height: var(--font-size);
 }
 
