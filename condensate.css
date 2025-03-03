@@ -343,7 +343,7 @@ body {
     line-height: 1.5;
 }
 
-title, h1, h2, h3, h4, h5, h6, p, b, i, strong, em, small, big, sup, sub, time, abbr, span {
+h1, h2, h3, h4, h5, h6, p, b, i, strong, em, small, big, sup, sub, time, abbr, span {
     color: inherit;
 }
 
@@ -571,7 +571,7 @@ details > :not(summary) {
 
 /*
 -------------------------------------------------------------------------------
-5.  Checkbox & Radio Buttons [sec-5]
+5.  Checkbox & Radio Buttons [sec-05]
 -------------------------------------------------------------------------------
 */
 
@@ -700,7 +700,7 @@ input[type="radio"]:checked::before {
 
 /*
 -------------------------------------------------------------------------------
-6.  Toggle Switch [sec-6]
+6.  Toggle Switch [sec-06]
 -------------------------------------------------------------------------------
 */
 input[type="checkbox"].switch {
@@ -796,7 +796,7 @@ td:first-child {
 
 /*
 -------------------------------------------------------------------------------
-8.  Summary, Details [sec-8]
+8.  Summary, Details [sec-08]
 -------------------------------------------------------------------------------
 */
 
