@@ -313,10 +313,6 @@ summary {
 2.  Base styles [sec-02]
 -------------------------------------------------------------------------------
 */
-@font-face {
-    font-family: "Material Symbols Outlined";
-    src: url("../fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf");
-}
 
 ::selection {
     background: var(--primary-color);
@@ -362,6 +358,7 @@ a {
     color: var(--primary-color);
     cursor: pointer;
     text-decoration: none;
+    vertical-align: initial;
 }
 
 a:not(.button):hover {
@@ -496,10 +493,6 @@ select, textarea, input:not([type="checkbox"], [type="radio"], [type="range"]) {
 
 select:focus, textarea:focus, input:focus:not([type="checkbox"], [type="radio"], [type="range"]) {
     outline: 2px solid var(--primary-color);
-}
-
-.pill {
-    border-radius: 1.5em;
 }
 
 button, .button {
@@ -1425,7 +1418,6 @@ details.sidebar[open] > summary::after {
 details.sidebar[open] > :not(summary) {
     animation: none;
 }
-
 details.sidebar:not([open]) ~ * > header {
     padding-left: 2.5em;
 }
@@ -1537,7 +1529,7 @@ details.sidebar:not([open]) ~ * > header {
     height: 1.5em;
     width: 1.5em;
     text-align: center;
-    padding: 0;
+    padding: calc(0.4 * var(--spacing));
 }
 
 .circle {
@@ -1545,7 +1537,11 @@ details.sidebar:not([open]) ~ * > header {
     height: 1.5em;
     width: 1.5em;
     text-align: center;
-    padding: 0;
+    padding: calc(0.4 * var(--spacing));
+}
+
+.pill {
+    border-radius: 1.5em;
 }
 
 .icon {
@@ -1694,7 +1690,7 @@ details.sidebar:not([open]) ~ * > header {
 :root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-hidden {
     display: none;
 }
-
+g, etc.
 :root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-invert {
     -webkit-filter: invert(1);
     filter: invert(1);

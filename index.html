@@ -17,17 +17,17 @@
                     <div class="vbox padding-left">
                         <a href="#variables">Styling Variables</a>
                         <a href="#typography">Typography</a>
-                        <a href="#forms">Inputs & Forms</a>
+                        <a href="#buttons">Buttons</a>
+                        <a href="#layouts">Layouts</a>
+                        <a href="#forms">Forms</a>
                         <a href="#tables">Tables</a>
-                        <a href="#dropdowns">Collapse & Dropdowns</a>
+                        <a href="#collapse">Collapsibles</a>
                         <a href="#modals">Modals</a>
-                        <a href="#buttons">Buttons & Menus</a>
                         <a href="#hero">Hero</a>
-                        <a href="#cards">Cards, Headers, & Footers</a>
-                        <a href="#boxes">VBoxes, HBoxes, & RBoxes</a>
+                        <a href="#cards">Cards</a>
                         <a href="#sidebar">Sidebar</a>
                         <a href="#sizing">Sizing</a>
-                        <a href="#utilities">Styling Utilities</a>
+                        <a href="#utilities">Utilities</a>
                     </div>
 
                 </nav>
@@ -38,14 +38,9 @@
 
         <header class="hbox items-center">
             <div class="size-xs"></div>
-            <img class="height-font-xxl" src="logo.svg">
+            <img class="height-font-xl" src="logo.svg">
             <div class="spacer"></div>
             <input type="checkbox" class="dm-toggle switch">
-            <div class="hbox button-group">
-                <a class="button">Button 1</a>
-                <a class="button">Button 2</a>
-                <button>Button 3</button>
-            </div>
         </header>
 
         <div class="scroll-y vbox padding">
@@ -54,6 +49,9 @@
                 <h1 class="font-xl">Documentation</h1>
                 <hr>
                 <h2 id="variables">Styling Variables</h2>
+                <p> Much of the look and feel of condensate can be changed using the styling variables, including some unique features not found in most CSS frameworks like "spacing" which changes how condensed/spread-out things are by changing margins, padding, etc. </p>
+                <p> You can independently change various colors for both light mode ("lm-") and dark mode ("dm-"), or if you need to change a color for both there are corresponding variables with no prefix. </p>
+                <p> The "-border" variables are all border width. </p>
                 <div class="rbox">
                     <pre class="monospace">
 --font-size
@@ -111,8 +109,11 @@
                 </div>
                 <hr>
                 <h2 id="typography">Typography</h2>
+                <p>Headings are automatically bolded and use larger font sizes, but you can also apply font sizes manually with classes.</p>
+                <p>The various semantic color classes (primary, secondary, success, etc.) can be used on text as shown.</p>
+                <p>The icon class is meant to be used with emojis, making them solid color silhouettes so they can be used as icons.</p>
                 <div class="rbox">
-                    <code>
+                    <code class="width-lg">
                         <pre>
 &lt;h1&gt;Heading&lt;/h1&gt;
 &lt;p&gt;Text&lt;/p&gt;
@@ -168,171 +169,12 @@
                     </div>
                 </div>
                 <hr>
-                <h2 id="forms">Inputs &amp; Forms</h2>
+                <h2 id="buttons">Buttons</h2>
+                <p>All of the semantic color classes can be used with buttons.</p>
+                <p>Several special button shapes are supplied: pill, circle, and square. If you want all buttons on your site to be pill shaped you should instead use the <a href="#variables">button border radius variable</a>.</p>
+                <p>Button groups let you combine multiple buttons together. The flush class can be added to make the full height style buttons that are often used in headers for navigation.</p>
                 <div class="rbox">
-                    <code>
-                        <pre>
-&lt;form&gt;
-    &lt;fieldset class=&quot;card vbox&quot;&gt;
-    &lt;legend&gt;Fieldset&lt;/legend&gt;
-    &lt;input placeholder=&quot;text input&quot; type=&quot;text&quot;&gt;
-    &lt;label for=&quot;checkbox1&quot;&gt;
-        &lt;input id=&quot;checkbox1&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
-        Checkbox
-    &lt;/label&gt;
-    &lt;label for=&quot;checkbox2&quot;&gt;
-        &lt;input class=&quot;switch&quot; id=&quot;checkbox2&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
-        Checkbox switch
-    &lt;/label&gt;
-    &lt;label for=&quot;radio1&quot;&gt;
-        &lt;input id=&quot;radio1&quot; name=&quot;radio&quot; type=&quot;radio&quot; checked=&quot;checked&quot;&gt;
-        Radio 1
-    &lt;/label&gt;
-    &lt;label for=&quot;radio2&quot;&gt;
-        &lt;input id=&quot;radio2&quot; name=&quot;radio&quot; type=&quot;radio&quot;&gt;
-        Radio 2
-    &lt;/label&gt;
-    &lt;/fieldset&gt;
-&lt;/form&gt;
-                        </pre>
-                    </code>
-                    <div>
-                        <form>
-                        <fieldset class="card vbox">
-                            <legend>Fieldset</legend>
-                            <input placeholder="text input" type="text">
-                            <label for="checkbox1">
-                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
-                            Checkbox
-                            </label>
-                            <label for="checkbox2">
-                            <input class="switch" id="checkbox2" name="checkbox" type="checkbox" checked="checked">
-                            Checkbox switch
-                            </label>
-                            <label for="radio1">
-                            <input id="radio1" name="radio" type="radio" checked="checked">
-                            Radio 1
-                            </label>
-                            <label for="radio2">
-                            <input id="radio2" name="radio" type="radio">
-                            Radio 2
-                            </label>
-                        </fieldset>
-                        </form>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="tables">Tables</h2>
-                <div class="rbox">
-                    <code>
-                        <pre>
-&lt;table&gt;
-    &lt;tr&gt;
-    &lt;th&gt;Header1&lt;/th&gt;
-    &lt;th&gt;Header2&lt;/th&gt;
-    &lt;th&gt;Header3&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-    &lt;td&gt;Data1&lt;/td&gt;
-    &lt;td&gt;Data2&lt;/td&gt;
-    &lt;td&gt;Data3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-    &lt;td&gt;Data1&lt;/td&gt;
-    &lt;td&gt;Data2&lt;/td&gt;
-    &lt;td&gt;Data3&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-                        </pre>
-                    </code>
-                    <div>
-                        <table>
-                        <tr>
-                            <th>Header1</th>
-                            <th>Header2</th>
-                            <th>Header3</th>
-                        </tr>
-                        <tr>
-                            <td>Data1</td>
-                            <td>Data2</td>
-                            <td>Data3</td>
-                        </tr>
-                        <tr>
-                            <td>Data1</td>
-                            <td>Data2</td>
-                            <td>Data3</td>
-                        </tr>
-                        </table>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="dropdowns">Collapse & Dropdown</h2>
-                <div class="rbox">
-                    <code>
-                        <pre>
-&lt;details&gt;
-    &lt;summary&gt;Collapse&lt;/summary&gt;
-    &lt;p&gt;Collapse&lt;br&gt;content&lt;/p&gt;
-&lt;/details&gt;
-&lt;details class=&quot;dropdown&quot;&gt;
-    &lt;summary&gt;Dropdown&lt;/summary&gt;
-    &lt;p&gt;Dropdown&lt;br&gt;content&lt;/p&gt;
-&lt;/details&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
-                        </pre>
-                    </code>
-                    <div class="vbox">
-                        <details>
-                        <summary>Collapse</summary>
-                        <p>Collapse<br>content</p>
-                        </details>
-                        <details class="dropdown">
-                        <summary>Dropdown</summary>
-                        <p>Dropdown<br>content</p>
-                        </details>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="modals">Modals</h2>
-                <div class="rbox">
-                    <code>
-                        <pre>
-&lt;div id=&quot;modal1&quot; class=&quot;modal&quot;&gt;
-    &lt;div class=&quot;card vbox&quot;&gt;
-    &lt;div class=&quot;hbox header&quot;&gt;
-        &lt;h2&gt;Modal 1&lt;/h2&gt;
-        &lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
-        &lt;a class=&quot;close&quot; href=&quot;#&quot;&gt;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;body&quot;&gt;
-        &lt;p&gt;Modal content.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;a class=&quot;button&quot; href=&quot;#modal1&quot;&gt;Open modal&lt;/a&gt;
-                        </pre>
-                    </code>
-                    <div>
-                        <div id="modal1" class="modal">
-                            <div class="card vbox">
-                                <header class="hbox">
-                                <h2>Modal 1</h2>
-                                <div class="spacer"></div>
-                                <a class="close" href="#"></a>
-                                </header>
-                                <div class="body">
-                                    <p>Modal content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="button" href="#modal1">Open modal</a>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="buttons">Buttons &amp; Menus</h2>
-                <div class="rbox">
-                    <code>
+                    <code class="width-lg">
                         <pre>
 &lt;a class=&quot;button&quot;&gt;Button styled anchor&lt;/a&gt;
 &lt;button&gt;Button&lt;/button&gt;
@@ -341,6 +183,9 @@
 &lt;button class=&quot;success&quot;&gt;Success&lt;/button&gt;
 &lt;button class=&quot;warning&quot;&gt;Warning&lt;/button&gt;
 &lt;button class=&quot;error&quot;&gt;Error&lt;/button&gt;
+&lt;button class=&quot;pill&quot;&gt;Pill Shape&lt;/button&gt;
+&lt;button class=&quot;square icon&quot;&gt;⚙️&lt;/button&gt;
+&lt;button class=&quot;circle icon&quot;&gt;❤️&lt;/button&gt;
 &lt;div class=&quot;hbox button-group&quot;&gt;
     &lt;button&gt;Button 1&lt;/button&gt;
     &lt;button&gt;Button 2&lt;/button&gt;
@@ -361,6 +206,9 @@
                         <button class="success">Success</button>
                         <button class="warning">Warning</button>
                         <button class="error">Error</button>
+                        <button class="pill">Pill Shape</button>
+                        <button class="square icon">⚙️</button>
+                        <button class="circle icon">❤️</button>
                         <div class="hbox button-group">
                             <button>Button 1</button>
                             <button>Button 2</button>
@@ -374,99 +222,11 @@
                     </div>
                 </div>
                 <hr>
-                <h2 id="hero">Hero</h2>
+                <h2 id="layouts">Layouts</h2>
+                <p>Condensate has 4 different layout classes. layout their elements vertically and HBoxes layout horizontally. RBoxes act like HBoxes in landscape and act like VBoxes in portrait. Graphics let you position items in any of the nine quadrants (upper left, bottom, center, etc.)</p>
+                <p>The RBox layout is one of the most important ways to make websites repsonsive in Condensate.</p>
                 <div class="rbox">
-                    <code>
-                        <pre>
-&lt;div class=&quot;scroll-y height-full rwidth-lg&quot;&gt;
-    &lt;div class=&quot;hero graphic&quot; style=&quot;background-image: url(test-images/test-img-2.jpg);&quot;&gt;
-        &lt;h1 class=&quot;center left font-alt&quot;&gt;This is a hero!&lt;/h1&gt;
-        &lt;button class=&quot;center bottom&quot;&gt;Button&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;padding&quot;&gt;
-        &lt;p&gt;
-            Lorem ipsum dolor sit amet, [...] condimentum.
-        &lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-                        </pre>
-                    </code>
-                    <div class="scroll-y width-lg height-lg">
-                        <div class="hero graphic" style="background-image: url(test-images/test-img-2.jpg);">
-                            <h1 class="center left font-alt">This is a hero!</h1>
-                            <button class="center bottom">Button</button>
-                        </div>
-                        <div class="padding">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat dolor sit amet diam feugiat efficitur. Maecenas vitae aliquam nisl. Curabitur mollis sodales nisi suscipit ullamcorper. Suspendisse id bibendum leo. Nam sit amet purus non tellus commodo pharetra nec eu elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tincidunt urna at nunc maximus condimentum.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="cards">Cards, Headers, &amp; Footers</h2>
-                <div class="rbox">
-                    <code>
-                        <pre>
-&lt;div class=&quot;card vbox&quot;&gt;
-    &lt;header&gt;
-    Header
-    &lt;/header&gt;
-    &lt;p&gt;
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br&gt;
-    Aliquam efficitur elementum quam at luctus.
-    &lt;/p&gt;
-    &lt;footer&gt;
-    Footer
-    &lt;/footer&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;card vbox primary&quot;&gt;
-    &lt;header&gt;
-    Header
-    &lt;/header&gt;
-    &lt;p&gt;
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br&gt;
-    Aliquam efficitur elementum quam at luctus.
-    &lt;/p&gt;
-    &lt;footer&gt;
-    Footer
-    &lt;/footer&gt;
-&lt;/div&gt;
-                        </pre>
-                    </code>
-                    <div class="vbox">
-                        <div class="card vbox">
-                            <header>
-                                Header
-                            </header>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-                                Aliquam efficitur elementum quam at luctus.
-                            </p>
-                            <footer>
-                                Footer
-                            </footer>
-                        </div>
-
-                        <div class="card vbox primary">
-                            <header>
-                                Header
-                            </header>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-                                Aliquam efficitur elementum quam at luctus.
-                            </p>
-                            <footer>
-                                Footer
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <h2 id="boxes">VBoxes, HBoxes, and RBoxes</h2>
-                <div class="rbox">
-                    <code>
+                    <code class="width-lg">
                         <pre>
 &lt;div class=&quot;hbox card&quot;&gt;
     &lt;p&gt;HBox&lt;/p&gt;
@@ -520,9 +280,267 @@
                     </div>
                 </div>
                 <hr>
-                <h2 id="sidebar">Sidebar</h2>
+                <h2 id="forms">Forms</h2>
+                <p>Condensate has beautifully animated form controls.</p>
                 <div class="rbox">
-                    <code>
+                    <code class="width-lg">
+                        <pre>
+&lt;form&gt;
+    &lt;fieldset class=&quot;card vbox&quot;&gt;
+    &lt;legend&gt;Fieldset&lt;/legend&gt;
+    &lt;input placeholder=&quot;text input&quot; type=&quot;text&quot;&gt;
+    &lt;label for=&quot;checkbox1&quot;&gt;
+        &lt;input id=&quot;checkbox1&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
+        Checkbox
+    &lt;/label&gt;
+    &lt;label for=&quot;checkbox2&quot;&gt;
+        &lt;input class=&quot;switch&quot; id=&quot;checkbox2&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
+        Checkbox switch
+    &lt;/label&gt;
+    &lt;label for=&quot;radio1&quot;&gt;
+        &lt;input id=&quot;radio1&quot; name=&quot;radio&quot; type=&quot;radio&quot; checked=&quot;checked&quot;&gt;
+        Radio 1
+    &lt;/label&gt;
+    &lt;label for=&quot;radio2&quot;&gt;
+        &lt;input id=&quot;radio2&quot; name=&quot;radio&quot; type=&quot;radio&quot;&gt;
+        Radio 2
+    &lt;/label&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+                        </pre>
+                    </code>
+                    <div>
+                        <form>
+                        <fieldset class="card vbox">
+                            <legend>Fieldset</legend>
+                            <input placeholder="text input" type="text">
+                            <label for="checkbox1">
+                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+                            Checkbox
+                            </label>
+                            <label for="checkbox2">
+                            <input class="switch" id="checkbox2" name="checkbox" type="checkbox" checked="checked">
+                            Checkbox switch
+                            </label>
+                            <label for="radio1">
+                            <input id="radio1" name="radio" type="radio" checked="checked">
+                            Radio 1
+                            </label>
+                            <label for="radio2">
+                            <input id="radio2" name="radio" type="radio">
+                            Radio 2
+                            </label>
+                        </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <h2 id="tables">Tables</h2>
+                <p>Tables are highly customizable with <a href="#variables">styling variables</a>.</p>
+                <div class="rbox">
+                    <code class="width-lg">
+                        <pre>
+&lt;table&gt;
+    &lt;tr&gt;
+    &lt;th&gt;Header1&lt;/th&gt;
+    &lt;th&gt;Header2&lt;/th&gt;
+    &lt;th&gt;Header3&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;Data1&lt;/td&gt;
+    &lt;td&gt;Data2&lt;/td&gt;
+    &lt;td&gt;Data3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;Data1&lt;/td&gt;
+    &lt;td&gt;Data2&lt;/td&gt;
+    &lt;td&gt;Data3&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+                        </pre>
+                    </code>
+                    <div>
+                        <table>
+                        <tr>
+                            <th>Header1</th>
+                            <th>Header2</th>
+                            <th>Header3</th>
+                        </tr>
+                        <tr>
+                            <td>Data1</td>
+                            <td>Data2</td>
+                            <td>Data3</td>
+                        </tr>
+                        <tr>
+                            <td>Data1</td>
+                            <td>Data2</td>
+                            <td>Data3</td>
+                        </tr>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <h2 id="collapse">Collapsibles</h2>
+                <div class="rbox">
+                    <code class="width-lg">
+                        <pre>
+&lt;details&gt;
+    &lt;summary&gt;Collapse&lt;/summary&gt;
+    &lt;p&gt;Collapse&lt;br&gt;content&lt;/p&gt;
+&lt;/details&gt;
+&lt;details class=&quot;dropdown&quot;&gt;
+    &lt;summary&gt;Dropdown&lt;/summary&gt;
+    &lt;p&gt;Dropdown&lt;br&gt;content&lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+                        </pre>
+                    </code>
+                    <div class="vbox">
+                        <details>
+                        <summary>Collapse</summary>
+                        <p>Collapse<br>content</p>
+                        </details>
+                        <details class="dropdown">
+                        <summary>Dropdown</summary>
+                        <p>Dropdown<br>content</p>
+                        </details>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <hr>
+                <h2 id="modals">Modals</h2>
+                <p>Condensate supplies a simple scriptless modal control. Try it out by pressing the button!</p>
+                <div class="rbox">
+                    <code class="width-lg">
+                        <pre>
+&lt;div id=&quot;modal1&quot; class=&quot;modal&quot;&gt;
+    &lt;div class=&quot;card vbox&quot;&gt;
+    &lt;div class=&quot;hbox header&quot;&gt;
+        &lt;h2&gt;Modal 1&lt;/h2&gt;
+        &lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
+        &lt;a class=&quot;close&quot; href=&quot;#&quot;&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;body&quot;&gt;
+        &lt;p&gt;Modal content.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;a class=&quot;button&quot; href=&quot;#modal1&quot;&gt;Open modal&lt;/a&gt;
+                        </pre>
+                    </code>
+                    <div>
+                        <div id="modal1" class="modal">
+                            <div class="card vbox">
+                                <header class="hbox">
+                                <h2>Modal 1</h2>
+                                <div class="spacer"></div>
+                                <a class="close" href="#"></a>
+                                </header>
+                                <div class="body">
+                                    <p>Modal content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="button" href="#modal1">Open modal</a>
+                    </div>
+                </div>
+                <hr>
+                <h2 id="hero">Hero</h2>
+                <p>The hero class is best combined with the graphic layout class and an inline background image to create landing page heros.</p>
+                <div class="rbox">
+                    <code class="width-lg">
+                        <pre>
+&lt;div class=&quot;scroll-y height-full rwidth-lg&quot;&gt;
+    &lt;div class=&quot;hero graphic&quot; style=&quot;background-image: url(test-images/test-img-2.jpg);&quot;&gt;
+        &lt;h1 class=&quot;center left font-alt&quot;&gt;This is a hero!&lt;/h1&gt;
+        &lt;button class=&quot;center bottom&quot;&gt;Button&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;padding&quot;&gt;
+        &lt;p&gt;
+            Lorem ipsum dolor sit amet, [...] condimentum.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        </pre>
+                    </code>
+                    <div class="scroll-y width-lg height-lg">
+                        <div class="hero graphic" style="background-image: url(test-images/test-img-2.jpg);">
+                            <h1 class="center left font-alt">This is a hero!</h1>
+                            <button class="center bottom">Button</button>
+                        </div>
+                        <div class="padding">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat dolor sit amet diam feugiat efficitur. Maecenas vitae aliquam nisl. Curabitur mollis sodales nisi suscipit ullamcorper. Suspendisse id bibendum leo. Nam sit amet purus non tellus commodo pharetra nec eu elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tincidunt urna at nunc maximus condimentum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2 id="cards">Cards</h2>
+                <p>Cards can have headers and footers and can be styled with the semantic color classes. Headers and footers can also be used outside of cards.</p>
+                <div class="rbox">
+                    <code class="width-lg">
+                        <pre>
+&lt;div class=&quot;card vbox&quot;&gt;
+    &lt;header&gt;
+    Header
+    &lt;/header&gt;
+    &lt;p&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br&gt;
+    Aliquam efficitur elementum quam at luctus.
+    &lt;/p&gt;
+    &lt;footer&gt;
+    Footeri
+    &lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;card vbox primary&quot;&gt;
+    &lt;header&gt;
+    Header
+    &lt;/header&gt;
+    &lt;p&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;br&gt;
+    Aliquam efficitur elementum quam at luctus.
+    &lt;/p&gt;
+    &lt;footer&gt;
+    Footer
+    &lt;/footer&gt;
+&lt;/div&gt;
+                        </pre>
+                    </code>
+                    <div class="vbox">
+                        <div class="card vbox">
+                            <header>
+                                Header
+                            </header>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                                Aliquam efficitur elementum quam at luctus.
+                            </p>
+                            <footer>
+                                Footer
+                            </footer>
+                        </div>
+
+                        <div class="card vbox primary">
+                            <header>
+                                Header
+                            </header>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+                                Aliquam efficitur elementum quam at luctus.
+                            </p>
+                            <footer>
+                                Footer
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2 id="sidebar">Sidebar</h2>
+                <p>Condensate supplies a scriptless sidebar class by heavily styling a summary/details collapse container.</p>
+                <div class="rbox">
+                    <code class="width-lg">
                         <pre>
 &lt;div class=&quot;hbox&quot;&gt;
     &lt;details class=&quot;sidebar&quot;&gt;
@@ -558,7 +576,29 @@
                     </div>
                 </div>
                 <hr>
+                <h2 id="dm-toggle">Dark Mode Toggle</h2>
+                <p>By default Condensate uses the user's browser preference to decide whether to use light mode or dark mode colors, however a simple checkbox based toggle switch can be used instead, if desired.</p>
+                <p>The dm-toggle class can be combined with the switch class for a toggle switch form.</p>
+                <p>If you want the toggle switches value to be saved for the next time the user visits, you'll have to use cookies.</p>
+                <div class="rbox">
+                    <code class="width-lg">
+                        <pre>
+&lt;p&gt;Basic dark mode toggle:&lt;/p&gt;
+&lt;input type=&quot;checkbox&quot; class=&quot;dm-toggle&quot;&gt;
+&lt;p&gt;Switch styled dark mode toggle:&lt;/p&gt;
+&lt;input type=&quot;checkbox&quot; class=&quot;dm-toggle switch&quot;&gt;
+                        </pre>
+                    </code>
+                    <div class="vbox">
+                        <p>Basic dark mode toggle:</p>
+                        <input type="checkbox" class="dm-toggle">
+                        <p>Switch styled dark mode toggle:</p>
+                        <input type="checkbox" class="dm-toggle switch">
+                    </div>
+                </div>
+                <hr>
                 <h2 id="sizing">Sizing</h2>
+                <p>Many sizing utilities are provided, but the best practice is to use the vw based width classes for block-like elements, and the input/font based heights for inline elements.</p>
                 <div class="rbox scroll-x">
                     <pre class="monospace">
 width-xs: 8vw
@@ -604,7 +644,10 @@ fullscreen: fixed & covers entire viewport
                     </pre>
                 </div>
                 <hr>
-                <h2 id="utilities">Styling Utilities</h2>
+                <h2 id="utilities">Utilities</h2>
+                <p>A handful of styling utilities are provided for making manual tweaks.</p>
+                <p>The landscape/portrait hidden utilites can be used for special cases where RBoxes and responsive widths alone cannot get the desired affect for responsive elements.</p>
+                <p>The lm/dm style utilities can be used to invert or use different images for light mode vs dark mode.</p>
                 <div class="rbox">
                     <pre class="monospace">
 <h3>Background Color</h3>
@@ -612,9 +655,9 @@ background-color
 alt-background-color
 panel-color
 
-<h3>Button Shapes</h3>
-circle
-square
+<h3>Portrait / Landscape</h3>
+portrait-hidden
+landscape-hidden
                     </pre>
                     <pre class="monospace">
 <h3>Light Mode / Dark Mode</h3>
@@ -622,10 +665,6 @@ lm-hidden
 lm-invert
 dm-hidden
 dm-invert
-
-<h3>Portrait / Landscape</h3>
-portrait-hidden
-landscape-hidden
                     </pre>
                     <pre class="monospace">
 <h3>Text Align</h3>
