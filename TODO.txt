@@ -2,5 +2,6 @@
 [X] Remove captioned (figure/captions already exist)
 [X] Replace "menu" with button-group and add more styling variables for it
 [X] Add more styling options for tables
-[ ] Add explanations to Documentation, add demos for responsive components
-[ ] Add section in Documentation for Dark Mode toggle switch
+[X] Add explanations to Documentation
+[ ] Add demos for responsive components
+[X] Add section in Documentation for Dark Mode toggle switch
