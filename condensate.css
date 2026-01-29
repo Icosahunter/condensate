@@ -1309,12 +1309,12 @@ details.dropdown > :not(summary).right {
 }
 details.sidebar {
     position: relative;
+    background: var(--alt-background-color);
+    border-right-width: var(--panel-border);
 }
 details.sidebar > *:not(summary) {
     margin: 0;
-    background: var(--alt-background-color);
     height: 100%;
-    border-right-width: var(--panel-border);
 }
 details.sidebar > summary {
     display: block;
@@ -1351,46 +1351,24 @@ details.sidebar > summary::after {
     border-bottom-width: var(--border-width);
     border-bottom-style: solid;
 }
-@media (min-aspect-ratio: 1.2) {
-    details.sidebar[open] {
-        overflow: hidden;
-        animation: sidebar-expand-animation 0.4s;
-        min-width: 17em;
-    }
-    @keyframes sidebar-expand-animation {
-        0% {
-            min-width: 0;
-            max-width: 0;
-        }
-        99% {
-            min-width: 17em;
-            max-width: 2000px;
-        }
-        100% {
-            min-width: 17em;
-            max-width: none;
-        }
-    }
+
+details.sidebar[open] {
+    overflow: hidden;
+    animation: sidebar-expand-animation 0.4s;
+    min-width: min(17em, 80vw);
 }
-@media (max-aspect-ratio: 1.2) {
-    details.sidebar[open] {
-        overflow: hidden;
-        animation: sidebar-expand-animation 0.4s;
-        min-width: 80vw;
+@keyframes sidebar-expand-animation {
+    0% {
+        min-width: 0;
+        max-width: 0;
     }
-    @keyframes sidebar-expand-animation {
-        0% {
-            min-width: 0;
-            max-width: 0;
-        }
-        99% {
-            min-width: 80vw;
-            max-width: 2000px;
-        }
-        100% {
-            min-width: 80vw;
-            max-width: none;
-        }
+    99% {
+        min-width: min(17em, 80vw);
+        max-width: 2000px;
+    }
+    100% {
+        min-width: min(17em, 80vw);
+        max-width: none;
     }
 }
 details.sidebar[open] > summary {

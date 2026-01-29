@@ -3,12 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-        <title></title>
+        <title>Condensate Documentation</title>
         <link rel="stylesheet" href="condensate.css">
     </head>
     <body>
         <div class="fullscreen hbox">
-
         <!-- Sidebar -->
         <details class="sidebar">
                 <summary class="button sidebar-button"></summary>
@@ -29,7 +28,6 @@
                         <a href="#sizing">Sizing</a>
                         <a href="#utilities">Utilities</a>
                     </div>
-
                 </nav>
         </details>
 
@@ -224,7 +222,7 @@
                 <hr>
                 <h2 id="layouts">Layouts</h2>
                 <p>Condensate has 4 different layout classes. layout their elements vertically and HBoxes layout horizontally. RBoxes act like HBoxes in landscape and act like VBoxes in portrait. Graphics let you position items in any of the nine quadrants (upper left, bottom, center, etc.)</p>
-                <p>The RBox layout is one of the most important ways to make websites repsonsive in Condensate.</p>
+                <p>The RBox layout is one of the most important ways to make websites responsive in Condensate. The RBox shown here is in a resizable iframe, try resizing the box to see how it changes with the aspect ratio.</p>
                 <div class="rbox">
                     <code class="width-lg">
                         <pre>
@@ -251,6 +249,9 @@
     &lt;div class=&quot;bottom center square panel-color rounded&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;bottom right square panel-color rounded&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;div style=&quot;display:flex; resize:both; overflow:hidden;&quot;&gt;
+    &lt;iframe style=&quot;flex-grow:1;&quot; src=&quot;rbox-demo.html&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
                         </pre>
                     </code>
                     <div class="vbox">
@@ -276,6 +277,9 @@
                         <div class="bottom left square panel-color rounded"></div>
                         <div class="bottom center square panel-color rounded"></div>
                         <div class="bottom right square panel-color rounded"></div>
+                        </div>
+                        <div style="display:flex; resize:both; overflow:hidden;">
+                            <iframe style="flex-grow:1;" src="rbox-demo.html"></iframe>
                         </div>
                     </div>
                 </div>
