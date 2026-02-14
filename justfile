@@ -12,9 +12,9 @@ publish:
     #!/usr/bin/env bash
     rm -rf /tmp/condensate
     mkdir /tmp/condensate
-    cp index.html /tmp/condensate/index.html
-    cp rbox-demo.html /tmp/condensate/rbox-demo.html
-    cp condensate.css /tmp/condensate/condensate.css
+    cp website/index.html /tmp/condensate/index.html
+    cp website/rbox-demo.html /tmp/condensate/rbox-demo.html
+    cp src/condensate.css /tmp/condensate/condensate.css
     git checkout website
     cp /tmp/condensate/index.html index.html
     cp /tmp/condensate/rbox-demo.html rbox-demo.html
