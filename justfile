@@ -13,9 +13,11 @@ publish:
     rm -rf /tmp/condensate
     mkdir /tmp/condensate
     cp index.html /tmp/condensate/index.html
+    cp rbox-demo.html /tmp/condensate/rbox-demo.html
     cp condensate.css /tmp/condensate/condensate.css
     git checkout website
     cp /tmp/condensate/index.html index.html
+    cp /tmp/condensate/rbox-demo.html rbox-demo.html
     cp /tmp/condensate/condensate.css condensate.css
     git add --all
     git commit -m "Publish"
