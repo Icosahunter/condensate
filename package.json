@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "css-minify": "^2.0.0",
-    "sass": "^1.66.1"
+    "css-minify": "^2.0.0"
   }
 }
