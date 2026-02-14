@@ -1,19 +1,19 @@
 clean:
-    rm -r css-dist || true
+    rm -r dist || true
 
 setup:
     npm install
 
 build: setup clean
-    mkdir css-dist
-    npx css-minify -f condensate.css
+    mkdir dist
+    npx css-minify -f src/condensate.css
 
 publish:
     #!/usr/bin/env bash
     rm -rf /tmp/condensate
     mkdir /tmp/condensate
-    cp website/index.html /tmp/condensate/index.html
-    cp website/rbox-demo.html /tmp/condensate/rbox-demo.html
+    cp src/index.html /tmp/condensate/index.html
+    cp src/rbox-demo.html /tmp/condensate/rbox-demo.html
     cp src/condensate.css /tmp/condensate/condensate.css
     git checkout website
     cp /tmp/condensate/index.html index.html
