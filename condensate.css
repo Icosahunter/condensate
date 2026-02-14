@@ -1357,10 +1357,6 @@ details.sidebar[open] {
         min-width: 0;
         max-width: 0;
     }
-    99% {
-        min-width: min(17em, 80vw);
-        max-width: 2000px;
-    }
     100% {
         min-width: min(17em, 80vw);
         max-width: none;
