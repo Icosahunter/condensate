@@ -1,4 +1,7 @@
-![Condensate](logo.svg)
+<div align="center">
+    <img src="icon.svg" width="150">
+    <h1> Condensate </h1>
+</div>
 
 Condensate is a small(ish) css library with intuitive h-box/v-box layouting, no-javascript components, and easy themeing through css variables.
 
