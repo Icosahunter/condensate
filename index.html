@@ -221,7 +221,7 @@
                 </div>
                 <hr>
                 <h2 id="layouts">Layouts</h2>
-                <p>Condensate has 4 different layout classes. layout their elements vertically and HBoxes layout horizontally. RBoxes act like HBoxes in landscape and act like VBoxes in portrait. Graphics let you position items in any of the nine quadrants (upper left, bottom, center, etc.)</p>
+                <p>Condensate has 4 different layout classes. VBoxes layout their elements vertically and HBoxes layout horizontally. RBoxes act like HBoxes in landscape and act like VBoxes in portrait. Graphics let you position items in any of the nine quadrants (upper left, bottom, center, etc.)</p>
                 <p>The RBox layout is one of the most important ways to make websites responsive in Condensate. The RBox shown here is in a resizable iframe, try resizing the box to see how it changes with the aspect ratio.</p>
                 <div class="rbox">
                     <code class="width-lg">
@@ -413,39 +413,35 @@
                 </div>
                 <hr>
                 <h2 id="modals">Modals</h2>
-                <p>Condensate supplies a simple scriptless modal control. Try it out by pressing the button!</p>
+                <p>The modal class centers and adds a shadow to modal elements. Try it out by pressing the button!</p>
                 <div class="rbox">
                     <code class="width-lg">
                         <pre>
-&lt;div id=&quot;modal1&quot; class=&quot;modal&quot;&gt;
-    &lt;div class=&quot;card vbox&quot;&gt;
-    &lt;div class=&quot;hbox header&quot;&gt;
-        &lt;h2&gt;Modal 1&lt;/h2&gt;
-        &lt;div class=&quot;spacer&quot;&gt;&lt;/div&gt;
-        &lt;a class=&quot;close&quot; href=&quot;#&quot;&gt;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;body&quot;&gt;
+&lt;dialog id=&quot;modal&quot; class=&quot;modal&quot;&gt;
+    &lt;form method=&quot;dialog&quot; class=&quot;card vbox&quot;&gt;
+        &lt;header class=&quot;hbox&quot;&gt;
+            &lt;h3&gt;Modal heading&lt;/h3&gt;
+            &lt;span class=&quot;spacer&quot;&gt;&lt;/span&gt;
+            &lt;button class=&quot;close&quot;&gt;&lt;/button&gt;
+        &lt;/header&gt;
         &lt;p&gt;Modal content.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;a class=&quot;button&quot; href=&quot;#modal1&quot;&gt;Open modal&lt;/a&gt;
+    &lt;/form&gt;
+&lt;/dialog&gt;
+&lt;button onclick=&quot;document.getElementById('modal').showModal()&quot;&gt;Open Modal&lt;/button&gt;
                         </pre>
                     </code>
                     <div>
-                        <div id="modal1" class="modal">
-                            <div class="card vbox">
+                        <dialog id="modal" class="modal">
+                            <form method="dialog" class="card vbox">
                                 <header class="hbox">
-                                <h2>Modal 1</h2>
-                                <div class="spacer"></div>
-                                <a class="close" href="#"></a>
+                                    <h3>Modal heading</h3>
+                                    <span class="spacer"></span>
+                                    <button class="close"></button>
                                 </header>
-                                <div class="body">
-                                    <p>Modal content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="button" href="#modal1">Open modal</a>
+                                <p>Modal content.</p>
+                            </form>
+                        </dialog>
+                        <button onclick="document.getElementById('modal').showModal()">Open Modal</button>
                     </div>
                 </div>
                 <hr>

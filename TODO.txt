@@ -6,4 +6,4 @@
 [X] Add demos for responsive components
 [X] Add section in Documentation for Dark Mode toggle switch
 [X] Fix sidebar not extending to bottom of container
-[ ] Use dialog element for modals
+[X] Use dialog element for modals
