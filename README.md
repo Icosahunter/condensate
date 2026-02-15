@@ -8,4 +8,4 @@ Condensate is a responsive css framework with intuitive h-box/v-box layouting, s
 > [!NOTE]
 > Condensate is still in development and not yet ready for production use.
 
-The `index.html` document showcases most of the components and is hosted [here](https://icosahunter.github.io/condensate/).
+A demo and documentation page can be found [here](https://icosahunter.github.io/condensate/).

@@ -295,7 +295,7 @@ CSS Variables [01]
 }
 
 .dm, :root:has(input[type="checkbox"].dm-toggle:checked) {
-    --background-color: var(--dm-bar(--blockquote-quotemark);ackground-color);
+    --background-color: var(--dm-background-color);
     --alt-background-color: var(--dm-alt-background-color);
     --panel-color: var(--dm-panel-color);
     --button-color: var(--dm-button-color);
@@ -1714,10 +1714,14 @@ Utility [16]
     width: 100%;
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
+
 :root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-hidden {
     display: none;
 }
-g, etc.
+
 :root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-invert {
     -webkit-filter: invert(1);
     filter: invert(1);

@@ -38,7 +38,7 @@
             <div class="size-xs"></div>
             <img class="height-font-xl" src="logo.svg">
             <div class="spacer"></div>
-            <input type="checkbox" class="dm-toggle switch">
+            <input type="checkbox" class="dm-toggle">
         </header>
 
         <div class="scroll-y vbox padding">
@@ -233,6 +233,7 @@
                 <h2 id="layouts">Layouts</h2>
                 <p>Condensate has 4 different layout classes. VBoxes layout their elements vertically and HBoxes layout horizontally. RBoxes act like HBoxes in landscape and act like VBoxes in portrait. Graphics let you position items in any of the nine quadrants (upper left, bottom, center, etc.)</p>
                 <p>When using Condensate, most if not all of your containers should use one of these 4 layout classes.</p>
+                <p>You can add scrolling with the classes <code>scroll-x</code> and <code>scroll-y</code> and you can allow item wrapping with the class <code>wrap</code></p>
                 <p>The RBox layout is one of the most important ways to make websites responsive in Condensate. The RBox shown here is in a resizable iframe, try resizing the box to see how it changes with the aspect ratio.</p>
                 <div class="rbox">
                     <code class="width-lg">
@@ -626,7 +627,7 @@
                 <hr>
                 <h2 id="sizing">Sizing</h2>
                 <p>Many sizing utilities are provided, but the best practice is to use the vw based width classes for block-like elements, and the input/font based heights for inline elements.</p>
-                <div class="rbox scroll-x">
+                <div class="hbox wrap scroll-x">
                     <pre class="monospace">
 width-xs: 8vw
 width-sm: 14vw
@@ -637,7 +638,8 @@ width-xl: 80vw<sup>*</sup>
 <small>* these widths are responsive,
 on portrait orientations they
 will instead be 100%</small>
-
+                    </pre>
+                    <pre class="monospace">
 width-quarter:        25%
 width-third:          33%
 width-half:           50%
@@ -651,7 +653,8 @@ height-sm: 14vh
 height-md: 25vh
 height-lg: 45vh
 height-xl: 80vh
-
+                    </pre>
+                    <pre class="monospace">
 height-quarter:        25%
 height-third:          33%
 height-half:           50%
@@ -675,13 +678,14 @@ fullscreen: fixed & covers entire viewport
                 <p>A handful of styling utilities are provided for making manual tweaks.</p>
                 <p>The landscape/portrait hidden utilites can be used for special cases where RBoxes and responsive widths alone cannot get the desired affect for responsive elements.</p>
                 <p>The lm/dm style utilities can be used to invert or use different images for light mode vs dark mode.</p>
-                <div class="rbox">
+                <div class="hbox wrap">
                     <pre class="monospace">
 <h3>Background Color</h3>
 background-color
 alt-background-color
 panel-color
-
+                    </pre>
+                    <pre class="monospace">
 <h3>Portrait / Landscape</h3>
 portrait-hidden
 landscape-hidden
