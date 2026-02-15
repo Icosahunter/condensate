@@ -1164,7 +1164,7 @@ details.dropdown {
     position: relative;
 }
 
-details.dropdown > :not(summary):not(.menu) {
+details.dropdown > :not(summary) {
     padding: var(--spacing);
 }
 
@@ -1173,7 +1173,8 @@ details.dropdown > :not(summary) {
     background: var(--panel-color);
     border-width: var(--panel-border);
     position: absolute;
-    left: 0;
+    left: -1em;
+    top: 100%;
     z-index: 1;
 }
 

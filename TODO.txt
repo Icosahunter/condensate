@@ -8,4 +8,4 @@
 [X] Fix sidebar not extending to bottom of container
 [X] Use dialog element for modals
 [X] Style blockquote, q, cite, dl, dd, dt, datalist, dfn, ul, ol, li, mark, meter, legend, progress
-[ ] Make dropdowns work with button groups
+[X] Make dropdowns work with button groups
