@@ -38,7 +38,7 @@
             <div class="size-xs"></div>
             <img class="height-font-xl" src="logo.svg">
             <div class="spacer"></div>
-            <input type="checkbox" class="dm-toggle switch">
+            <input type="checkbox" class="dm-toggle">
         </header>
 
         <div class="scroll-y vbox padding">
@@ -49,6 +49,7 @@
                 <h2 id="variables">Styling Variables</h2>
                 <p> Much of the look and feel of condensate can be changed using the styling variables, including some unique features not found in most CSS frameworks like "spacing" which changes how condensed/spread-out things are by changing margins, padding, etc. </p>
                 <p> You can independently change various colors for both light mode ("lm-") and dark mode ("dm-"), or if you need to change a color for both there are corresponding variables with no prefix. </p>
+                <p> You can change the blockquote style from a horizontal bar to an oversized left quotation mark by setting <code>blockquote-border: 0;</code> and <code>blockquote-quotemark: visible;</code></p>
                 <p> The "-border" variables are all border width. </p>
                 <div class="rbox">
                     <pre class="monospace">
@@ -58,16 +59,19 @@
 --mono-font-family
 --border-radius
 --border-width
+--panel-border
 --input-border
 --button-border
---panel-border
+--button-border-radius
 --button-group-sep-border
 --table-border
 --table-v-border
 --table-h-border
 --table-header-bg
 --table-body-bg
---button-border-radius
+--blockquote-border
+--blockquote-quotemark
+--blockquote-quotemark-font
 --spacing
                     </pre>
                     <pre class="monospace">
@@ -123,6 +127,9 @@
 &lt;b&gt;Bold text&lt;/b&gt;
 &lt;em&gt;Emphasized text&lt;/em&gt;
 &lt;strong&gt;Strong text&lt;/strong&gt;
+&lt;q&gt;Quote text&lt;/q&gt;
+&lt;blockquote&gt;Blockquote text. Condensate also supports oversized left quotation mark styled blockquotes, which you can enable with variables.&lt;/blockquote&gt;
+&lt;mark&gt;Marked text&lt;/mark&gt;
 &lt;p class=&quot;font-xl&quot;&gt;Extra large text&lt;/p&gt;
 &lt;p class=&quot;font-lg&quot;&gt;Large text&lt;/p&gt;
 &lt;p class=&quot;font-md&quot;&gt;Medium text&lt;/p&gt;
@@ -150,6 +157,9 @@
                         <b>Bold text</b>
                         <em>Emphasized text</em>
                         <strong>Strong text</strong>
+                        <q>Quote text</q>
+                        <blockquote>Blockquote text. Condensate also supports oversized left quotation mark styled blockquotes, which you can enable with variables.</blockquote>
+                        <mark>Marked text</mark>
                         <p class="font-xl">Extra large text</p>
                         <p class="font-lg">Large text</p>
                         <p class="font-md">Medium text</p>
@@ -223,6 +233,7 @@
                 <h2 id="layouts">Layouts</h2>
                 <p>Condensate has 4 different layout classes. VBoxes layout their elements vertically and HBoxes layout horizontally. RBoxes act like HBoxes in landscape and act like VBoxes in portrait. Graphics let you position items in any of the nine quadrants (upper left, bottom, center, etc.)</p>
                 <p>When using Condensate, most if not all of your containers should use one of these 4 layout classes.</p>
+                <p>You can add scrolling with the classes <code>scroll-x</code> and <code>scroll-y</code> and you can allow item wrapping with the class <code>wrap</code></p>
                 <p>The RBox layout is one of the most important ways to make websites responsive in Condensate. The RBox shown here is in a resizable iframe, try resizing the box to see how it changes with the aspect ratio.</p>
                 <div class="rbox">
                     <code class="width-lg">
@@ -292,50 +303,66 @@
                         <pre>
 &lt;form&gt;
     &lt;fieldset class=&quot;card vbox&quot;&gt;
-    &lt;legend&gt;Fieldset&lt;/legend&gt;
-    &lt;input placeholder=&quot;text input&quot; type=&quot;text&quot;&gt;
-    &lt;label for=&quot;checkbox1&quot;&gt;
-        &lt;input id=&quot;checkbox1&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
-        Checkbox
-    &lt;/label&gt;
-    &lt;label for=&quot;checkbox2&quot;&gt;
-        &lt;input class=&quot;switch&quot; id=&quot;checkbox2&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
-        Checkbox switch
-    &lt;/label&gt;
-    &lt;label for=&quot;radio1&quot;&gt;
-        &lt;input id=&quot;radio1&quot; name=&quot;radio&quot; type=&quot;radio&quot; checked=&quot;checked&quot;&gt;
-        Radio 1
-    &lt;/label&gt;
-    &lt;label for=&quot;radio2&quot;&gt;
-        &lt;input id=&quot;radio2&quot; name=&quot;radio&quot; type=&quot;radio&quot;&gt;
-        Radio 2
-    &lt;/label&gt;
+        &lt;legend&gt;Fieldset&lt;/legend&gt;
+        &lt;input placeholder=&quot;text input&quot; type=&quot;text&quot;&gt;
+        &lt;label for=&quot;checkbox1&quot;&gt;
+            &lt;input id=&quot;checkbox1&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
+            Checkbox
+        &lt;/label&gt;
+        &lt;label for=&quot;checkbox2&quot;&gt;
+            &lt;input class=&quot;switch&quot; id=&quot;checkbox2&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;
+            Checkbox switch
+        &lt;/label&gt;
+        &lt;label for=&quot;radio1&quot;&gt;
+            &lt;input id=&quot;radio1&quot; name=&quot;radio&quot; type=&quot;radio&quot; checked=&quot;checked&quot;&gt;
+            Radio 1
+        &lt;/label&gt;
+        &lt;label for=&quot;radio2&quot;&gt;
+            &lt;input id=&quot;radio2&quot; name=&quot;radio&quot; type=&quot;radio&quot;&gt;
+            Radio 2
+        &lt;/label&gt;
+        &lt;label for=&quot;meter&quot;&gt;
+            Meter
+            &lt;meter id=&quot;meter&quot; value=&quot;3&quot; max=&quot;10&quot;&gt;&lt;/meter&gt;
+        &lt;/label&gt;
+        &lt;label for=&quot;progress&quot;&gt;
+            Progress
+            &lt;progress id=&quot;progress&quot; value=&quot;5&quot; max=&quot;10&quot;&gt;&lt;/progress&gt;
+        &lt;/label&gt;
     &lt;/fieldset&gt;
 &lt;/form&gt;
                         </pre>
                     </code>
                     <div>
                         <form>
-                        <fieldset class="card vbox">
-                            <legend>Fieldset</legend>
-                            <input placeholder="text input" type="text">
-                            <label for="checkbox1">
-                            <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
-                            Checkbox
-                            </label>
-                            <label for="checkbox2">
-                            <input class="switch" id="checkbox2" name="checkbox" type="checkbox" checked="checked">
-                            Checkbox switch
-                            </label>
-                            <label for="radio1">
-                            <input id="radio1" name="radio" type="radio" checked="checked">
-                            Radio 1
-                            </label>
-                            <label for="radio2">
-                            <input id="radio2" name="radio" type="radio">
-                            Radio 2
-                            </label>
-                        </fieldset>
+                            <fieldset class="card vbox">
+                                <legend>Fieldset</legend>
+                                <input placeholder="text input" type="text">
+                                <label for="checkbox1">
+                                    <input id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+                                    Checkbox
+                                </label>
+                                <label for="checkbox2">
+                                    <input class="switch" id="checkbox2" name="checkbox" type="checkbox" checked="checked">
+                                    Checkbox switch
+                                </label>
+                                <label for="radio1">
+                                    <input id="radio1" name="radio" type="radio" checked="checked">
+                                    Radio 1
+                                </label>
+                                <label for="radio2">
+                                    <input id="radio2" name="radio" type="radio">
+                                    Radio 2
+                                </label>
+                                <label for="meter">
+                                    Meter
+                                    <meter id="meter" value="3" max="10"></meter>
+                                </label>
+                                <label for="progress">
+                                    Progress
+                                    <progress id="progress" value="5" max="10"></progress>
+                                </label>
+                            </fieldset>
                         </form>
                     </div>
                 </div>
@@ -600,7 +627,7 @@
                 <hr>
                 <h2 id="sizing">Sizing</h2>
                 <p>Many sizing utilities are provided, but the best practice is to use the vw based width classes for block-like elements, and the input/font based heights for inline elements.</p>
-                <div class="rbox scroll-x">
+                <div class="hbox wrap scroll-x">
                     <pre class="monospace">
 width-xs: 8vw
 width-sm: 14vw
@@ -611,7 +638,8 @@ width-xl: 80vw<sup>*</sup>
 <small>* these widths are responsive,
 on portrait orientations they
 will instead be 100%</small>
-
+                    </pre>
+                    <pre class="monospace">
 width-quarter:        25%
 width-third:          33%
 width-half:           50%
@@ -625,7 +653,8 @@ height-sm: 14vh
 height-md: 25vh
 height-lg: 45vh
 height-xl: 80vh
-
+                    </pre>
+                    <pre class="monospace">
 height-quarter:        25%
 height-third:          33%
 height-half:           50%
@@ -649,13 +678,14 @@ fullscreen: fixed & covers entire viewport
                 <p>A handful of styling utilities are provided for making manual tweaks.</p>
                 <p>The landscape/portrait hidden utilites can be used for special cases where RBoxes and responsive widths alone cannot get the desired affect for responsive elements.</p>
                 <p>The lm/dm style utilities can be used to invert or use different images for light mode vs dark mode.</p>
-                <div class="rbox">
+                <div class="hbox wrap">
                     <pre class="monospace">
 <h3>Background Color</h3>
 background-color
 alt-background-color
 panel-color
-
+                    </pre>
+                    <pre class="monospace">
 <h3>Portrait / Landscape</h3>
 portrait-hidden
 landscape-hidden

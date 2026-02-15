@@ -187,16 +187,20 @@ CSS Variables [01]
     --mono-font-family: monospace;
     --border-radius: 0.4rem;
     --border-width: 3px;
+    --panel-border: 0;
     --input-border: 0;
     --button-border: var(--input-border);
-    --panel-border: 0;
+    --button-border-radius: var(--border-radius);
     --button-group-sep-border: var(--button-border);
     --table-border: var(--border-width);
     --table-v-border: var(--table-border);
     --table-h-border: var(--table-border);
     --table-header-bg: var(--panel-color);
     --table-body-bg: var(--background-color);
-    --button-border-radius: var(--border-radius);
+    --blockquote-border: var(--border-width);
+    --blockquote-quotemark: collapse;
+    --blockquote-quotemark-font: serif;
+    --list-marker: disc;
     --spacing: 0.6rem;
 
     --dm-font-color: #ddd;
@@ -333,6 +337,7 @@ body {
     border-color: var(--border-color);
     border-width: 0;
     vertical-align: middle;
+    accent-color: (--var-primary);
 }
 
 :not(input, button, .button) {
@@ -372,7 +377,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ul, ol {
-    padding-left: calc(4 * var(--spacing));
+    margin-left: calc(4 * var(--spacing));
+}
+
+ul {
+    list-style-type: var(--list-marker);
 }
 
 code, kbd {
@@ -391,7 +400,7 @@ code, kbd {
     font-family: var(--mono-font-family);
 }
 
-.vbox > kbd {
+.vbox > :is(kbd, mark) {
     align-self: flex-start;
 }
 
@@ -409,6 +418,38 @@ ins {
 
 del {
     color: var(--error-color);
+}
+
+blockquote {
+    margin-left: calc(3*var(--spacing));
+    padding-left: var(--spacing);
+    border-left-width: var(--blockquote-border);
+    position: relative;
+}
+
+blockquote::before {
+    visibility: var(--blockquote-quotemark);
+    content: '“';
+    color: var(--border-color);
+    font-size: calc(4 * var(--font-size));
+    font-family: var(--blockquote-quotemark-font);
+    position: absolute;
+    left: calc(-3*var(--spacing));
+    top: calc(-1.333 * var(--font-size));
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: calc(3*var(--spacing));
+}
+
+mark {
+    padding: 0 0.4em;
+    border-radius: var(--border-radius);
+    background: var(--primary-color);
 }
 
 .font-xxl {
@@ -560,6 +601,22 @@ select {
 
 details > :not(summary) {
     margin-left: 0.8em;
+}
+
+meter, progress {
+    height: 0.5em;
+    border-radius: 0.5em;
+    box-sizing: content-box;
+    background: var(--panel-color);
+    border-width: var(--input-border);
+}
+
+::-webkit-meter-bar, ::-moz-meter-bar {
+    background: var(--primary-color);
+}
+
+::-webkit-progress-bar, ::-moz-progress-bar {
+    background: var(--success-color);
 }
 
 /*
@@ -1107,7 +1164,7 @@ details.dropdown {
     position: relative;
 }
 
-details.dropdown > :not(summary):not(.menu) {
+details.dropdown > :not(summary) {
     padding: var(--spacing);
 }
 
@@ -1116,7 +1173,8 @@ details.dropdown > :not(summary) {
     background: var(--panel-color);
     border-width: var(--panel-border);
     position: absolute;
-    left: 0;
+    left: -1em;
+    top: 100%;
     z-index: 1;
 }
 
@@ -1656,10 +1714,14 @@ Utility [16]
     width: 100%;
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
+
 :root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-hidden {
     display: none;
 }
-g, etc.
+
 :root:has(input[type="checkbox"].dm-toggle:not(:checked)) .lm-invert {
     -webkit-filter: invert(1);
     filter: invert(1);
