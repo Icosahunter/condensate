@@ -2,7 +2,7 @@
 /*
 -------------------------------------------------------------------------------
 Condensate CSS
-Version: 0.1
+Version:
 Licensed under MIT
 -------------------------------------------------------------------------------
 The above notice must be included in its entirety when this file is used.
@@ -1793,6 +1793,9 @@ Utility [16]
     width: 45vw;
 }
 .width-xl {
+    width: 60vw;
+}
+.width-xxl {
     width: 80vw;
 }
 
@@ -1809,6 +1812,9 @@ Utility [16]
     height: 45vh;
 }
 .height-xl {
+    height: 60vh;
+}
+.height-xxl {
     height: 80vh;
 }
 
@@ -1826,6 +1832,9 @@ Utility [16]
         width: 100%;
     }
     .width-xl {
+        width: 100%;
+    }
+    .width-xxl {
         width: 100%;
     }
     .portrait-hidden {
