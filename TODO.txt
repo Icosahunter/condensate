@@ -7,4 +7,5 @@
 [X] Add section in Documentation for Dark Mode toggle switch
 [X] Fix sidebar not extending to bottom of container
 [X] Use dialog element for modals
-[ ] Style blockquote, q, cite, dl, dd, dt, datalist, dfn, ul, ol, li, mark, meter, legend, progress
+[X] Style blockquote, q, cite, dl, dd, dt, datalist, dfn, ul, ol, li, mark, meter, legend, progress
+[ ] Make dropdowns work with button groups
