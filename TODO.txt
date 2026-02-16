@@ -1,2 +1,3 @@
 [X] Use better responsive sizing
 [ ] Re-organize CSS sections
+[ ] Add explanation/demo of "spacer" class
