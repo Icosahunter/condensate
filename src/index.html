@@ -231,33 +231,37 @@
                 <h2 id="layouts">Layouts</h2>
                 <p>Condensate has 4 different layout classes. VBoxes layout their elements vertically and HBoxes layout horizontally. RBoxes act like HBoxes in landscape and act like VBoxes in portrait. Graphics let you position items in any of the nine quadrants (upper left, bottom, center, etc.)</p>
                 <p>When using Condensate, most if not all of your containers should use one of these 4 layout classes.</p>
+                <p>The `spacer` class sets flex-grow to 1, and thus can be used to push some elements to the end of a box layout, or towards the center by using one on either side.</p>
                 <p>You can add scrolling with the classes <code>scroll-x</code> and <code>scroll-y</code> and you can allow item wrapping with the class <code>wrap</code></p>
                 <p>The RBox layout is one of the most important ways to make websites responsive in Condensate. The RBox shown here is in a resizable iframe, try resizing the box to see how it changes with the aspect ratio.</p>
                 <div class="rbox">
                     <code class="width-lg">
                         <pre>
-&lt;div class=&quot;hbox card&quot;&gt;
-    &lt;p&gt;HBox&lt;/p&gt;
-    &lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;hbox card width-sm height-sm&quot;&gt;
+&lt;p&gt;HBox&lt;/p&gt;
+&lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;spacer panel-color rounded&quot; style=&quot;height: 1.5em;&quot;&gt;spacer&lt;/div&gt;
+&lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;vbox card&quot;&gt;
-    &lt;p&gt;VBox&lt;/p&gt;
-    &lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;vbox card width-sm height-sm&quot;&gt;
+&lt;p&gt;VBox&lt;/p&gt;
+&lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;spacer panel-color rounded&quot; style=&quot;width: 1.5em;&quot;&gt;spacer&lt;/div&gt;
+&lt;div class=&quot;square panel-color rounded&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class=&quot;graphic card height-md&quot;&gt;
-    &lt;p class=&quot;top center&quot;&gt;Graphic&lt;/p&gt;
-    &lt;div class=&quot;top left square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;top right square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;center left square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;center square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;center right square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;bottom left square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;bottom center square panel-color rounded&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;bottom right square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;graphic card width-sm height-sm&quot;&gt;
+&lt;p class=&quot;top center&quot;&gt;Graphic&lt;/p&gt;
+&lt;div class=&quot;top left square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;top right square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;center left square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;center square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;center right square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bottom left square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bottom center square panel-color rounded&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;bottom right square panel-color rounded&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div style=&quot;display:flex; resize:both; overflow:hidden;&quot;&gt;
     &lt;iframe style=&quot;flex-grow:1;&quot; src=&quot;rbox-demo.html&quot;&gt;&lt;/iframe&gt;
@@ -265,19 +269,22 @@
                         </pre>
                     </code>
                     <div class="vbox">
-                        <div class="hbox card">
+                        <div class="hbox card width-sm height-sm">
                         <p>HBox</p>
                         <div class="square panel-color rounded"></div>
                         <div class="square panel-color rounded"></div>
                         <div class="square panel-color rounded"></div>
+                        <div class="spacer panel-color rounded" style="height: 1.5em;">spacer</div>
+                        <div class="square panel-color rounded"></div>
                         </div>
-                        <div class="vbox card">
+                        <div class="vbox card width-sm height-sm">
                         <p>VBox</p>
                         <div class="square panel-color rounded"></div>
                         <div class="square panel-color rounded"></div>
+                        <div class="spacer panel-color rounded" style="width: 1.5em;">spacer</div>
                         <div class="square panel-color rounded"></div>
                         </div>
-                        <div class="graphic card height-md">
+                        <div class="graphic card width-sm height-sm">
                         <p class="top center">Graphic</p>
                         <div class="top left square panel-color rounded"></div>
                         <div class="top right square panel-color rounded"></div>
