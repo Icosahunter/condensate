@@ -2,7 +2,7 @@
 /*
 -------------------------------------------------------------------------------
 Condensate CSS
-Version: 0.1
+Version:
 Licensed under MIT
 -------------------------------------------------------------------------------
 The above notice must be included in its entirety when this file is used.
@@ -952,6 +952,10 @@ HBox, VBox, RBox [10]
 -------------------------------------------------------------------------------
 */
 
+:is(.hbox, .vbox, .rbox) > * {
+    flex-shrink: 999;
+}
+
 :is(.hbox, .vbox, .rbox) > :is(a, button, input) {
     flex-shrink: 0;
 }
@@ -1781,35 +1785,47 @@ Utility [16]
 }
 
 .width-xs {
-    width: 8vw;
+    width: 5rem;
+    flex-shrink: 1;
 }
 .width-sm {
-    width: 14vw;
+    width: 15rem;
+    flex-shrink: 1;
 }
 .width-md {
-    width: 25vw;
+    width: 25rem;
+    flex-shrink: 1;
 }
 .width-lg {
-    width: 45vw;
+    width: 45rem;
+    flex-shrink: 1;
 }
 .width-xl {
-    width: 80vw;
+    width: 65rem;
+    flex-shrink: 1;
+}
+.width-xxl {
+    width: 75rem;
+    flex-shrink: 1;
 }
 
 .height-xs {
-    height: 8vh;
+    height: 5rem;
 }
 .height-sm {
-    height: 14vh;
+    height: 15rem;
 }
 .height-md {
-    height: 25vh;
+    height: 25rem;
 }
 .height-lg {
-    height: 45vh;
+    height: 45rem;
 }
 .height-xl {
-    height: 80vh;
+    height: 65rem;
+}
+.height-xxl {
+    height: 75rem;
 }
 
 @media (min-aspect-ratio: 1.2) {
@@ -1826,6 +1842,9 @@ Utility [16]
         width: 100%;
     }
     .width-xl {
+        width: 100%;
+    }
+    .width-xxl {
         width: 100%;
     }
     .portrait-hidden {
