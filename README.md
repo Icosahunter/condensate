@@ -7,7 +7,7 @@ Condensate is a responsive css framework with intuitive h-box/v-box layouting, s
 
 ## Beta Release! 🎉
 
-Condensate is now released in beta! I believe it is feature complete and am happy with where it is. Please give it a try and if you come across any problems create an issue!
+Condensate is now [released in beta](https://github.com/Icosahunter/condensate/releases)! I believe it is feature complete and am happy with where it is. Please give it a try and if you come across any problems create an [issue](https://github.com/Icosahunter/condensate/issues)!
 
 ## Documentation
 
