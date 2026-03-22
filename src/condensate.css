@@ -2,7 +2,7 @@
 /*
 -------------------------------------------------------------------------------
 Condensate CSS
-Version:
+Version: 1.0.0-beta
 Licensed under MIT
 -------------------------------------------------------------------------------
 The above notice must be included in its entirety when this file is used.
@@ -12,19 +12,20 @@ Table of contents:
   CSS Variables -------------------- [01]
   Base Styles ---------------------- [02]
   Typography ----------------------- [03]
-  Buttons, Inputs, Forms ----------- [04]
-  Checkbox, Radio Buttons ---------- [05]
-  Toggle Switch -------------------- [06]
-  Table ---------------------------- [07]
-  Summary, Details ----------------- [08]
-  Scrollbar ------------------------ [09]
-  HBox, VBox, RBox ----------------- [10]
-  Header & Footer ------------------ [11]
-  Cards, Graphics, Heros ----------- [12]
-  Dropdown, Menu ------------------- [13]
+  Form & Inputs -------------------- [04]
+  Button & Button Group ------------ [05]
+  Checkbox, Radio Buttons ---------- [06]
+  Toggle Switch -------------------- [07]
+  Table ---------------------------- [08]
+  Summary, Details, Dropdown ------- [09]
+  Scrollbar ------------------------ [10]
+  Layouts -------------------------- [11]
+  Header & Footer ------------------ [12]
+  Card & Hero ---------------------- [13]
   Modal, close --------------------- [14]
   Sidebar -------------------------- [15]
   Utility -------------------------- [16]
+
 */
 
 /*
@@ -514,7 +515,7 @@ mark {
 
 /*
 -------------------------------------------------------------------------------
-Buttons, Inputs, Forms [04]
+Form & Inputs [04]
 -------------------------------------------------------------------------------
 */
 
@@ -534,37 +535,6 @@ select, textarea, input:not([type="checkbox"], [type="radio"], [type="range"]) {
 
 select:focus, textarea:focus, input:focus:not([type="checkbox"], [type="radio"], [type="range"]) {
     outline: 2px solid var(--primary-color);
-}
-
-button, .button {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    box-sizing: content-box;
-    border-radius: var(--button-border-radius);
-    text-decoration: none;
-    cursor: pointer;
-    border-width: var(--button-border);
-}
-
-.vbox > :is(button, .button) {
-    align-self: flex-start;
-}
-
-@media (max-aspect-ratio: 1.2) {
-    .rbox > :is(button, .button) {
-        align-self: flex-start;
-    }
-}
-
-button:hover, .button:hover {
-    filter: brightness(var(--hover-brightness));
-}
-
-button:focus, .button:focus {
-    outline: none;
 }
 
 input[type="number"]::-webkit-inner-spin-button {
@@ -599,10 +569,6 @@ select {
     cursor: pointer;
 }
 
-details > :not(summary) {
-    margin-left: 0.8em;
-}
-
 meter, progress {
     height: 0.5em;
     border-radius: 0.5em;
@@ -621,7 +587,157 @@ meter, progress {
 
 /*
 -------------------------------------------------------------------------------
-Checkbox & Radio Buttons [05]
+Button & Button Group [05]
+-------------------------------------------------------------------------------
+*/
+
+button, .button {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    box-sizing: content-box;
+    border-radius: var(--button-border-radius);
+    text-decoration: none;
+    cursor: pointer;
+    border-width: var(--button-border);
+}
+
+.vbox > :is(button, .button) {
+    align-self: flex-start;
+}
+
+@media (max-aspect-ratio: 1.2) {
+    .rbox > :is(button, .button) {
+        align-self: flex-start;
+    }
+}
+
+button:hover, .button:hover {
+    filter: brightness(var(--hover-brightness));
+}
+
+button:focus, .button:focus {
+    outline: none;
+}
+
+.button-group {
+    gap: 0;
+}
+
+.hbox > .button-group.flush {
+    margin-top: calc(-1 * var(--spacing));
+    margin-bottom: calc(-1 * var(--spacing));
+}
+
+.vbox > .button-group.flush {
+    margin-left: calc(-1 * var(--spacing));
+    margin-right: calc(-1 * var(--spacing));
+}
+
+.button-group {
+    align-self: stretch;
+}
+
+.button-group > * {
+    box-sizing: border-box;
+}
+
+.button-group.flush > * {
+    border-radius: 0;
+    background: var(--panel-color);
+}
+
+.hbox.button-group.flush > * {
+    height: 100%;
+}
+
+.vbox.button-group.flush > * {
+    width: 100%;
+}
+
+.hbox.button-group > :not(:first-child) {
+    border-left-width: var(--button-group-sep-border);
+}
+
+.vbox.button-group > :not(:first-child) {
+    border-top-width: var(--button-group-sep-border);
+}
+
+.hbox.button-group.flush > :not(:first-child) {
+    border-left-color: var(--button-color);
+}
+
+.vbox.button-group.flush > :not(:first-child) {
+    border-top-color: var(--button-color);
+}
+
+.hbox.button-group > :not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.hbox.button-group > :not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.vbox.button-group > :not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.vbox.button-group > :not(:last-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+@media (min-aspect-ratio: 1.2) {
+    .rbox.button-group > :not(:first-child) {
+        border-left-color: var(--button-group-sep-color);
+        border-left-width: var(--button-group-sep-border);
+    }
+    .rbox.button-group > * {
+        height: 100%;
+    }
+    .rbox.button-group > :not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .rbox.button-group > :not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    details.dropdown > :not(summary) {
+        min-width: 10em;
+    }
+    .button-group.flush > * {
+        min-width: 7em;
+    }
+}
+
+@media (max-aspect-ratio: 1.2) {
+    .rbox.button-group > :not(:first-child) {
+        border-top-color: var(--button-group-sep-color);
+        border-top-width: var(--button-group-sep-border);
+    }
+    .rbox.button-group > * {
+        width: 100%;
+    }
+    .rbox.button-group > :not(:first-child) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .rbox.button-group > :not(:last-child) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+/*
+-------------------------------------------------------------------------------
+Checkbox & Radio Buttons [06]
 -------------------------------------------------------------------------------
 */
 
@@ -750,9 +866,10 @@ input[type="radio"]:checked::before {
 
 /*
 -------------------------------------------------------------------------------
-Toggle Switch [06]
+Toggle Switch [07]
 -------------------------------------------------------------------------------
 */
+
 input[type="checkbox"].switch {
     background: var(--button-color);
     border-width: var(--input-border);
@@ -816,9 +933,10 @@ input[type="checkbox"].dm-toggle:not(.switch)::before {
 
 /*
 -------------------------------------------------------------------------------
-Table [07]
+Table [08]
 -------------------------------------------------------------------------------
 */
+
 tr:first-child {
     background: var(--table-header-bg);
 }
@@ -846,7 +964,7 @@ td:first-child {
 
 /*
 -------------------------------------------------------------------------------
-Summary, Details [08]
+Summary, Details, Dropdown [09]
 -------------------------------------------------------------------------------
 */
 
@@ -897,11 +1015,35 @@ details[open] > :not(summary) {
     }
 }
 
+details.dropdown {
+    position: relative;
+}
+
+details.dropdown > :not(summary) {
+    padding: var(--spacing);
+}
+
+details.dropdown > :not(summary) {
+    border-radius: var(--border-radius);
+    background: var(--panel-color);
+    border-width: var(--panel-border);
+    position: absolute;
+    left: -1em;
+    top: 100%;
+    z-index: 1;
+}
+
+details.dropdown > :not(summary).right {
+    right: 0;
+    left: auto;
+}
+
 /*
 -------------------------------------------------------------------------------
-Scrollbar [09]
+Scrollbar [10]
 -------------------------------------------------------------------------------
 */
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -948,7 +1090,7 @@ Scrollbar [09]
 
 /*
 -------------------------------------------------------------------------------
-HBox, VBox, RBox [10]
+Layouts [11]
 -------------------------------------------------------------------------------
 */
 
@@ -1025,9 +1167,50 @@ HBox, VBox, RBox [10]
     flex-grow: 1;
 }
 
+.graphic {
+    overflow-y: hidden;
+    position: relative;
+}
+
+.graphic > * {
+    position: absolute;
+}
+
+.graphic > .left {
+    left: 10%;
+}
+
+.graphic > .right {
+    right: 10%;
+}
+
+.graphic > .top {
+    top: 10%;
+}
+
+.graphic > .bottom {
+    bottom: 10%;
+}
+
+.graphic > :is(.left, .right).center {
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.graphic > :is(.top, .bottom).center {
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.graphic > :not(.left, .right, .top, .bottom).center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /*
 -------------------------------------------------------------------------------
-Header & Footer [11]
+Header & Footer [12]
 -------------------------------------------------------------------------------
 */
 
@@ -1100,7 +1283,7 @@ footer {
 
 /*
 -------------------------------------------------------------------------------
-Cards, Graphics, Heros [12]
+Card & Hero [13]
 -------------------------------------------------------------------------------
 */
 .card {
@@ -1108,47 +1291,6 @@ Cards, Graphics, Heros [12]
     border-radius: var(--border-radius);
     background: var(--alt-background-color);
     padding: var(--spacing);
-}
-
-.graphic {
-    overflow-y: hidden;
-    position: relative;
-}
-
-.graphic > * {
-    position: absolute;
-}
-
-.graphic > .left {
-    left: 10%;
-}
-
-.graphic > .right {
-    right: 10%;
-}
-
-.graphic > .top {
-    top: 10%;
-}
-
-.graphic > .bottom {
-    bottom: 10%;
-}
-
-.graphic > :is(.left, .right).center {
-    top: 50%;
-    transform: translate(0, -50%);
-}
-
-.graphic > :is(.top, .bottom).center {
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.graphic > :not(.left, .right, .top, .bottom).center {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .hero {
@@ -1160,156 +1302,16 @@ Cards, Graphics, Heros [12]
 
 /*
 -------------------------------------------------------------------------------
-Dropdown, Button Group [13]
--------------------------------------------------------------------------------
-*/
-
-details.dropdown {
-    position: relative;
-}
-
-details.dropdown > :not(summary) {
-    padding: var(--spacing);
-}
-
-details.dropdown > :not(summary) {
-    border-radius: var(--border-radius);
-    background: var(--panel-color);
-    border-width: var(--panel-border);
-    position: absolute;
-    left: -1em;
-    top: 100%;
-    z-index: 1;
-}
-
-details.dropdown > :not(summary).right {
-    right: 0;
-    left: auto;
-}
-
-.button-group {
-    gap: 0;
-}
-
-.hbox > .button-group.flush {
-    margin-top: calc(-1 * var(--spacing));
-    margin-bottom: calc(-1 * var(--spacing));
-}
-
-.vbox > .button-group.flush {
-    margin-left: calc(-1 * var(--spacing));
-    margin-right: calc(-1 * var(--spacing));
-}
-
-.button-group {
-    align-self: stretch;
-}
-
-.button-group > * {
-    box-sizing: border-box;
-}
-
-.button-group.flush > * {
-    border-radius: 0;
-    background: var(--panel-color);
-}
-
-.hbox.button-group.flush > * {
-    height: 100%;
-}
-
-.vbox.button-group.flush > * {
-    width: 100%;
-}
-
-.hbox.button-group > :not(:first-child) {
-    border-left-width: var(--button-group-sep-border);
-}
-
-.vbox.button-group > :not(:first-child) {
-    border-top-width: var(--button-group-sep-border);
-}
-
-.hbox.button-group.flush > :not(:first-child) {
-    border-left-color: var(--button-color);
-}
-
-.vbox.button-group.flush > :not(:first-child) {
-    border-top-color: var(--button-color);
-}
-
-.hbox.button-group > :not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.hbox.button-group > :not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.vbox.button-group > :not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-.vbox.button-group > :not(:last-child) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-@media (min-aspect-ratio: 1.2) {
-    .rbox.button-group > :not(:first-child) {
-        border-left-color: var(--button-group-sep-color);
-        border-left-width: var(--button-group-sep-border);
-    }
-    .rbox.button-group > * {
-        height: 100%;
-    }
-    .rbox.button-group > :not(:first-child) {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-    .rbox.button-group > :not(:last-child) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    details.dropdown > :not(summary) {
-        min-width: 10em;
-    }
-    .button-group.flush > * {
-        min-width: 7em;
-    }
-}
-
-@media (max-aspect-ratio: 1.2) {
-    .rbox.button-group > :not(:first-child) {
-        border-top-color: var(--button-group-sep-color);
-        border-top-width: var(--button-group-sep-border);
-    }
-    .rbox.button-group > * {
-        width: 100%;
-    }
-    .rbox.button-group > :not(:first-child) {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-    .rbox.button-group > :not(:last-child) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-}
-
-/*
--------------------------------------------------------------------------------
 Modal, Close [14]
 -------------------------------------------------------------------------------
 */
+
 dialog {
     background: transparent;
     border-radius: var(--border-radius);
     box-shadow: 0 0 50px #0005;
 }
+
 .modal {
     position: fixed;
     top: 50vh;
@@ -1317,6 +1319,7 @@ dialog {
     transform: translate(-50%, -50%);
     margin: unset;
 }
+
 .close {
     width: 2em;
     height: 2em;
@@ -1325,9 +1328,11 @@ dialog {
     background: none;
     padding: 0;
 }
+
 .close:hover {
     filter: brightness(150%);
 }
+
 .close::before {
     content: "";
     border-style: solid;
@@ -1341,6 +1346,7 @@ dialog {
     transform-origin: center;
     transform: rotate(45deg);
 }
+
 .close::after {
     content: "";
     border-style: solid;
@@ -1364,15 +1370,18 @@ Sidebar [15]
 :is(.vbox, .hbox, .rbox) > details.sidebar {
     margin-right: calc(-1 * var(--spacing));
 }
+
 details.sidebar {
     position: relative;
     background: var(--alt-background-color);
     border-right-width: var(--panel-border);
 }
+
 details.sidebar > *:not(summary) {
     margin: 0;
     height: 100%;
 }
+
 details.sidebar > summary {
     display: block;
     appearance: none;
@@ -1383,6 +1392,7 @@ details.sidebar > summary {
     top: var(--spacing);
     left: var(--spacing);
 }
+
 details.sidebar > summary::before {
     content: "";
     position: absolute;
@@ -1396,6 +1406,7 @@ details.sidebar > summary::before {
     border-width: var(--border-width) 0 var(--border-width) 0;
     border-style: solid;
 }
+
 details.sidebar > summary::after {
     content: "";
     position: absolute;
@@ -1414,6 +1425,7 @@ details.sidebar[open] {
     animation: sidebar-expand-animation 0.4s;
     min-width: min(17em, 80vw);
 }
+
 @keyframes sidebar-expand-animation {
     0% {
         min-width: 0;
@@ -1424,9 +1436,11 @@ details.sidebar[open] {
         max-width: none;
     }
 }
+
 details.sidebar[open] > summary {
     left: calc(100% - 2em - var(--spacing));
 }
+
 details.sidebar[open] > summary::before {
     top: 0.95em;
     left: 0.35em;
@@ -1437,6 +1451,7 @@ details.sidebar[open] > summary::before {
     transform-origin: center;
     transform: rotate(45deg);
 }
+
 details.sidebar[open] > summary::after {
     top: 0.95em;
     left: 0.35em;
@@ -1446,9 +1461,11 @@ details.sidebar[open] > summary::after {
     transform-origin: center;
     transform: rotate(-45deg);
 }
+
 details.sidebar[open] > :not(summary) {
     animation: none;
 }
+
 details.sidebar:not([open]) ~ * > header {
     padding-left: 2.5em;
 }

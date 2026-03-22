@@ -6,7 +6,8 @@ setup:
 
 build: setup clean
     mkdir dist
-    npx css-minify -f src/condensate.css
+    npx css-minify -f src/condensate.css -o dist
+    gzip -k dist/condensate.min.css
 
 publish:
     #!/usr/bin/env bash
