@@ -3,7 +3,7 @@
     <h1> Condensate </h1>
 </div>
 
-Condensate is a responsive css framework with intuitive h-box/v-box layouting, scriptless components (including sidebar!), and simple but extensive themeing through css variables.
+Condensate is a responsive css library with intuitive h-box/v-box layouting, scriptless components (including sidebar!), and simple but extensive themeing through css variables.
 
 You can use condensate by putting the below into the `head` of your html:
 

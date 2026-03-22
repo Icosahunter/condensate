@@ -3,7 +3,7 @@
   "author": "Nathaniel Markham",
   "version": "1.0.0-beta",
   "license": "MIT",
-  "description": "A responsive css framework with intuitive h-box/v-box layouting, scriptless components (including sidebar!), and simple but extensive themeing through css variables.",
+  "description": "A responsive css library with intuitive h-box/v-box layouting, scriptless components (including sidebar!), and simple but extensive themeing through css variables.",
   "homepage": "https://github.com/Icosahunter/condensate",
   "repository": {
     "type": "git",
