@@ -622,7 +622,7 @@ button:focus, .button:focus {
     outline: none;
 }
 
-.button-group {
+:is(.hbox, .vbox, .rbox, *).button-group {
     gap: 0;
 }
 
