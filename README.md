@@ -7,7 +7,7 @@ Condensate is a responsive css framework with intuitive h-box/v-box layouting, s
 
 You can use condensate by putting the below into the `head` of your html:
 
-`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icosahunter/condensate@1.0.0-beta/dist/condensate.min.css">`
+`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/icosahunter/condensate@1.0.0-beta/src/condensate.min.css">`
 
 ## Beta Release! 🎉
 
