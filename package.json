@@ -7,7 +7,7 @@
   "homepage": "https://github.com/Icosahunter/condensate",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Icosahunter/condensate.git"
+    "url": "git+https://github.com/Icosahunter/condensate.git"
   },
   "bugs": {
     "url": "https://github.com/Icosahunter/condensate/issues"
