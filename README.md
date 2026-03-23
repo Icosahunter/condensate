@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="icon.svg" width="150">
+    <img src="assets/icon.svg" width="150">
     <h1> Condensate </h1>
 </div>
 
@@ -14,6 +14,13 @@ If you want to add the css file to your project directly see [releases](https://
 ## Beta Release! 🎉
 
 Condensate is now [released in beta](https://github.com/Icosahunter/condensate/releases)! I believe it is feature complete and am happy with where it is. Please give it a try and if you come across any problems create an [issue](https://github.com/Icosahunter/condensate/issues)!
+
+## Quick Look
+
+<div align="center">
+    <img src="assets/lm-example.png" width="300">
+    <img src="assets/dm-example.png" width="300">
+</div>
 
 ## Documentation
 
